@@ -33,25 +33,23 @@ wordTest= word.toUpperCase();
         document.getElementById("recipes-not-found").style.display= "none";
     } else {  
     
-    console.log(" recipes 2 ", getRecipesByKeyWord(word));
     document.getElementById("recipes-not-found").style.display= "none";
     displayData(getRecipesByKeyWord(word));
     
     appa= getAppareils2(tab);
     fillAppareils2(appa);
-    // ustens= getUstensils(tab);
-    fillUstensils(getUstensils(tab));
 
-    variable2=  getRecipesByKeyWordIngredients(word);
-    // console.log("variable  ", variable2, "tag ", tagFilter);
+    ustens= getUstensils(tab);
+    fillUstensils(ustens);
+
+    variable2=  getRecipesByKeyWordIngredients(tab[i]);
     ingred= getIngredients3(variable2);
-    // console.log("INGRED ", ingred);
-   fillIngredients3(ingred);
-       }
+    fillIngredients3(ingred);
+            }
     
-    if(tab.length <= 0 && word !=null){
+    if(tab.length <= 0 && word !=null) {
         document.getElementById("recipes-not-found").style.display= "block";
+            }
+        }
     }
-}
-}
 }

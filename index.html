@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+        
+    <title>Les Petits Plats</title>
+</head>
+
+<body>
+    <header>
+   
+            <a href="index.html">
+                <img src="/assets/logo.png" alt="Logo du site" class="logo">
+            </a>
+  
+</header>
+<main>
+    <span class="form-inline">
+        <input class="form-control2" type="search" placeholder="Rechercher une recette..." aria-label="Search"  onchange= "searchByWordKey(this.value);"/><img src="/assets/Vector.png" class="search_icone" height="32.06" width="32.06" alt="icone de recherche">
+    </span>
+    <div class="labelTag"  id="labelTag">
+       
+        <div class="rectangle_blue" id="rectangle_blue" style="display:none;">
+            <!-- <label id="labelTagIngredient"> -->
+                <!-- <img src="/assets/Vector2.png" class="supprim_icone" height="20px" width="20px" alt="icone de suppression"> -->
+            <!-- </label> -->
+        </div>
+        <div class="rectangle_green" id="rectangle_green"  style="display:none;">
+            <!-- <label id="labelTagAppareil"> -->
+                <!-- <img src="/assets/Vector2.png" class="supprim_icone" height="20px" width="20px" alt="icone de suppression"> -->
+            <!-- </label> -->
+        </div>
+        <div class="rectangle_red" id="rectangle_red"  style="display:none;">
+            <!-- <label id="labelTagUstensil"> -->
+                <!-- <img src="/assets/Vector2.png" class="supprim_icone" height="20px" width="20px" alt="icone de suppression"> -->
+            <!-- </label> -->
+        </div>
+    </div>
+
+    
+    <div class="filters">
+    <div class="filtersSelected"></div>
+
+    <!-- 1ère méthode -->
+    <div class="dropdownIngredients" onmousedown="" data-type="ingredient">
+        <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         Ingredients
+        </button>
+        <div id="ingredients_dropdown_menu" class="dropdown-menu">
+                <span class="input">
+                <input type="text" placeholder="Rechercher un ingrédients..." id="myInput"  onchange= "filterFunction2(this.value);"><img src="/assets/VectorBlanche.png" class="arrow_icone" height="9.88px" width="16px" alt="icone de flèche">
+                </span>
+            <hr><hr>
+        </div>
+    </div>
+    </div>
+   
+          
+    <div class="filters">
+    <div class="filtersSelected"></div>  
+    <!-- 2ème dropdown -->
+    <div class="dropdownAppareils"  onmousedown="" data-type="appareil">
+        <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+       Appareils
+        </button>
+        <div id="appareils_dropdown_menu" class="dropdown-menu">
+            <span class="inputAppareil">
+            <input type="text" placeholder="Rechercher un appareil..." id="myInputAppareil" ><img src="/assets/VectorBlanche.png" class="arrow_icone" height="9.88px" width="16px" alt="icone de flèche">
+            </span>
+            <hr><hr>
+    </div>
+    </div>
+    </div>
+
+    <div class="filters">
+        <div class="filtersSelected"></div>  
+    <!-- 3ème dropdown -->
+    <div class="dropdownUstensils" onmousedown="" data-type="ustensil">
+        <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+       Ustensiles
+        </button>
+        <div id="ustensils_dropdown_menu" class="dropdown-menu">
+            <span class="inputUstensil">
+            <input type="text" placeholder="Rechercher un ustensil..." id="myInputUstensil"  ><img src="/assets/VectorBlanche.png" class="arrow_icone" height="9.88px" width="16px" alt="icone de flèche">
+            </span>
+            <hr><hr>
+    </div>
+    </div>
+    </div>
+     
+    <section class="card-deck" id="card-deck">
+    </section>
+
+    <div class="well" id="recipes-not-found"   style="display:none;">
+        <p>Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc</p>
+    </div>
+</main>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="scripts/pages/index.js"></script>
+    <script src="scripts/factories/recipes.js"></script>
+    <script src="scripts/utils/search.js"></script>
+    <script src="scripts/app.js"></script>
+    
+</body>
+
+</html>

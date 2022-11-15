@@ -6,50 +6,114 @@ function getValue() {
     return input;
 }
 
-let tab=[];
+let tab = [];
 // Fonction de recherche dans le titre de la recette, la liste des ingrédients, et dans la description
-function searchByWordKey(word) {
-wordTest= word.toUpperCase();
-
-    if(word.length >= 3) {
-       
-        for(let i = 0; i < recipes.length; i++) {
-    
-        if((recipes[i].name.indexOf(word) > -1 ) || 
-            (recipes[i].ingredients.indexOf(word) > -1) || 
-            (recipes[i].description.indexOf(word) > -1))  {
-                tab.push(getRecipesByKeyWord(word));
-                
+function searchByWordKey(word) 
+{
+    if(word.length >= 3) 
+    {
+        recipesSection.innerHTML = "";
+        word = word.toLowerCase();
+      
+        for(let i = 0; i < recipes.length; i++) 
+        {
+            if((recipes[i].name.toLowerCase().indexOf(word) > -1 ) || 
+                (recipes[i].ingredients.find((recipe) => recipe.ingredient.toLowerCase() == word)) || 
+                (recipes[i].description.toLowerCase().indexOf(word) > -1))  
+            {
+                tab.push(recipes[i]);
             }
+        }
+   
+        if(tab.length === 0) 
+        {
+            document.getElementById("recipes-not-found").style.display= "block";
+        }
+        else 
+        {  
+            document.getElementById("recipes-not-found").style.display= "none";
+            displayData(tab);
+
+            appa= getAppareils(tab);
+            fillAppareils(appa);
+           
+            ingred= getIngredients(tab);
+            fillIngredients(ingred);
+
+            ustens= getUstensils(tab);
+            fillUstensils(ustens);
+
+        }
+    }
+}
+
+// Fonction de recherche dans le titre de la recette, la liste des ingrédients, et dans la description
+function searchByWordKeyAndTags(word, event) 
+{    
+    if(word.length >= 3) 
+    {
+        recipesSection.innerHTML = "";
+        word = word.toLowerCase();
+        tab = [];
+      
+        for(let i = 0; i < recipes.length; i++) 
+        {
+            if((recipes[i].name.toLowerCase().indexOf(word) > -1 ) || 
+                (recipes[i].ingredients.find((recipe) => recipe.ingredient.toLowerCase() == word)) || 
+                (recipes[i].description.toLowerCase().indexOf(word) > -1))  
+            {
+                tab.push(recipes[i]);
+
+            } else 
+               
+                    if((type == "ingredient")) {
+                        if(recipes[i].ingredients.find((recipe) => recipe.ingredient.toLowerCase() == word)) {
+                        tab.push(recipes[i]);
+                        }
+                    } 
+
+                else {
+
+                    if(type== "appareil") {
+                        if(recipes[i].appliance.toLowerCase().indexOf(word) > -1) {
+                            tab.push(recipes[i]);
+                            }
+                    
+                    }
+
+                else {
+
+                    if((type == "ustensil")) {
+                        if(recipes[i].ustensils.find((recipe) => recipe.ustensils == word)) {
+                            tab.push(recipes[i]);
+                            }
+                    }
+
+               
+            }
+              
+        }
+    }
         
-        
-       
-    
+   
+        if(tab.length === 0) 
+        {
+            document.getElementById("recipes-not-found").style.display= "block";
+        }
+        else 
+        {  
+            document.getElementById("recipes-not-found").style.display= "none";
+            displayData(tab);
 
-    if(tab.length === 0) {
-        console.log(" recipes 2 ", getRecipesByKeyWord(word));
-        // console.log(" oui");
-        displayData3(getRecipesByKeyWord(word));
-        document.getElementById("recipes-not-found").style.display= "none";
-    } else {  
-    
-    document.getElementById("recipes-not-found").style.display= "none";
-    displayData(getRecipesByKeyWord(word));
-    
-    appa= getAppareils2(tab);
-    fillAppareils2(appa);
+            appa= getAppareils(tab);
+            fillAppareils(appa);
+           
+            ingred= getIngredients(tab);
+            fillIngredients(ingred);
 
-    ustens= getUstensils(tab);
-    fillUstensils(ustens);
+            ustens= getUstensils(tab);
+            fillUstensils(ustens);
 
-    variable2=  getRecipesByKeyWordIngredients(tab[i]);
-    ingred= getIngredients3(variable2);
-    fillIngredients3(ingred);
-            }
-    
-    if(tab.length <= 0 && word !=null) {
-        document.getElementById("recipes-not-found").style.display= "block";
-            }
         }
     }
 }

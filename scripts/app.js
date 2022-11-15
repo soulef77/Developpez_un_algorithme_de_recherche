@@ -4,48 +4,40 @@ div = document.getElementById("ingredients_dropdown_menu");
 function getIngredients(argument) {
     let ingredients = [];
   
-    if(argument) {
+  
+ 
     for (let i = 0; i < argument.length; i++) {
         ingredients.push(argument[i].ingredients);
         // console.log(" TESTTTT ", argument[i].ingredients);
         }
-      }
-
-     let ingredientsSet = [...new Set(ingredients)];
-     return ingredientsSet;
+    var unique = ingredients.filter((x, i) => ingredients.indexOf(x) === i);
+    return unique;
     
 }
 
 function getIngredients2(argument) {
-    let ingredients = [];
-    let arrayIngred = [];
-    let ingredient= [];
-    let allIngredientsRecipes = [];
-    let tabRecipes=[];
-    let recipesSolution= [];
-  
-    // for(let j=0; j < argument.length; j++) {
-        for (let i = 0; i < argument.length; i++) {
-            recipesSolution.push(argument[i]['ingredients']);
-   
-        }
+let recipesSolution= [];
+for (let i = 0; i < argument.length; i++) {
+        recipesSolution.push(argument[i]['ingredients']);
+    }
     
     ingredientsListArray = [...new Set(recipesSolution)];
     return ingredientsListArray;
-   }
+}
   
-function getIngredients3(argument) {
-    let ingredients = [];
-  
-    if(argument) {
-    for (let i = 0; i < argument.length; i++) {
-        ingredients.push(argument[i]);
-        //  console.log(" TESTTTT ", argument[i]);
-        }
-      }
+function getIngredient3(tab) {
+    let ingredient= [];
+    // var unique = tab.filter((x, i) => tab.indexOf(x) === i);
+   
+    for (let i = 0; i < tab.length; i++) {
 
-     let ingredientsSet = [...new Set(ingredients)];
-     return ingredientsSet;
+        // ingredient.push(unique[i].ingredients);
+        ingredient.push(ingredient.ingredient);
+        // console.log(" TESTTTT ", ingredient[i]);
+        }
+    
+    
+     return ingredient;
     
 }
 
@@ -53,7 +45,7 @@ function getIngredients3(argument) {
 function fillIngredients(argument2) {
 
 //  console.log(" VEIRIIFIFI COOL ", argument2);
-   
+document.getElementById("ingredients_dropdown_menu").innerHTML = "";    
     for(let i= 0; i< argument2.length; i++) {
             showIngredients(argument2[i]);
             }
@@ -70,12 +62,13 @@ for(let i= 0; i< argument2.length; i++) {
         
 }
   
-function fillIngredients3(argument2) {
+function fillIngredients3(ingredients) {
 
-    // console.log(" VEIRIIFIFI 3 ", argument2);
+    document.getElementById("ingredients_dropdown_menu").innerHTML = "";
    
-    for(let i= 0; i< argument2.length; i++) {
-            showIngredients3(argument2);
+    for(let i= 0; i< ingredients.length; i++) {
+            showIngredient3(ingredients[i]);
+            // console.log(" TESTTT3 ", ingredients[i]);
         }
         
 }
@@ -83,7 +76,7 @@ function fillIngredients3(argument2) {
 function showIngredients(argument3) {
 
     // console.log(" VEIRIIFIFI 2 ", argument3);
-    if(argument3) {
+
     div = document.getElementById("ingredients_dropdown_menu");
    
     let txtValue = [];
@@ -101,7 +94,7 @@ function showIngredients(argument3) {
         el = document.createElement("div");
         el.setAttribute("class", "ingred");
         el.textContent = unique[i];
-        el.value = unique[i];
+        // el.value = unique[i];
         div.appendChild(el);
 
         el.setAttribute("onclick", "addDropdownFilter(event)");
@@ -109,9 +102,8 @@ function showIngredients(argument3) {
         }
         txtValue = [];
         unique = [];
-    }
+    
 }
-
 
 var el;
 let txtValue = [];
@@ -146,8 +138,8 @@ function showIngredients2(argument3) {
         el = document.createElement("div");
         el.setAttribute("class", "ingred");
         el.textContent = txtIngred[i];
-        el.value = txtIngred[i];
-        a[i].innerHTML= txtIngred[i];
+        // el.value = txtIngred[i];
+        // a[i].innerHTML= txtIngred[i];
         div.appendChild(el);
         el.setAttribute("onclick", "addDropdownFilter(event)");
         div.appendChild(el);
@@ -156,40 +148,13 @@ function showIngredients2(argument3) {
     }
 }
 
-function showIngredients3(argument3) {
-
-    // console.log(" VEIRIIFIFI 2 ", argument3);
-   if(argument3) {
-   div = document.getElementById("ingredients_dropdown_menu");
-  
-   let txtValue = [];
-   let unique = [];
-   for(let i= 0; i< argument3.length; i++) {
-      txtValue.push(argument3[i]);
-    //   console.log(" value  333 ", txtValue);  
-   }
-
-   unique= [...new Set(txtValue)];
-   const boxes = document.getElementsByClassName("ingred");
-   a = div.getElementsByTagName("div");
-   for(let i=0; i < boxes.length; i++) {
-        a[i].innerHTML= "";
-   }
-
-    for(let j=0; j < unique.length; j++) {
-       if(txtValue[j].indexOf(a[j].innerText) > -1) {
-           // console.log(" YOUPI ");
-           el = document.createElement("div");
-           el.setAttribute("class", "ingred");
-           el.textContent = unique[j];
-           el.value = unique[j];
-           a[j].value= unique[j];
-           div.appendChild(el);
-           el.setAttribute("onclick", "addDropdownFilter(event)");
-           div.appendChild(el);
-       }
-    }
-   }
+function showIngredient3(ingredient) {
+    div = document.getElementById("ingredients_dropdown_menu");
+    el = document.createElement("div");
+    el.className = "ingred";
+    el.textContent = ingredient;
+    div.appendChild(el);
+    el.setAttribute("onclick", "addDropdownFilter(event)");
 }
 
 
@@ -285,32 +250,14 @@ function myFunction() {
 // 	// renderIngredientsListFiltred(ingredientsListArray);
 // }
 
-// // List Tags Ingredients for search in dropdown input
-// function renderIngredientsListFiltred(ingredientsListArray) {
-// 	const newItemIngredient = ingredientsListArray
-// 		.map(
-// 			item => `
-//         <a href="#" class="list-tags-item ingredients col-1 list-group-item list-group-item-action bg-transparent border-0 text-white m-0 p-0 px-4"
-//             arial-label="Rechercher des recettes avec l'ingrédient: '${item}'" data-color="blue" data-value="${item}" onclick=">
-//             ${item}
-//         </a>
-//         `
-// 		)
-// 		.join('');
-
-// 	ingredientsListTags.innerHTML = newItemIngredient;
-// }
-
 let ingred;
 let variable2;
 function filterFunction2(tagFilter) {
-  
         variable2=  getRecipesByKeyWordIngredients(tagFilter);
         // console.log("variable  ", variable2, "tag ", tagFilter);
-        ingred= getIngredients3(variable2);
+        ingred= getIngredient3(variable2);
         // console.log("INGRED ", ingred);
-       fillIngredients3(ingred);
-   
+        fillIngredients3(ingred);
 }
 
 
@@ -318,29 +265,20 @@ let listOfIngredientsSelected = new Set();
 let listOfUstensilsSelected = new Set();
 let listOfAppliancesSelected = new Set();
 
-let listOfIngredientsFilteredTag = [];
-let listOfUtensilsFilteredTag = [];
-let listOfAppliancesFilteredTag = [];
-
-let listOfIngredientsFilteredInput = [];
-let listOfUtensilsFilteredInput = [];
-let listOfAppliancesFilteredInput = [];
-
 let recipesTagFiltered = recipes;
 let recipesInputFiltered = recipesTagFiltered;
 let recipesFiltered = recipesInputFiltered;
-
+let type;
 function addDropdownFilter(event) {
     const target = event.currentTarget;
     const text = target.textContent;
-    const type = target.parentNode.parentNode.dataset.type;
     const selectedFilters = document.querySelector(".filtersSelected");
-    
+    type = target.parentNode.dataset.type;
     const listType = type === "ingredient"  ? listOfIngredientsSelected : 
     type === "";
-  
-    if(type=="ingredient") {
-    //  console.log("ok  pkoi pas ", listType, " ", target," ", text," ", type, " ", selectedFilters);
+    console.log("ok  pkoi pas ", target.parentNode.dataset.type , " 2 ", target," 3 ", text,"  4 ", type, " 5 ", selectedFilters);
+    if(type ==="ingredient") {
+     console.log("youpi ");
     if (!listType.has(text)) {
         listType.add(text);
         // selectedFilters.appendChild(createDropdownFilterCard(text, type));
@@ -348,14 +286,17 @@ function addDropdownFilter(event) {
         CreateTagFilter(text);
         FillTag(text);
         filterFunction2(text); 
-        variable2=  getRecipesByKeyWordIngredients(text);
-        displayData(variable2);
+        // searchByWordKey(text);
+        searchByWordKeyAndTags(text, event);
+       
+        // variable2=  getRecipesByKeyWordIngredients(text);
+        // displayData(variable2);
 
-        variable2=  getRecipesByKeyWordIngredients(text);
+        // variable2=  getRecipesByKeyWordIngredients(text);
         // console.log("variable  ", variable2, "tag ", tagFilter);
-        ingred= getIngredients3(variable2);
+        // ingred= getIngredient3(variable2);
         // console.log("INGRED ", ingred);
-       fillIngredients3(ingred);
+        // fillIngredients3(ingred);
     }
 }
 
@@ -363,22 +304,23 @@ function addDropdownFilter(event) {
     type === "";
   
     if(type=="appareil") {
-    // console.log("ok  pkoi pas ", listType2, " ", target," ", text," ", type, " ", selectedFilters);
+    console.log("ok  pkoi pas ", listType2, " ", target," ", text," ", type, " ", selectedFilters);
     if (!listType2.has(text)) {
         listType2.add(text);
         // selectedFilters.appendChild(createDropdownFilterCard(text, type));
         recipesTagUpdate();
         CreateTagFilter2(text);
         FillTag2(text);
-       let variable= getRecipesByKeyWordAppareilsTag(text);
-        displayData(getRecipesByKeyWordAppareilsTag(text));
+         searchByWordKeyAndTags(text, event);
+        // searchByWordKey(text);
+        // displayData(getRecipesByKeyWordAppareilsTag(text));
 
        
-        let variable3=  getRecipesByKeyWordIngredients(text);
-       let ingred2= getAppareils(variable3);
-        console.log("variable  ", variable3, "tag ", text);
-          console.log("INGRED ", ingred2);
-        fillAppareils(ingred2);
+        // let variable3=  getRecipesByKeyWordIngredients(text);
+    //    let ingred2= getAppareils(variable3);
+        // console.log("variable  ", variable3, "tag ", text);
+        //   console.log("INGRED ", ingred2);
+        // fillAppareils(ingred2);
     }
     }
     
@@ -386,19 +328,21 @@ function addDropdownFilter(event) {
     type === "";
   
     if(type=="ustensil") {
-    // console.log("ok  pkoi pas ", listType3, " ", target," ", text," ", type, " ", selectedFilters);
+    console.log("ok  pkoi pas ", listType3, " ", target," ", text," ", type, " ", selectedFilters);
     if (!listType3.has(text)) {
         listType3.add(text);
         // selectedFilters.appendChild(createDropdownFilterCard(text, type));
         recipesTagUpdate();
         CreateTagFilter3(text);
         FillTag3(text);
-        let variable6= getRecipesByKeyWord(text);
-        displayData(getRecipesByKeyWordUstensilsTag(text));
-        let ingred3= getUstensils(variable6);
+        // searchByWordKey(text);
+        searchByWordKeyAndTags(text, event);
+        // let variable6= getRecipesByKeyWord(text);
+        // displayData(getRecipesByKeyWordUstensilsTag(text));
+        // let ingred3= getUstensils(variable6);
         // console.log("variable  ", variable6, "tag ", text);
         //   console.log("INGRED ", ingred3);
-        fillUstensils(ingred3);
+        // fillUstensils(ingred3);
     }
     }
 
@@ -448,10 +392,6 @@ function recipesTagFilter() {
             itemsFiltered.push(item);
         }
     }
-
-    // // Filtre dropdowns
-    // [listOfIngredientsFilteredTag, listOfUtensilsFilteredTag, listOfAppliancesFilteredTag] = [...structureItems(itemsFiltered)];
-    // [listOfIngredientsFiltered, listOfUtensilsFiltered, listOfAppliancesFiltered] = [listOfIngredientsFilteredTag, listOfUtensilsFilteredTag, listOfAppliancesFilteredTag];
     
     return itemsFiltered;
 }
@@ -459,21 +399,18 @@ function recipesTagFilter() {
 
 
 function FillTag(tagFilter) {
-
-    // document.getElementById('labelTagIngredient').innerHTML= tagFilter;
-    document.getElementById('rectangle_blue').style.display='block';
+    document.getElementById('rectangle_blue').style.display='flex';
     
-    //  filterFunction2(tagFilter); 
 }
 
 var i=0;
 function CreateTagFilter(tagFilter) {
     i++;
-    var elem2 = document.createElement('label');
+    var elem2 = document.createElement('div');
     elem2.setAttribute("id", "labelTag"+ i.toString());
 
     elem2.innerHTML = tagFilter;    
-      
+      console.log(" oui ", elem2);
     const img = document.createElement("img");
                   img.src ="/assets/Vector2.png";
                   img.alt = "";
@@ -481,14 +418,14 @@ function CreateTagFilter(tagFilter) {
                   elem2.appendChild(img);
     
    
-    document.getElementById('rectangle_blue').style.display='block';
+    document.getElementById('rectangle_blue').style.display='flex';
     document.getElementById('rectangle_blue').appendChild(elem2);
 }
 
 
 
 
-// PArtie appareils
+// Partie appareils
 
 div = document.getElementById("appareils_dropdown_menu");
 function getAppareils(argument) {
@@ -497,7 +434,6 @@ function getAppareils(argument) {
     if(argument) {
     for (let i = 0; i < argument.length; i++) {
         appareils.push(argument[i].appliance);
-        //  console.log(" TESTTTT ", argument[i].appliance);
         }
       }
 
@@ -522,10 +458,8 @@ function getAppareils2(argument) {
 }
 
 function fillAppareils(argument2) {
-
-    //  console.log(" VEIRIIFIFI ", argument2);
-   
-    for(let i= 0; i< argument2.length; i++) {
+document.getElementById("appareils_dropdown_menu").innerHTML = ""; 
+  for(let i= 0; i< argument2.length; i++) {
             showAppareils(argument2[i]);
             }
         
@@ -534,7 +468,6 @@ function fillAppareils(argument2) {
 function showAppareils(argument3) {
 
     //  console.log(" VEIRIIFIFI 2 ", argument3);
-    if(argument3) {
     div = document.getElementById("appareils_dropdown_menu");
    
     let txtValue = [];
@@ -550,22 +483,17 @@ function showAppareils(argument3) {
         el = document.createElement("div");
         el.setAttribute("class", "appar");
         el.textContent = unique[i];
-        el.value = unique[i];
-        div.appendChild(el);
-
         el.setAttribute("onclick", "addDropdownFilter(event)");
         div.appendChild(el);
         }
         txtValue = [];
         unique = [];
-    }
+    
 }
 
 
 function fillAppareils2(argument2) {
-
-    // console.log(" VEIRIIFIFI ", argument2);
-   
+    document.getElementById("appareils_dropdown_menu").innerHTML = ""; 
     for(let i= 0; i< argument2.length; i++) {
             showAppareils2(argument2[i]);
         }
@@ -597,7 +525,7 @@ function showAppareils2(argument3) {
         el = document.createElement("div");
         el.setAttribute("class", "appar");
         el.textContent = unique[i];
-        el.value = unique[i];
+        // el.value = unique[i];
         div.appendChild(el);
 
         el.setAttribute("onclick", "addDropdownFilter(event)");
@@ -612,9 +540,10 @@ function myFunction() {
 }
 
 var i=0;
+let tagFilter;
 function CreateTagFilter2(tagFilter) {
     i++;
-    var elem2 = document.createElement('label');
+    var elem2 = document.createElement('div');
     elem2.setAttribute("id", "labelTag"+ i.toString());
 
     elem2.innerHTML = tagFilter;    
@@ -625,75 +554,65 @@ function CreateTagFilter2(tagFilter) {
                   elem2.appendChild(img);
     
    
-    document.getElementById('rectangle_green').style.display='block';
+    document.getElementById('rectangle_green').style.display='flex';
     document.getElementById('rectangle_green').appendChild(elem2);
     //  filterFunction(tagFilter); 
 }
 
 
 function FillTag2(tagFilter) {
-    // document.getElementById('labelTagAppareil').innerHTML= tagFilter;
-    //  filterFunction2(tagFilter); 
+    
 }
 
 
 // Partie ustensiles
 
-div = document.getElementById("ustensils_dropdown_menu");
+// div = document.getElementById("Ustensiles_dropdown_menu");
+let ustensils = [];
 function getUstensils(argument) {
-    let ustensils = [];
-  
-    if(argument) {
+   
+    
     for (let i = 0; i < argument.length; i++) {
         ustensils.push(argument[i].ustensils);
     //  console.log(" TESTTTT ", argument[i].ustensils);
         }
-      }
-
-     let ustensilsSet = [...new Set(ustensils)];
-     return ustensilsSet;
+      
+    var unique = ustensils.filter((x, i) => ustensils.indexOf(x) === i);
+    return unique;
+     
     
 }
 
 function fillUstensils(argument2) {
-  for(let i= 0; i< argument2.length; i++) {
+    document.getElementById("ustensils_dropdown_menu").innerHTML = ""; 
+    for(let i= 0; i< argument2.length; i++) {
         // console.log(" VEIRIIFIFI  USTENSILS ", argument2[i]);
             showUstensils(argument2[i]);
            }
    }
 
-   let txtValue2 = [];
-   let unique2= [];
- 
+   
+let txtValue2 = [];
+let unique2= [];
 function showUstensils(argument3) {
-     
-    if(argument3) {
-        div = document.getElementById("ustensils_dropdown_menu");
-    
-        for(let i= 0; i< argument3.length; i++) {
+// txtValue2 = [];
+document.getElementById("ustensils_dropdown_menu").innerHTML = ""; 
+div = document.getElementById("ustensils_dropdown_menu");
+    for(let i= 0; i< argument3.length; i++) {
         txtValue2.push(argument3[i]);
         // console.log(" VEIRIIFIFI 2 USTENDIL ", argument3[i]);
-        }
+    }
 
-        unique2=  [...new Set(txtValue2)];
-
-        const boxes = document.getElementsByClassName("usten");
-        a = div.getElementsByTagName("div");
-        for(let i=0; i < boxes.length; i++) {
-            a[i].innerHTML= "";
+    unique2=  [...new Set(txtValue2)];
+    for(let i= 0; i< unique2.length; i++) {
+        // console.log(" VEIRIIFIFI 2 USTENDIL 33 ", txtValue2[i]);
+        el = document.createElement("div");
+        el.setAttribute("class", "usten");
+        el.textContent = unique2[i];
+        el.setAttribute("onclick", "addDropdownFilter(event)");
+        div.appendChild(el);
         }
         
-        for(let i= 0; i< unique2.length; i++) {
-            // console.log(" VEIRIIFIFI 2 USTENDIL 33 ", txtValue2[i]);
-            el = document.createElement("div");
-            el.setAttribute("class", "usten");
-            el.textContent = unique2[i];
-            el.value = unique2[i];
-            el.setAttribute("onclick", "addDropdownFilter(event)");
-            div.appendChild(el);
-            }
-       
-    }
 }
 
 
@@ -703,7 +622,8 @@ function fillUstensils2(argument2) {
    
     for(let i= 0; i< argument2.length; i++) {
             showUstensils2(argument2[i]);
-            }
+        }
+        
         
 }
 
@@ -712,8 +632,8 @@ function fillUstensils2(argument2) {
 function showUstensils2(argument3) {
 
     //  console.log(" VEIRIIFIFI 2 ", argument3);
-    if(argument3) {
-    div = document.getElementById("ustensils_dropdown_menu");
+  
+    div = document.getElementById("Ustensils_dropdown_menu");
    
   
     for(let i= 0; i< argument3.length; i++) {
@@ -721,29 +641,16 @@ function showUstensils2(argument3) {
         //   console.log(" value ustensil 22 ", txtValue3) 
     }
 
-
-    const boxes = document.getElementsByClassName("usten");
-    a = div.getElementsByTagName("div");
-    for(let i=0; i < boxes.length; i++) {
-         a[i].innerHTML= "";
-    }
-
-
     unique3=  [...new Set(txtValue3)];
     for(let i= 0; i< unique3.length; i++) {
 
         el = document.createElement("div");
         el.setAttribute("class", "usten");
         el.textContent = unique3[i];
-        el.value = unique3[i];
-        a[i].textContent = unique3[i];
-        div.appendChild(el);
-
+        // el.value = unique3[i];
         el.setAttribute("onclick", "addDropdownFilter(event)");
         div.appendChild(el);
         }
-        
-    }
 }
 
 function myFunction() {
@@ -753,7 +660,7 @@ function myFunction() {
 var i=0;
 function CreateTagFilter3(tagFilter) {
 
-    var elem2 = document.createElement('label');
+    var elem2 = document.createElement('div');
     elem2.setAttribute("id", "labelTag"+ i.toString());
     elem2.innerHTML = tagFilter;    
     const img = document.createElement("img");
@@ -763,29 +670,105 @@ function CreateTagFilter3(tagFilter) {
                   elem2.appendChild(img);
     
    
-    document.getElementById('rectangle_red').style.display='block';
+    document.getElementById('rectangle_red').style.display='flex';
     document.getElementById('rectangle_red').appendChild(elem2);
     i++;
 }
 
 
 function FillTag3(tagFilter) {
-
-    // document.getElementById('labelTagUstensil').innerHTML= tagFilter;
-    // const img = document.createElement("img");
-    // img.src ="/assets/Vector2.png";
-    // img.alt = "";
-    // img.setAttribute("onclick", "suppressTag(event)");
-    // document.getElementById('labelTagUstensil').appendChild(img);
   
 }
 
   // supprime de l'affichage le tag cliqué
-function suppressTag(e){
-    console.log(e.target.parentNode , "  OK  ", e.currentTarget);
-    e.target.parentNode.remove();
+function suppressTag(event){
+    console.log(event.target.parentNode.innerText , "  OK  ", event.currentTarget, " type ", type);
+    event.target.parentNode.remove();
     i= parseInt(i.toString());
-    fillIngredients(e.target.parentNode);
+    // fillIngredients(event.target.parentNode.innerText);
+    searchRecipesByTarget(event.target.parentNode.innerText, type);
+    // displayData(event.target.parentNode.innerText);
+    
+ }
+
+ function searchRecipesByTarget(targetTag, type) {
+    var typeOfTag = document.getElementById("ingredients_dropdown_menu").dataset.type;
+    const monElement = document.getElementById("ingredients_dropdown_menu");
+    // for (let i = 0; i < typeOfTag.length; i++) {
+       
+    // }
+
+    // const id = (event.currentTarget.parentNode.getAttribute('id')).toString();
+    // const type = document.querySelector(this.id);
+    // console.log(" VEBENT ", type, " id ", id);
+    if(typeOfTag === "ingredient") {
+        
+        // ingred = getIngredients2(targetTag);
+        // searchByWordKey(ingred);
+        // let recettes = getRecipesByTarget();
+        // displayData(recettes);
+
+    } else if(typeOfTag === "appareil") {
+        // displayData(getRecipesByKeyWordAppareilsTag(targetTag));
+
+    } else if(typeOfTag === "ustensil") {
+        // displayData(getRecipesByKeyWordUstensilsTag(targetTag));
+
+    }
     
  }
   
+ let tabRecettes = [];
+ let recettesFiltered;
+ let recettes;
+function getRecipesByTarget() {
+
+
+    
+
+    // console.log("TAB  ", tab);
+    recettesFiltered = [];
+    recettes = [];
+    tabRecettes = [];
+
+    // for(let i = 0; i < recipes.length; i++) {
+    //     for(let j = 0; j < tab.length; j++) {
+    //     recettesFiltered = recipes.filter((recipe) => recipe.name !== tab.name);
+    //     tabRecettes.push(recettesFiltered);
+    //     }
+    // }
+//     recettes = recettesFiltered.concat(tab);
+//     console.log(" RECTTTE  1 ", recettesFiltered," 2 ", tabRecettes, " 3 ", recettes);
+    // recipes.map(recipe => {
+    //         recettesFiltered = recipes.filter((recipe) => recipe.name !== tab.name);
+    //         tabRecettes.push(recettesFiltered);
+    //         return recipe;
+    // });
+
+    recettes = getRecipesByMap();
+    console.log(" RECTTTE  2 ", recettesFiltered," 2 ", tabRecettes, " 3 ", recettes );
+
+    
+        // for(let j = 0; j < tab.length; j++) {
+        //     recettesFiltered = recipes.filter(recipe => {
+        //         return JSON.stringify(recipe.name) != JSON.stringify(tab[j].name);
+        //      });
+            // recettesFiltered[recettesFiltered.length] = recettesFiltered;
+           // tabRecettes.push(recettesFiltered);
+        // }      
+    
+        
+    //  console.log(" RECTTTE ", recettesFiltered ," 2 ", tabRecettes, " 3 ", recettes);
+     return recettesFiltered;
+}
+
+function getRecipesByMap() {
+    for(let i = 0; i < tab.length; i++) {
+            recipes.map((recipe) => {
+            recettesFiltered = recipes.filter((recipe) => recipe.name != tab[i].name);
+            // console.log("RECIPE ", recipe);
+            return recipe;
+            });
+    }
+    
+}

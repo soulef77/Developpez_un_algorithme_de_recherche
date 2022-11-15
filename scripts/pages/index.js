@@ -66,38 +66,40 @@ function getRecipesByKeyWordIngredients(word) {
                      recipes[i].ingredients.map(ingredients => {
                     const ingredient= ingredients.ingredient;
                     allIngredientsRecipes.push(ingredient);
-                    variableRecipes.push(getRecipesByKeyWord(ingredient));
+                    // variableRecipes.push(getRecipesByKeyWord(ingredient));
                     // console.log("okok ", ingredient," VERIF ", variableRecipes);
                     });
                     ingredientsListArray = [...new Set(allIngredientsRecipes)];
-                    
-                    return ingredientsListArray;
+                    // console.log(" OK COURHAE ", wordTest);
+                    return wordTest;
         }
     }
     }
          
     function getRecipesByKeyWordByIngredient(word) {
-
+        word = word.toLowerCase();
         for(let i = 0; i < recipes.length; i++) {
     
-                wordTest= recipes[i].name;
+                wordTest= recipes[i].name.toLowerCase();
                 wordTest2= recipes[i].ingredients;
-              
+                // console.log(" ici ", word,"  OKI ", wordTest," OKI2 ", recipes[i].name);
              
               if(wordTest2.indexOf(word) > -1) {
-                    // console.log(" ici ", word,"  OKI ", wordTest," OKI2 ", recipes[i].name);
-                 return wordTest;
+                return wordTest;
              
         }
     }
                 
     }
 
+    let ok= [];
     function listOfRecipesByIngredients(argument) {
 
        
-          ok.push(getRecipesByKeyWordByIngredient(argument));
+          ok.push(getRecipesByKeyWordIngredients(argument));
           console.log(" COURAGE ", ok)
+          return ok;
+          
       
         }
     
@@ -188,15 +190,15 @@ function getRecipesByKeyWordUstensilsTag(word) {
 
 let  recipesSection = document.querySelector(".card-deck");
 // Cette fonction permet de faire appel à la fonction pour définir la page d'accueil des photographes. 
-async function displayData(tab) {
+async function displayData(tabs) {
     recipesSection.innerHTML="";
-    tab.every((recipe, index, array) => {
-        const recipeModel = recipeFactory(recipe);
+    console.log("TAB  ",tabs);
+        tabs.forEach(tab => {
+        const recipeModel = recipeFactory(tab);
         const recipeCardDOM = recipeModel.getRecipeCardDOM();
         recipesSection.appendChild(recipeCardDOM);
         // console.log(" verof ", recipeCardDOM, "modlel ", recipeModel);
         // recipesSection.insertAdjacentHTML('beforeEnd', recipeCardDOM);
-        return true;
     });
 }
 
@@ -209,10 +211,7 @@ async function displayData3(tab) {
      // recipesSection.insertAdjacentHTML('beforeEnd', recipeCardDOM);
    
 }
-        
-
     
-
 async function displayData2(recipes) {
     recipesSection.innerHTML="";
   if(recipes && recipes.length > 1) {
@@ -240,9 +239,8 @@ async function init() {
     recipes  = await getRecipes();
     displayData(recipes);
     fillIngredients(getIngredients(recipes));
-    fillAppareils(getAppareils(recipes));
     fillUstensils(getUstensils(recipes));
-
+    fillAppareils(getAppareils(recipes));
 }
 
 window.onload= function() {

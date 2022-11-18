@@ -1,11 +1,4 @@
 
-// Cette fonction permet de retourner la valeur de l'input de la barre de recherche
-function getValue() {
-    // Sélectionner l'élément input et récupérer sa valeur
-    var input = document.getElementById("form-control").value;
-    return input;
-}
-
 let tab = [];
 // Fonction de recherche dans le titre de la recette, la liste des ingrédients, et dans la description
 function searchByWordKey(word) 
@@ -48,10 +41,10 @@ function searchByWordKey(word)
 }
 
 // Fonction de recherche dans le titre de la recette, la liste des ingrédients, et dans la description
-function searchByWordKeyAndTags(word, event) 
-{    
+function searchByWordKeyAndTags(word) 
+{      
     if(word.length >= 3) 
-    {
+    {     
         recipesSection.innerHTML = "";
         word = word.toLowerCase();
         tab = [];
@@ -94,7 +87,7 @@ function searchByWordKeyAndTags(word, event)
               
         }
     }
-        
+       
    
         if(tab.length === 0) 
         {
@@ -116,4 +109,79 @@ function searchByWordKeyAndTags(word, event)
 
         }
     }
+    return tab;
+}
+
+
+// Fonction de recherche dans le titre de la recette, la liste des ingrédients, et dans la description
+function searchByWordKeyAndTags2(word, recipesTab) 
+{      
+    if(word.length >= 3) 
+    {     
+        recipesSection.innerHTML = "";
+        word = word.toLowerCase();
+        tab = [];
+      
+        for(let i = 0; i < recipesTab.length; i++) 
+        {
+            if((recipesTab[i].name.toLowerCase().indexOf(word) > -1 ) || 
+                (recipesTab[i].ingredients.find((recipe) => recipe.ingredient.toLowerCase() == word)) || 
+                (recipesTab[i].description.toLowerCase().indexOf(word) > -1))  
+            {
+                tab.push(recipesTab[i]);
+
+            } else 
+               
+                    if((type == "ingredient")) {
+                        if(recipesTab[i].ingredients.find((recipe) => recipe.ingredient.toLowerCase() == word)) {
+                        tab.push(recipesTab[i]);
+                        }
+                    } 
+
+                else {
+
+                    if(type== "appareil") {
+                        if(recipesTab[i].appliance.toLowerCase().indexOf(word) > -1) {
+                            tab.push(recipesTab[i]);
+                            }
+                    
+                    }
+
+                else {
+
+                    if((type == "ustensil")) {
+                        if(recipesTab[i].ustensils.find((recipe) => recipe.ustensils == word)) {
+                            tab.push(recipesTab[i]);
+                            }
+                    }
+
+               
+            }
+              
+        }
+    }
+       
+   
+        if(tab.length === 0) 
+        {
+            document.getElementById("recipes-not-found").style.display= "block";
+        }
+        else 
+        {  
+            document.getElementById("recipes-not-found").style.display= "none";
+            displayData(tab);
+
+            appa= getAppareils(tab);
+            fillAppareils(appa);
+           
+            ingred= getIngredients(tab);
+            fillIngredients(ingred);
+
+            ustens= getUstensils(tab);
+            fillUstensils(ustens);
+
+        }
+    }
+    console.log( " TAB ", tab);
+    return tab;
 }

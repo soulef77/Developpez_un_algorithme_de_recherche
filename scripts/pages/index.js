@@ -71,17 +71,17 @@ function getRecipesByKeyWordIngredients(word) {
                     });
                     ingredientsListArray = [...new Set(allIngredientsRecipes)];
                     // console.log(" OK COURHAE ", wordTest);
-                    return wordTest;
+                    return ingredientsListArray;
         }
     }
     }
          
     function getRecipesByKeyWordByIngredient(word) {
-        word = word.toLowerCase();
+     
         for(let i = 0; i < recipes.length; i++) {
     
-                wordTest= recipes[i].name.toLowerCase();
-                wordTest2= recipes[i].ingredients;
+                wordTest= recipes[i].name;
+                wordTest2= JSON.stringify(recipes[i].ingredients);
                 // console.log(" ici ", word,"  OKI ", wordTest," OKI2 ", recipes[i].name);
              
               if(wordTest2.indexOf(word) > -1) {
@@ -192,7 +192,6 @@ let  recipesSection = document.querySelector(".card-deck");
 // Cette fonction permet de faire appel à la fonction pour définir la page d'accueil des photographes. 
 async function displayData(tabs) {
     recipesSection.innerHTML="";
-    console.log("TAB  ",tabs);
         tabs.forEach(tab => {
         const recipeModel = recipeFactory(tab);
         const recipeCardDOM = recipeModel.getRecipeCardDOM();
@@ -231,6 +230,18 @@ async function displayData2(recipes) {
   }
 }
 
+
+function getRecipesWithoutDoublons(tabRecette) {
+    for(let i = 0; i < recipes.length; i++) {
+        for(let j = 0; j < tabRecette.length; j++) {
+        if(tabRecette.indexOf(recipes[i]) > -1) {
+            recipes.splice(i,1);
+            recipes.push(tabRecette[j]);
+            }
+        }
+    }
+    return recipes;
+}
 
 let recipes= [];
 let word;

@@ -3,15 +3,12 @@
 div = document.getElementById("ingredients_dropdown_menu");
 function getIngredients(argument) {
     let ingredients = [];
-  
-  
- 
     for (let i = 0; i < argument.length; i++) {
         ingredients.push(argument[i].ingredients);
         // console.log(" TESTTTT ", argument[i].ingredients);
         }
     var unique = ingredients.filter((x, i) => ingredients.indexOf(x) === i);
-    return unique;
+    return ingredients;
     
 }
 
@@ -33,7 +30,7 @@ function getIngredient3(tab) {
 
         // ingredient.push(unique[i].ingredients);
         ingredient.push(ingredient.ingredient);
-        // console.log(" TESTTTT ", ingredient[i]);
+        // console.log(" TESTTTT 3 ", ingredient[i]);
         }
     
     
@@ -54,6 +51,7 @@ document.getElementById("ingredients_dropdown_menu").innerHTML = "";
 
 function fillIngredients2(argument2) {
 
+// document.getElementById("ingredients_dropdown_menu").innerHTML = ""; 
 //  console.log(" VEIRIIFIFI 3 ", argument2);
    
 for(let i= 0; i< argument2.length; i++) {
@@ -68,7 +66,7 @@ function fillIngredients3(ingredients) {
    
     for(let i= 0; i< ingredients.length; i++) {
             showIngredient3(ingredients[i]);
-            // console.log(" TESTTT3 ", ingredients[i]);
+            // console.log(" TESTTT 4 ", ingredients[i]);
         }
         
 }
@@ -253,173 +251,11 @@ function myFunction() {
 let ingred;
 let variable2;
 function filterFunction2(tagFilter) {
-        variable2=  getRecipesByKeyWordIngredients(tagFilter);
+        variable2=  getRecipesByKeyWord(tagFilter);
         // console.log("variable  ", variable2, "tag ", tagFilter);
-        ingred= getIngredient3(variable2);
+        ingred= getIngredients(variable2);
         // console.log("INGRED ", ingred);
-        fillIngredients3(ingred);
-}
-
-
-let listOfIngredientsSelected = new Set();
-let listOfUstensilsSelected = new Set();
-let listOfAppliancesSelected = new Set();
-
-let recipesTagFiltered = recipes;
-let recipesInputFiltered = recipesTagFiltered;
-let recipesFiltered = recipesInputFiltered;
-let type;
-function addDropdownFilter(event) {
-    const target = event.currentTarget;
-    const text = target.textContent;
-    const selectedFilters = document.querySelector(".filtersSelected");
-    type = target.parentNode.dataset.type;
-    const listType = type === "ingredient"  ? listOfIngredientsSelected : 
-    type === "";
-    console.log("ok  pkoi pas ", target.parentNode.dataset.type , " 2 ", target," 3 ", text,"  4 ", type, " 5 ", selectedFilters);
-    if(type ==="ingredient") {
-     console.log("youpi ");
-    if (!listType.has(text)) {
-        listType.add(text);
-        // selectedFilters.appendChild(createDropdownFilterCard(text, type));
-        recipesTagUpdate();
-        CreateTagFilter(text);
-        FillTag(text);
-        filterFunction2(text); 
-        // searchByWordKey(text);
-        searchByWordKeyAndTags(text, event);
-       
-        // variable2=  getRecipesByKeyWordIngredients(text);
-        // displayData(variable2);
-
-        // variable2=  getRecipesByKeyWordIngredients(text);
-        // console.log("variable  ", variable2, "tag ", tagFilter);
-        // ingred= getIngredient3(variable2);
-        // console.log("INGRED ", ingred);
-        // fillIngredients3(ingred);
-    }
-}
-
-    const listType2 = type === "appareil"  ? listOfAppliancesSelected : 
-    type === "";
-  
-    if(type=="appareil") {
-    console.log("ok  pkoi pas ", listType2, " ", target," ", text," ", type, " ", selectedFilters);
-    if (!listType2.has(text)) {
-        listType2.add(text);
-        // selectedFilters.appendChild(createDropdownFilterCard(text, type));
-        recipesTagUpdate();
-        CreateTagFilter2(text);
-        FillTag2(text);
-         searchByWordKeyAndTags(text, event);
-        // searchByWordKey(text);
-        // displayData(getRecipesByKeyWordAppareilsTag(text));
-
-       
-        // let variable3=  getRecipesByKeyWordIngredients(text);
-    //    let ingred2= getAppareils(variable3);
-        // console.log("variable  ", variable3, "tag ", text);
-        //   console.log("INGRED ", ingred2);
-        // fillAppareils(ingred2);
-    }
-    }
-    
-    const listType3 = type === "ustensil"  ? listOfUstensilsSelected : 
-    type === "";
-  
-    if(type=="ustensil") {
-    console.log("ok  pkoi pas ", listType3, " ", target," ", text," ", type, " ", selectedFilters);
-    if (!listType3.has(text)) {
-        listType3.add(text);
-        // selectedFilters.appendChild(createDropdownFilterCard(text, type));
-        recipesTagUpdate();
-        CreateTagFilter3(text);
-        FillTag3(text);
-        // searchByWordKey(text);
-        searchByWordKeyAndTags(text, event);
-        // let variable6= getRecipesByKeyWord(text);
-        // displayData(getRecipesByKeyWordUstensilsTag(text));
-        // let ingred3= getUstensils(variable6);
-        // console.log("variable  ", variable6, "tag ", text);
-        //   console.log("INGRED ", ingred3);
-        // fillUstensils(ingred3);
-    }
-    }
-
-}
-
-
-function recipesTagUpdate() {
-    recipesTagFiltered = recipesTagFilter();
-    // recipesInputReload();
-}
-
-function recipesTagFilter() {
-    // Filtre cartes
-    let itemsFiltered = [];
-    for (let i = 0; i < recipesTagFiltered.length; i++) {
-        const item = recipesTagFiltered[i];
-
-        let haveIngredients = true;
-        for (let j = 0; j < listOfIngredientsSelected.size; j++) {
-            let haveIngredient = 0;
-            for (let k = 0; k < item.ingredients.length; k++) {
-                if (listOfIngredientsSelected.has(item.ingredients[k].ingredient.toLowerCase())) {
-                    haveIngredient++;
-                }
-            }
-            haveIngredients = haveIngredient === listOfIngredientsSelected.size ? true : false;
-        }
-
-        let haveUtensils = true;
-        for (let j = 0; j < listOfUtensilsSelected.size; j++) {
-            let haveUtensil = 0;
-            for (let k = 0; k < item.ustensils.length; k++) {
-                if (listOfUtensilsSelected.has(item.ustensils[k].toLowerCase())) {
-                    haveUtensil++;
-                }
-            }
-            haveUtensils = haveUtensil === listOfUtensilsSelected.size ? true : false;
-        }
-
-        let haveAppliance = true 
-        if (listOfAppliancesSelected.size > 0 ) {
-            haveAppliance = listOfAppliancesSelected.has(item.appliance.toLowerCase());
-        }
-
-        // Si tout est trouvé dans l'objet vérifié, on l'insère dans le tableau
-        if (haveIngredients && haveUtensils && haveAppliance) {
-            itemsFiltered.push(item);
-        }
-    }
-    
-    return itemsFiltered;
-}
-
-
-
-function FillTag(tagFilter) {
-    document.getElementById('rectangle_blue').style.display='flex';
-    
-}
-
-var i=0;
-function CreateTagFilter(tagFilter) {
-    i++;
-    var elem2 = document.createElement('div');
-    elem2.setAttribute("id", "labelTag"+ i.toString());
-
-    elem2.innerHTML = tagFilter;    
-      console.log(" oui ", elem2);
-    const img = document.createElement("img");
-                  img.src ="/assets/Vector2.png";
-                  img.alt = "";
-                  img.setAttribute("onclick", "suppressTag(event)")
-                  elem2.appendChild(img);
-    
-   
-    document.getElementById('rectangle_blue').style.display='flex';
-    document.getElementById('rectangle_blue').appendChild(elem2);
+        fillIngredients(ingred);
 }
 
 
@@ -680,8 +516,201 @@ function FillTag3(tagFilter) {
   
 }
 
+
+let listOfIngredientsSelected = new Set();
+let listOfUstensilsSelected = new Set();
+let listOfAppliancesSelected = new Set();
+
+let recipesTagFiltered = recipes;
+let recipesInputFiltered = recipesTagFiltered;
+let recipesFiltered = recipesInputFiltered;
+let type;
+let compteur = 0;
+let variable3;
+function addDropdownFilter(event) {
+    compteur++;
+    const target = event.currentTarget;
+    const text = target.textContent;
+    const selectedFilters = document.querySelector(".filtersSelected");
+    type = target.parentNode.dataset.type;
+    const listType = type === "ingredient"  ? listOfIngredientsSelected : 
+    type === "";
+    // console.log("ok  pkoi pas ", target.parentNode.dataset.type , " 2 ", target," 3 ", text,"  4 ", type, " 5 ", selectedFilters);
+    if(type ==="ingredient") {
+        if (!listType.has(text)) {
+                listType.add(text);
+                if(compteur > 1) {
+                    recipesTagUpdate();
+                    CreateTagFilter(text);
+                    FillTag(text);
+                    variable3 = searchByWordKeyAndTags2(text, variable2);
+                    // console.log("variable OK 2 ", variable2, "tag ", text);
+                    ingred= getIngredients(variable3);
+                    // console.log("INGRED OK 2 ", ingred);
+                    fillIngredients(ingred);
+                } else {
+                    // selectedFilters.appendChild(createDropdownFilterCard(text, type));
+                    recipesTagUpdate();
+                    CreateTagFilter(text);
+                    FillTag(text);
+                    // filterFunction2(text); 
+                    // searchByWordKey(text);
+                    // searchByWordKeyAndTags(text);
+                    variable2=  searchByWordKeyAndTags(text);
+                    // console.log("variable OK  ", variable2, "tag ", text);
+                    ingred= getIngredients(variable2);
+                    // console.log("INGRED OK ", ingred);
+                    fillIngredients(ingred);
+                }
+    }
+}
+
+    const listType2 = type === "appareil"  ? listOfAppliancesSelected : 
+    type === "";
+  
+    if(type=="appareil") {
+    // console.log("ok  pkoi pas ", listType2, " ", target," ", text," ", type, " ", selectedFilters);
+        if (!listType2.has(text)) {
+            listType2.add(text);
+            if(compteur > 1) {
+                recipesTagUpdate();
+                CreateTagFilter2(text);
+                FillTag2(text);
+                variable3 = searchByWordKeyAndTags2(text, variable2);
+                ingred= getAppareils(variable3);
+                fillAppareils(ingred);
+                } else {
+
+                // selectedFilters.appendChild(createDropdownFilterCard(text, type));
+                recipesTagUpdate();
+                CreateTagFilter2(text);
+                FillTag2(text);
+                //  searchByWordKeyAndTags(text);
+                // searchByWordKey(text);
+                // displayData(getRecipesByKeyWordAppareilsTag(text));
+
+            
+                variable2=  searchByWordKeyAndTags(text);
+                ingred = getAppareils(variable2);
+                // console.log("variable  ", variable3, "tag ", text);
+                //  console.log("INGRED ", ingred2);
+                fillAppareils(ingred);
+                }
+            }
+        }
+    
+    const listType3 = type === "ustensil"  ? listOfUstensilsSelected : 
+    type === "";
+  
+    if(type=="ustensil") {
+    console.log("ok  pkoi pas ", listType3, " ", target," ", text," ", type, " ", selectedFilters);
+    if (!listType3.has(text)) {
+        listType3.add(text);
+        if(compteur > 1) {
+            recipesTagUpdate();
+            CreateTagFilter3(text);
+            FillTag3(text);
+            variable3 = searchByWordKeyAndTags2(text, variable2);
+            ingred= getUstensils(variable3);
+            fillUstensils(ingred);
+        } else {
+
+            // selectedFilters.appendChild(createDropdownFilterCard(text, type));
+            recipesTagUpdate();
+            CreateTagFilter3(text);
+            FillTag3(text);
+            // searchByWordKey(text);
+            // searchByWordKeyAndTags(text);
+            variable2= searchByWordKeyAndTags(text);
+            // displayData(getRecipesByKeyWordUstensilsTag(text));
+            ingred= getUstensils(variable2);
+            // console.log("variable  ", variable6, "tag ", text);
+            //   console.log("INGRED ", ingred3);
+            fillUstensils(ingred);
+        }
+    }
+}
+}
+
+
+function recipesTagUpdate() {
+    recipesTagFiltered = recipesTagFilter();
+    // recipesInputReload();
+}
+
+function recipesTagFilter() {
+    // Filtre cartes
+    let itemsFiltered = [];
+    for (let i = 0; i < recipesTagFiltered.length; i++) {
+        const item = recipesTagFiltered[i];
+
+        let haveIngredients = true;
+        for (let j = 0; j < listOfIngredientsSelected.size; j++) {
+            let haveIngredient = 0;
+            for (let k = 0; k < item.ingredients.length; k++) {
+                if (listOfIngredientsSelected.has(item.ingredients[k].ingredient.toLowerCase())) {
+                    haveIngredient++;
+                }
+            }
+            haveIngredients = haveIngredient === listOfIngredientsSelected.size ? true : false;
+        }
+
+        let haveUtensils = true;
+        for (let j = 0; j < listOfUtensilsSelected.size; j++) {
+            let haveUtensil = 0;
+            for (let k = 0; k < item.ustensils.length; k++) {
+                if (listOfUtensilsSelected.has(item.ustensils[k].toLowerCase())) {
+                    haveUtensil++;
+                }
+            }
+            haveUtensils = haveUtensil === listOfUtensilsSelected.size ? true : false;
+        }
+
+        let haveAppliance = true 
+        if (listOfAppliancesSelected.size > 0 ) {
+            haveAppliance = listOfAppliancesSelected.has(item.appliance.toLowerCase());
+        }
+
+        // Si tout est trouvé dans l'objet vérifié, on l'insère dans le tableau
+        if (haveIngredients && haveUtensils && haveAppliance) {
+            itemsFiltered.push(item);
+        }
+    }
+    
+    return itemsFiltered;
+}
+
+
+
+function FillTag(tagFilter) {
+    document.getElementById('rectangle_blue').style.display='flex';
+    
+}
+
+var i=0;
+function CreateTagFilter(tagFilter) {
+    i++;
+    var elem2 = document.createElement('div');
+    elem2.setAttribute("id", "labelTag"+ i.toString());
+
+    elem2.innerHTML = tagFilter;    
+      console.log(" oui ", elem2);
+    const img = document.createElement("img");
+                  img.src ="/assets/Vector2.png";
+                  img.alt = "";
+                  img.setAttribute("onclick", "suppressTag(event)")
+                  elem2.appendChild(img);
+    
+   
+    document.getElementById('rectangle_blue').style.display='flex';
+    document.getElementById('rectangle_blue').appendChild(elem2);
+}
+
+
+
+
   // supprime de l'affichage le tag cliqué
-function suppressTag(event){
+  function suppressTag(event){
     console.log(event.target.parentNode.innerText , "  OK  ", event.currentTarget, " type ", type);
     event.target.parentNode.remove();
     i= parseInt(i.toString());
@@ -692,21 +721,13 @@ function suppressTag(event){
  }
 
  function searchRecipesByTarget(targetTag, type) {
-    var typeOfTag = document.getElementById("ingredients_dropdown_menu").dataset.type;
-    const monElement = document.getElementById("ingredients_dropdown_menu");
-    // for (let i = 0; i < typeOfTag.length; i++) {
-       
-    // }
-
-    // const id = (event.currentTarget.parentNode.getAttribute('id')).toString();
-    // const type = document.querySelector(this.id);
-    // console.log(" VEBENT ", type, " id ", id);
-    if(typeOfTag === "ingredient") {
-        
-        // ingred = getIngredients2(targetTag);
-        // searchByWordKey(ingred);
-        // let recettes = getRecipesByTarget();
-        // displayData(recettes);
+    
+    if(type === "ingredient") {
+            let recettes = getRecipesByTarget();
+            let recettesWithtouDoublons = getRecipesWithoutDoublons(recettes);
+            console.log("taille ", recettesWithtouDoublons.length);
+            displayData(recettesWithtouDoublons);
+            fillIngredients(getIngredients(recettesWithtouDoublons));
 
     } else if(typeOfTag === "appareil") {
         // displayData(getRecipesByKeyWordAppareilsTag(targetTag));
@@ -718,57 +739,27 @@ function suppressTag(event){
     
  }
   
- let tabRecettes = [];
- let recettesFiltered;
- let recettes;
+
+let tabRecettes = [];
+let recettesFiltered;
+let recettes;
 function getRecipesByTarget() {
-
-
-    
-
-    // console.log("TAB  ", tab);
-    recettesFiltered = [];
-    recettes = [];
-    tabRecettes = [];
-
-    // for(let i = 0; i < recipes.length; i++) {
-    //     for(let j = 0; j < tab.length; j++) {
-    //     recettesFiltered = recipes.filter((recipe) => recipe.name !== tab.name);
-    //     tabRecettes.push(recettesFiltered);
-    //     }
-    // }
-//     recettes = recettesFiltered.concat(tab);
-//     console.log(" RECTTTE  1 ", recettesFiltered," 2 ", tabRecettes, " 3 ", recettes);
-    // recipes.map(recipe => {
-    //         recettesFiltered = recipes.filter((recipe) => recipe.name !== tab.name);
-    //         tabRecettes.push(recettesFiltered);
-    //         return recipe;
-    // });
-
-    recettes = getRecipesByMap();
-    console.log(" RECTTTE  2 ", recettesFiltered," 2 ", tabRecettes, " 3 ", recettes );
-
-    
-        // for(let j = 0; j < tab.length; j++) {
-        //     recettesFiltered = recipes.filter(recipe => {
-        //         return JSON.stringify(recipe.name) != JSON.stringify(tab[j].name);
-        //      });
-            // recettesFiltered[recettesFiltered.length] = recettesFiltered;
-           // tabRecettes.push(recettesFiltered);
-        // }      
-    
-        
-    //  console.log(" RECTTTE ", recettesFiltered ," 2 ", tabRecettes, " 3 ", recettes);
-     return recettesFiltered;
+  if(compteur > 1) {
+   return variable3;
+  } else {
+    return variable2;
+  }
+  
 }
 
 function getRecipesByMap() {
-    for(let i = 0; i < tab.length; i++) {
-            recipes.map((recipe) => {
-            recettesFiltered = recipes.filter((recipe) => recipe.name != tab[i].name);
-            // console.log("RECIPE ", recipe);
-            return recipe;
-            });
-    }
-    
+   for(let i = 0; i < recipes.length; i++) {
+       for(let j = 0; j < tab.length; j++) {
+           recipes.map((recipe) => {
+           recettesFiltered = recipes.filter((recipe) => recipe.name !== tab[j].name);
+           // console.log("RECIPE ", recipe);
+           return recettesFiltered;
+           });
+       }
+   }    
 }

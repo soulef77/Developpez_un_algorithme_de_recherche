@@ -117,8 +117,7 @@ function searchByWordKeyAndTags(word)
 function searchByWordKeyAndTags2(word, recipesTab) 
 {      
     if(word.length >= 3) 
-    {     
-        recipesSection.innerHTML = "";
+    {   recipesSection.innerHTML = "";
         word = word.toLowerCase();
         tab = [];
       
@@ -140,7 +139,7 @@ function searchByWordKeyAndTags2(word, recipesTab)
 
                 else {
 
-                    if(type== "appareil") {
+                    if(type == "appareil") {
                         if(recipesTab[i].appliance.toLowerCase().indexOf(word) > -1) {
                             tab.push(recipesTab[i]);
                             }
@@ -150,7 +149,7 @@ function searchByWordKeyAndTags2(word, recipesTab)
                 else {
 
                     if((type == "ustensil")) {
-                        if(recipesTab[i].ustensils.find((recipe) => recipe.ustensils == word)) {
+                        if(recipesTab[i].ustensils.find((ustensil) => ustensil == word)) {
                             tab.push(recipesTab[i]);
                             }
                     }

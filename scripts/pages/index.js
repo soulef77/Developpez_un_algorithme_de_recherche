@@ -3,11 +3,76 @@ let response;
 
 // Cette fonction permet de récupérer les données js des plats
 async function getRecipes() {
-    response= await fetch('/data/recipes.js');
+    response= await fetch('./data/recipes.js');
     // lire le corps de réponse et analyser en JSON
     let recipes= await response.json(); 
     console.log("recepis ", recipes);
     return recipes;
+}
+
+function filterRecipes()
+{
+	const word = document.getElementById("searchField").value;
+	let tab = [];
+	
+	// filtrage par mot dans le champ de recherche
+	if(word.length > 2)
+	{
+		word = word.toLowerCase();
+		
+		for(let i = 0; i < recipes.length; i++) 
+		{
+			if((recipes[i].name.toLowerCase().indexOf(word) > -1 ) || 1
+            	(recipes[i].ingredients.find((ingredient) => ingredient.ingredient.toLowerCase() == word)) || 
+				(recipes[i].description.toLowerCase().indexOf(word) > -1))  
+			{
+				tab.push(recipes[i]);
+			}
+		}
+	}
+	else
+	{
+		tab = [...recipes];
+	}
+
+  // pour chaque tag d'ingrédient, on filtre le(s recettes qui contiennent cet ingrédient
+  const ingredientTags = document.getElementById("rectangle_blue").children;
+  for(let i =  0; i < ingredientTags.length; i++)
+  {
+    const ingredientTag = ingredientTags[i].textContent.toLowerCase();
+    tab = tab.filter((recipe) => {
+      return (recipe.ingredients.find((ingredient) => ingredient.ingredient.toLowerCase() == ingredientTag) != undefined);
+    });
+  }
+
+  // répéter la même chose pour les tags d'appareils et d'ustensiles.
+  const appareilTags = document.getElementById("rectangle_green").children;
+  for(let i =  0; i < appareilTags.length; i++)
+  {
+    const appareilTag =  appareilTags[i].textContent.toLowerCase();
+    tab = tab.filter((recipe) => {
+        return (recipe.appliance.find((appliance) => appliance.toLowerCase() == appareilTag) != undefined);
+    });
+   }
+
+   const ustensilTags = document.getElementById("rectangle_red").children;
+   for(let i =  0; i < ustensilTags.length; i++)
+  {
+    const ustensilTag = ustensilTags[i].textContent.toLowerCase();
+    tab = tab.filter((recipe) => {
+        return (recipe.ustensils.find((ustensil) => ustensil.toLowerCase() == ustensilTag) != undefined);
+    });
+   }
+   
+
+
+  // à la fin, "tab" contient les recettes à afficher
+  displayData(tab);
+
+  // après avoir affiché la liste des recettes filtrées, on actualise la liste des ingrédients, ustentiles, et appareils
+  fillIngredients(getIngredients(tab));
+  fillUstensils(getUstensils(tab));
+  fillAppareils(getAppareils(tab));
 }
 
 // Cette fonction permet de retourner soit le nom de la recette recherchée, soit la liste des ingrédients contenant le mot recherché, soit, 
@@ -189,15 +254,13 @@ function getRecipesByKeyWordUstensilsTag(word) {
 }
 
 let  recipesSection = document.querySelector(".card-deck");
-// Cette fonction permet de faire appel à la fonction pour définir la page d'accueil des photographes. 
-async function displayData(tabs) {
+// Cette fonction permet d'afficher une liste de recettes données en paramètre
+function displayData(tabs) {
     recipesSection.innerHTML="";
-        tabs.forEach(tab => {
+    tabs.forEach(tab => {
         const recipeModel = recipeFactory(tab);
         const recipeCardDOM = recipeModel.getRecipeCardDOM();
         recipesSection.appendChild(recipeCardDOM);
-        // console.log(" verof ", recipeCardDOM, "modlel ", recipeModel);
-        // recipesSection.insertAdjacentHTML('beforeEnd', recipeCardDOM);
     });
 }
 

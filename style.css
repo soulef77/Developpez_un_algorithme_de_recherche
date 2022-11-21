@@ -60,32 +60,21 @@ img.logo {
 }
 
 .labelTag {
-   
-     
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 145px;
 }
 
-.rectangle_blue {
-    
-    width: 107px;
-    height: 37px;
-    color: white;
-    display: flex;
-    align-items: center;
-    /* align-content: space-between;
-    justify-content: space-between; */
-    border-radius: 5px;
-    gap: 25px 20px;
-    margin: 35px;
-    margin-left: 150px;
-}
 
 .rectangle_blue .show {
     display: flex;
     align-items: center;
+    display: flex;
+    justify-content: space-between; 
     /* align-content: space-between;
-    justify-content: space-between; */
+    justify-content: space-between;
     background: #3282F7;
-    margin-left: 140px;
+    /* margin-left: 140px; */
     /* margin-bottom: 100px; */
 }
 
@@ -97,39 +86,44 @@ img.logo {
     font-size: 14px;
     font-weight: 400;
     color: #fff;
-    align-items: center;
     font-weight: bold;
+    line-height: 12px;
     display: flex;
-    justify-content: space-between;
-    margin-top: 200px;
-    gap: 10px;
+    align-content: space-between;
+    padding: 10px 20px;
+    align-items: center;
+    margin-top: 140px;
+    margin-left: 10px;
+    gap: 7px;
     padding: 10px 20px;
 }
 
 
 
 .rectangle_green {
-    width: 107px;
+    /* width: 107px;
     height: 37px;
     border-radius: 5px;
     gap: 10px;
     display: flex;
     align-items: center;
-    /* align-content: space-between;
-    justify-content: space-between; */
+    align-content: space-between;
+    justify-content: space-between;
     color: white;
     padding: 10px 20px;
     align-items: center;
     margin: 35px;
     gap: 25px 20px;
-    margin-left: 120px;
+    margin-left: 120px; */
    
 }
 
 
 .rectangle_green .show {
     background: #68D9A4;
-    margin-left: 120px;
+    /* margin-left: 120px; */
+    display: flex;
+    justify-content: space-between;
 }
 
 .rectangle_green div {
@@ -141,40 +135,40 @@ img.logo {
     font-weight: 400;
     color: #fff;
     font-weight: bold;
-    margin-top: 0px;
-    gap: 10px;
+    line-height: 12px;
     display: flex;
-    color: white;
+    align-content: space-between;
     padding: 10px 20px;
     align-items: center;
-    margin-top: 200px;
-    margin-left: 10px;
-    gap: 10px;
+    margin-top: 140px;
+    margin-left: 5px;
+    gap: 7px;
     padding: 10px 20px;
   }
 
   
 
   .rectangle_red {
-    width: 107px;
+    /* width: 107px;
     height: 37px;
     max-height:max-content;
     border-radius: 5px;
     display: flex;
-    align-items: center;
-    /* align-content: space-between;
-    justify-content: space-between; */
+    justify-content: space-between;
     color: white;
     padding: 10px 20px;
     align-items: center;
-    margin: 35px;
+    margin: 40px;
     gap: 25px 20px;
-    /* margin-left: 150px; */
+    margin-left: 130px; */
 
 }
 
 .rectangle_red .show {
     background: #ED6454;
+    /* margin-left: 100px; */
+    display: flex;
+    justify-content: space-between;
 }
 
 .rectangle_red div {
@@ -183,17 +177,18 @@ img.logo {
     height: 37px;
     border-radius: 5px;
     font-size: 14px;
-    align-items: baseline;
+    align-items: center;
     font-weight: bold;
-    gap: 10px;
+    line-height: 12px;
+    gap: 7px;
     display: flex;
-    /* justify-content: space-between; */
+    justify-content: space-between;
     color: white;
     padding: 10px 20px;
-    align-items:stretch;
-    margin-top: 200px;
+    margin-top: 140px;
+    margin-left: 7px;
     padding: 10px 20px;
-    margin-left: 100px;
+    /* margin-left: 100px; */
   }
 
 .supprim_icone {
@@ -403,13 +398,8 @@ li {
     flex-direction: row;
     justify-content: space-between;
     gap: 50px 100px;
-    margin: 130px 150px 100px 150px;
+    margin: 230px 150px 100px 150px;
     
-}
-
-.dropdown-menu .show {
-    display: flex;
-    flex-direction: column;
 }
 
 .dropdownIngredients {
@@ -433,18 +423,19 @@ li {
     padding-top: 2%;
   
 }
-
+/* 
 .dropdownIngredients .show{
     background-color: #3282F7;
     border-radius: 5px;
     color: white;
     width: 1000px;
-    display: flex;
-    
-}
+   
+} */
 
 .inputIngredient {
     /* float: left; */
+   /* display: flex;
+   flex-direction: column; */
 }
 
 
@@ -457,15 +448,15 @@ li {
 
 .dropdownIngredients .show {
     border-radius: 5px;
+    background-color: #3282F7;
     color: white;
     width: 1000px;
 }
 
 
 #myInput {
-    display: inline-block;
-    vertical-align: middle;
-    float: none;
+    /* display: table-cell; 
+    vertical-align: middle; */
     border: none;
     font-family: 'Lato';
     font-style: normal;
@@ -474,7 +465,10 @@ li {
     line-height: 22px;
     text-align: center;
     opacity: 0.8;
-    padding-bottom: 15%;
+    width: 920px;
+    height: 30px;
+    margin-bottom: 2%;
+    background-color: transparent;
 }
 
 .arrow_icone {
@@ -506,19 +500,11 @@ li {
     background-color: #68D9A4;
     border-radius: 5px;
     color: white;
-    width: 1000px;
-    display: flex;
 }
 
-.inputAppareil {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
+
 
 #myInputAppareil {
-    display: flex;
-    flex-direction: column;
     background-color: #68D9A4;
     width: auto;
     height: auto;
@@ -531,14 +517,17 @@ li {
     text-align: center;
     color: #FFFFFF;
     opacity: 0.8;
-    padding-bottom: 15%;
+    width: 920px;
+    height: 30px;
+    margin-bottom: 2%;
+    background-color: transparent;
 }
 
 .appareils_dropdown_menu_class .show {
     display: grid; 
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 0px;
-    
+    width: 1000px;
 }
 
 
@@ -556,7 +545,10 @@ li {
 .dropdownUstensils .show{
     display: grid; 
     grid-template-columns: 1fr 1fr 1fr;
-    display: flex;
+    padding-left: 2%;
+    padding-right: 5%;
+    padding-bottom: 5%;
+    padding-top: 2%;
     background-color: #ED6454;
 }
 
@@ -566,12 +558,8 @@ li {
     color: white;
 }
 
-.inputUstensil {
-    /* float: left; */
-}
 
 #myInputUstensil {
-    /* float: right; */
     background-color: #68D9A4;
     width: auto;
     height: auto;
@@ -584,7 +572,10 @@ li {
     text-align: center;
     color: #FFFFFF;
     opacity: 0.8;
-   /* padding-bottom: 15%; */
+    width: 920px;
+    height: 30px;
+    margin-bottom: 2%;
+    background-color: transparent;
 }
 
 .well {

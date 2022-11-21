@@ -39,13 +39,13 @@ function getIngredient3(tab) {
 }
 
 
-function fillIngredients(argument2) {
-
-//  console.log(" VEIRIIFIFI COOL ", argument2);
-document.getElementById("ingredients_dropdown_menu").innerHTML = "";    
-    for(let i= 0; i< argument2.length; i++) {
-            showIngredients(argument2[i]);
-            }
+function fillIngredients(ingredients)
+{
+  document.getElementById("ingredients_dropdown_menu").innerHTML = "";    
+  for(let i= 0; i< ingredients.length; i++)
+  {
+    showIngredients(ingredients[i]);
+  }
         
 }
 
@@ -95,12 +95,33 @@ function showIngredients(argument3) {
         // el.value = unique[i];
         div.appendChild(el);
 
-        el.setAttribute("onclick", "addDropdownFilter(event)");
+        el.setAttribute("onclick", "addIngredientTag(event)");
         div.appendChild(el);
         }
         txtValue = [];
         unique = [];
-    
+}
+
+function addIngredientTag(event)
+{
+  const d = document.createElement('div');
+  d.id = "labelTag"+ i.toString();
+  d.textContent = event.currentTarget.textContent;
+
+  const img = document.createElement("img");
+  img.src ="./assets/Vector2.png";
+  img.alt = "";
+  img.setAttribute("onclick", "suppressTag(event)")
+  d.appendChild(img);
+
+  const c = document.getElementById('rectangle_blue');
+  if(c.children.length == 0)
+  {
+    c.style.display = "flex";
+  }
+  c.appendChild(d);
+
+  filterRecipes();
 }
 
 var el;
@@ -384,7 +405,7 @@ function CreateTagFilter2(tagFilter) {
 
     elem2.innerHTML = tagFilter;    
     const img = document.createElement("img");
-                  img.src ="/assets/Vector2.png";
+                  img.src ="./assets/Vector2.png";
                   img.alt = "";
                   img.setAttribute("onclick", "suppressTag(event)")
                   elem2.appendChild(img);
@@ -500,7 +521,7 @@ function CreateTagFilter3(tagFilter) {
     elem2.setAttribute("id", "labelTag"+ i.toString());
     elem2.innerHTML = tagFilter;    
     const img = document.createElement("img");
-                  img.src ="/assets/Vector2.png";
+                  img.src ="./assets/Vector2.png";
                   img.alt = "";
                   img.setAttribute("onclick", "suppressTag(event)")
                   elem2.appendChild(img);
@@ -527,6 +548,7 @@ let recipesFiltered = recipesInputFiltered;
 let type;
 let compteur = 0;
 let variable3;
+
 function addDropdownFilter(event) {
     compteur++;
     const target = event.currentTarget;
@@ -696,7 +718,7 @@ function CreateTagFilter(tagFilter) {
     elem2.innerHTML = tagFilter;    
       console.log(" oui ", elem2);
     const img = document.createElement("img");
-                  img.src ="/assets/Vector2.png";
+                  img.src ="./assets/Vector2.png";
                   img.alt = "";
                   img.setAttribute("onclick", "suppressTag(event)")
                   elem2.appendChild(img);
@@ -709,16 +731,12 @@ function CreateTagFilter(tagFilter) {
 
 
 
-  // supprime de l'affichage le tag cliqué
-  function suppressTag(event){
-    console.log(event.target.parentNode.innerText , "  OK  ", event.currentTarget, " type ", type);
-    event.target.parentNode.remove();
-    i= parseInt(i.toString());
-    // fillIngredients(event.target.parentNode.innerText);
-    searchRecipesByTarget(event.target.parentNode.innerText, type);
-    // displayData(event.target.parentNode.innerText);
-    
- }
+// supprime de l'affichage le tag cliqué
+function suppressTag(event)
+{
+  event.target.parentNode.remove();
+  filterRecipes();
+}
 
  function searchRecipesByTarget(targetTag, type) {
     

@@ -14,14 +14,14 @@
 <body>
     <header>
    
-            <a href="index.html">
-                <img src="/assets/logo.png" alt="Logo du site" class="logo">
-            </a>
-  
+        <a href="index.html">
+            <img src="/assets/logo.png" alt="Logo du site" class="logo">
+        </a>
+
 </header>
 <main>
     <span class="form-inline">
-        <input class="form-control2" type="search" placeholder="Rechercher une recette..." aria-label="Search"  onchange= "searchByWordKeyAndTags(this.value);"/><img src="/assets/Vector.png" class="search_icone" height="32.06" width="32.06" alt="icone de recherche">
+        <input class="form-control2" id="searchField" type="search" placeholder="Rechercher une recette..." aria-label="Search"  oninput= "filterRecipes();"/><img src="/assets/Vector.png" class="search_icone" height="32.06" width="32.06" alt="icone de recherche">
     </span>
     <div class="labelTag"  id="labelTag" >
         <div class="rectangle_blue" id="rectangle_blue"  style="display:none;"></div>
@@ -40,7 +40,7 @@
         </button>
         <div class="dropdown-menu">
                 <div class="inputIngredient">
-                <input type="text" placeholder="Rechercher un ingrédients..." id="myInput"  onchange= "filterFunction2(this.value);"><img src="/assets/VectorBlanche.png" class="arrow_icone" height="9.88px" width="16px" alt="icone de flèche">
+                <input type="text" placeholder="Rechercher un ingrédients..." id="myInput"  onchange = "filterFunction2();"><img src="/assets/VectorBlanche.png" class="arrow_icone" height="9.88px" width="16px" alt="icone de flèche">
                 </div>
             <hr><hr>
             <div id="ingredients_dropdown_menu"  data-type="ingredient"></div>
@@ -58,7 +58,7 @@
         </button>
         <div  class="dropdown-menu">
             <div class="inputAppareil">
-            <input type="text" placeholder="Rechercher un appareil..." id="myInputAppareil" ><img src="/assets/VectorBlanche.png" class="arrow_icone" height="9.88px" width="16px" alt="icone de flèche">
+            <input type="text" placeholder="Rechercher un appareil..." id="myInputAppareil" oninput= "filterFunction3();" ><img src="/assets/VectorBlanche.png" class="arrow_icone" height="9.88px" width="16px" alt="icone de flèche">
             </div>
             <hr><hr>
             <div id="appareils_dropdown_menu" data-type="appareil"></div>
@@ -75,7 +75,7 @@
         </button>
         <div class="dropdown-menu">
             <div class="inputUstensil">
-            <input type="text" placeholder="Rechercher un ustensile..." id="myInputUstensil" onclick=""  ><img src="/assets/VectorBlanche.png" class="arrow_icone" height="9.88px" width="16px" alt="icone de flèche">
+            <input type="text" placeholder="Rechercher un ustensile..." id="myInputUstensil" oninput= "filterFunction4();"  ><img src="/assets/VectorBlanche.png" class="arrow_icone" height="9.88px" width="16px" alt="icone de flèche">
             </div>
             <hr><hr>
             <div id="ustensils_dropdown_menu" data-type="ustensil"></div>
@@ -87,7 +87,7 @@
     <section class="card-deck" id="card-deck">
     </section>
 
-    <div class="well" id="recipes-not-found"   style="display:none;">
+    <div class="well" id="recipes-not-found" style="display:none;">
         <p>Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc</p>
     </div>
 </main>

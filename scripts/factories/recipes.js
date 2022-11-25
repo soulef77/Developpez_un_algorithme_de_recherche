@@ -3,6 +3,7 @@ let Recipescontainer;
  function recipeFactory(data) {
     const {appliance, description, id,ingredients, ingredient,quantity, unit, name, servings, time, ustensils} = data;
    let ingredientCard = '';
+   let ingredientCard2 = '';
     if(ingredients) {
     ingredients.forEach(ingredient => {
             
@@ -18,8 +19,8 @@ let Recipescontainer;
             unit = 'cuillère';
         }
 
-        ingredientCard += `${ingredient.ingredient} `;
-        ingredientCard += `${ingredient.quantity || unit ? ':' : ' '} `;
+        ingredientCard2 +=  `${ingredient.ingredient} \r\n`;
+        ingredientCard +=   `${ingredient.quantity || unit ? ':' : ' '} `;
         ingredientCard += ` ${ingredient.quantity ? ingredient.quantity : ' '} ${unit ? unit : ' '} \r\n`;
         });
     }
@@ -73,12 +74,32 @@ let Recipescontainer;
         
                 const t= document.createElement('ul');
                 const w= document.createElement("li");
-                // w.innerText=  `${ingredientCard}`;
-                w.innerText= `${ingredientCard}`;
+                // w.setAttribute('class',"ingredList")
+                w.setAttribute('id',"ingredList")
+
+                w.innerText=  `${ingredientCard2}`;
+                w.style.fontWeight="normal";
+                const z= document.createElement("br");
+                w.appendChild(z);
+                const y= document.createElement("div");
+                
+                const x= document.createElement("li");
+                // x.setAttribute('id',"ingredList")
+                x.innerText= `${ingredientCard}`;
+                w.style.fontWeight="bold";
+                // const m= document.createElement("br");
+                // x.appendChild(m);
+                
+                o.appendChild(w);
                 t.appendChild(w);
+                o.appendChild(x);
+                t.appendChild(x);
+                t.appendChild(y);
                 s.appendChild(t);
                 d.appendChild(s);
                 o.appendChild(s);
+               
+              
                           
                 const u= document.createElement("p");
                 u.setAttribute("class","card-text");

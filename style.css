@@ -39,7 +39,7 @@ img.logo {
     position: absolute;
     left: 10%;
     right: 0%;
-    top: 30%;
+    top: 20%;
     bottom: 0%;
 
     background: #E7E7E7;
@@ -55,37 +55,28 @@ img.logo {
     position: absolute;
     left: 87%;
     right: 0%;
-    top: 33%;
+    top: 22%;
     bottom: 0%;
 }
 
+
 .labelTag {
-   
-     
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 135px;
+    margin-left: 145px;
 }
 
-.rectangle_blue {
-    
-    width: 107px;
-    height: 37px;
-    color: white;
-    display: flex;
-    align-items: center;
-    /* align-content: space-between;
-    justify-content: space-between; */
-    border-radius: 5px;
-    gap: 25px 20px;
-    margin: 35px;
-    margin-left: 150px;
-}
 
 .rectangle_blue .show {
     display: flex;
     align-items: center;
+    display: flex;
+    justify-content: space-between; 
     /* align-content: space-between;
-    justify-content: space-between; */
+    justify-content: space-between;
     background: #3282F7;
-    margin-left: 140px;
+    /* margin-left: 140px; */
     /* margin-bottom: 100px; */
 }
 
@@ -97,39 +88,43 @@ img.logo {
     font-size: 14px;
     font-weight: 400;
     color: #fff;
-    align-items: center;
     font-weight: bold;
+    line-height: 12px;
     display: flex;
-    justify-content: space-between;
-    margin-top: 200px;
-    gap: 10px;
-    padding: 10px 20px;
+    align-content: space-between;
+    align-items: center;
+    /* margin-top: 140px; */
+    margin-left: 10px;
+    gap: 5px;
+    padding: 0px 10px;
 }
 
 
 
 .rectangle_green {
-    width: 107px;
+    /* width: 107px;
     height: 37px;
     border-radius: 5px;
     gap: 10px;
     display: flex;
     align-items: center;
-    /* align-content: space-between;
-    justify-content: space-between; */
+    align-content: space-between;
+    justify-content: space-between;
     color: white;
     padding: 10px 20px;
     align-items: center;
     margin: 35px;
     gap: 25px 20px;
-    margin-left: 120px;
+    margin-left: 120px; */
    
 }
 
 
 .rectangle_green .show {
     background: #68D9A4;
-    margin-left: 120px;
+    /* margin-left: 120px; */
+    display: flex;
+    justify-content: space-between;
 }
 
 .rectangle_green div {
@@ -141,40 +136,40 @@ img.logo {
     font-weight: 400;
     color: #fff;
     font-weight: bold;
-    margin-top: 0px;
-    gap: 10px;
+    line-height: 12px;
     display: flex;
-    color: white;
+    align-content: space-between;
     padding: 10px 20px;
     align-items: center;
-    margin-top: 200px;
-    margin-left: 10px;
-    gap: 10px;
-    padding: 10px 20px;
+    /* margin-top: 140px; */
+    margin-left: 5px;
+    gap: 5px;
+    padding: 0px 10px;
   }
 
   
 
   .rectangle_red {
-    width: 107px;
+    /* width: 107px;
     height: 37px;
     max-height:max-content;
     border-radius: 5px;
     display: flex;
-    align-items: center;
-    /* align-content: space-between;
-    justify-content: space-between; */
+    justify-content: space-between;
     color: white;
     padding: 10px 20px;
     align-items: center;
-    margin: 35px;
+    margin: 40px;
     gap: 25px 20px;
-    /* margin-left: 150px; */
+    margin-left: 130px; */
 
 }
 
 .rectangle_red .show {
     background: #ED6454;
+    /* margin-left: 100px; */
+    display: flex;
+    justify-content: space-between;
 }
 
 .rectangle_red div {
@@ -183,17 +178,18 @@ img.logo {
     height: 37px;
     border-radius: 5px;
     font-size: 14px;
-    align-items: baseline;
+    align-items: center;
     font-weight: bold;
-    gap: 10px;
+    line-height: 12px;
+    gap: 7px;
     display: flex;
-    /* justify-content: space-between; */
+    justify-content: space-between;
     color: white;
     padding: 10px 20px;
-    align-items:stretch;
-    margin-top: 200px;
-    padding: 10px 20px;
-    margin-left: 100px;
+    /* margin-top: 140px; */
+    margin-left: 7px;
+    gap: 5px;
+    padding: 0px 10px;
   }
 
 .supprim_icone {
@@ -272,11 +268,21 @@ img.logo {
 
 ul {
     list-style-type: none;
+   
   }
 
 li {
-    white-space:pre-wrap;
+    white-space: nowrap;
+    font-weight: 100;
+    display: table-cell; 
+   
 }
+
+#ingredList {
+    display: table-cell; 
+    vertical-align: middle;
+}
+
 .card-text {
       
     position: absolute;
@@ -309,19 +315,20 @@ li {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     justify-self: stretch;
+    
     align-items: center;
     grid-column-gap: 50px;
-    grid-row-gap: 60px;
+    grid-row-gap: 30px;
     width: 100%;
     max-width: 1300px;
     min-width: 280px;
-    padding: 40px 20px;
+    padding: 25px 150px;
     border-radius: 5px;
-    position: absolute;
+    /* position: relative;
     left: 8.5%;
     right: 0%;
-    top: 95%;
-    bottom: 20.33%;
+    top: 85%;
+    bottom: 0.33%; */
     /* position: inherit; */
 }
 
@@ -348,7 +355,7 @@ li {
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
-    line-height: 22px;
+    line-height: 21.6px;
     color: #000000;
   
     width: 250px;
@@ -390,26 +397,14 @@ li {
     white-space: normal;
 }
 
-.filters {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
 
-   
-}
 
 .filteresSelected {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     gap: 50px 100px;
-    margin: 130px 150px 100px 150px;
+    margin: 40px 0px 50px 155px;
     
-}
-
-.dropdown-menu .show {
-    display: flex;
-    flex-direction: column;
 }
 
 .dropdownIngredients {
@@ -433,18 +428,19 @@ li {
     padding-top: 2%;
   
 }
-
+/* 
 .dropdownIngredients .show{
     background-color: #3282F7;
     border-radius: 5px;
     color: white;
     width: 1000px;
-    display: flex;
-    
-}
+   
+} */
 
 .inputIngredient {
     /* float: left; */
+   /* display: flex;
+   flex-direction: column; */
 }
 
 
@@ -457,15 +453,15 @@ li {
 
 .dropdownIngredients .show {
     border-radius: 5px;
+    background-color: #3282F7;
     color: white;
     width: 1000px;
 }
 
 
 #myInput {
-    display: inline-block;
-    vertical-align: middle;
-    float: none;
+    /* display: table-cell; 
+    vertical-align: middle; */
     border: none;
     font-family: 'Lato';
     font-style: normal;
@@ -474,7 +470,10 @@ li {
     line-height: 22px;
     text-align: center;
     opacity: 0.8;
-    padding-bottom: 15%;
+    width: 920px;
+    height: 30px;
+    margin-bottom: 2%;
+    background-color: transparent;
 }
 
 .arrow_icone {
@@ -506,19 +505,11 @@ li {
     background-color: #68D9A4;
     border-radius: 5px;
     color: white;
-    width: 1000px;
-    display: flex;
 }
 
-.inputAppareil {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
+
 
 #myInputAppareil {
-    display: flex;
-    flex-direction: column;
     background-color: #68D9A4;
     width: auto;
     height: auto;
@@ -531,14 +522,17 @@ li {
     text-align: center;
     color: #FFFFFF;
     opacity: 0.8;
-    padding-bottom: 15%;
+    width: 920px;
+    height: 30px;
+    margin-bottom: 2%;
+    background-color: transparent;
 }
 
 .appareils_dropdown_menu_class .show {
     display: grid; 
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 0px;
-    
+    width: 1000px;
 }
 
 
@@ -556,7 +550,10 @@ li {
 .dropdownUstensils .show{
     display: grid; 
     grid-template-columns: 1fr 1fr 1fr;
-    display: flex;
+    padding-left: 2%;
+    padding-right: 5%;
+    padding-bottom: 5%;
+    padding-top: 2%;
     background-color: #ED6454;
 }
 
@@ -566,12 +563,8 @@ li {
     color: white;
 }
 
-.inputUstensil {
-    /* float: left; */
-}
 
 #myInputUstensil {
-    /* float: right; */
     background-color: #68D9A4;
     width: auto;
     height: auto;
@@ -584,7 +577,10 @@ li {
     text-align: center;
     color: #FFFFFF;
     opacity: 0.8;
-   /* padding-bottom: 15%; */
+    width: 920px;
+    height: 30px;
+    margin-bottom: 2%;
+    background-color: transparent;
 }
 
 .well {

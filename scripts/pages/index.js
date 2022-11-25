@@ -12,7 +12,7 @@ async function getRecipes() {
 
 function filterRecipes()
 {
-	const word = document.getElementById("searchField").value;
+	let word = document.getElementById("searchField").value;
 	let tab = [];
 	
 	// filtrage par mot dans le champ de recherche
@@ -20,60 +20,317 @@ function filterRecipes()
 	{
 		word = word.toLowerCase();
 		
-		for(let i = 0; i < recipes.length; i++) 
-		{
-			if((recipes[i].name.toLowerCase().indexOf(word) > -1 ) || 1
-            	(recipes[i].ingredients.find((ingredient) => ingredient.ingredient.toLowerCase() == word)) || 
-				(recipes[i].description.toLowerCase().indexOf(word) > -1))  
+		  recipes.forEach((recipe) => {
+
+			if((recipe.name.toLowerCase().indexOf(word) > -1 ) || 
+            	(recipe.ingredients.find((ingredient) => ingredient.ingredient.toLowerCase() == word)) || 
+				(recipe.description.toLowerCase().indexOf(word) > -1))  
 			{
-				tab.push(recipes[i]);
+				tab.push(recipe);
 			}
-		}
-	}
-	else
-	{
-		tab = [...recipes];
-	}
+		    });
+        }
+        
+        else
+        {
+            tab = [...recipes];
+        }
 
-  // pour chaque tag d'ingrédient, on filtre le(s recettes qui contiennent cet ingrédient
-  const ingredientTags = document.getElementById("rectangle_blue").children;
-  for(let i =  0; i < ingredientTags.length; i++)
-  {
-    const ingredientTag = ingredientTags[i].textContent.toLowerCase();
-    tab = tab.filter((recipe) => {
-      return (recipe.ingredients.find((ingredient) => ingredient.ingredient.toLowerCase() == ingredientTag) != undefined);
+    // pour chaque tag d'ingrédient, on filtre le(s recettes qui contiennent cet ingrédient
+    const ingredientTags = document.getElementById("rectangle_blue").children;
+
+    Array.from(ingredientTags).forEach((ingredientTag) => {
+
+        const ingredienteTag = ingredientTag.textContent.toLowerCase();
+        tab = tab.filter((recipe) => {
+        return (recipe.ingredients.find((ingredient) => ingredient.ingredient.toLowerCase() == ingredienteTag) != undefined);
+        });
     });
-  }
 
-  // répéter la même chose pour les tags d'appareils et d'ustensiles.
-  const appareilTags = document.getElementById("rectangle_green").children;
-  for(let i =  0; i < appareilTags.length; i++)
-  {
-    const appareilTag =  appareilTags[i].textContent.toLowerCase();
-    tab = tab.filter((recipe) => {
-        return (recipe.appliance.find((appliance) => appliance.toLowerCase() == appareilTag) != undefined);
+       
+
+    // répéter la même chose pour les tags d'appareils et d'ustensiles.
+    const appareilTags = document.getElementById("rectangle_green").children;
+
+      Array.from(appareilTags).forEach((appareilTag) => {
+
+        const appareileTag =  appareilTag.textContent.toLowerCase();
+        tab = tab.filter((recipe) => {
+            return (recipe.appliance.toLowerCase().indexOf(appareileTag) > -1);
+        })
     });
-   }
 
-   const ustensilTags = document.getElementById("rectangle_red").children;
-   for(let i =  0; i < ustensilTags.length; i++)
-  {
-    const ustensilTag = ustensilTags[i].textContent.toLowerCase();
-    tab = tab.filter((recipe) => {
-        return (recipe.ustensils.find((ustensil) => ustensil.toLowerCase() == ustensilTag) != undefined);
+    const ustensilTags = document.getElementById("rectangle_red").children;
+
+    Array.from(ustensilTags).forEach((ustensilTag) => {
+
+        const ustensileTag = ustensilTag.textContent.toLowerCase();
+        tab = tab.filter((recipe) => {
+            return (recipe.ustensils.find((ustensils) => ustensils.toLowerCase() == ustensileTag) != undefined);
+        });
     });
-   }
-   
+    
 
 
-  // à la fin, "tab" contient les recettes à afficher
-  displayData(tab);
+    if(tab.length === 0) 
+    {
+        document.getElementById("recipes-not-found").style.display= "block";
+    }
+    else 
+    {  
+        document.getElementById("recipes-not-found").style.display= "none";
 
-  // après avoir affiché la liste des recettes filtrées, on actualise la liste des ingrédients, ustentiles, et appareils
-  fillIngredients(getIngredients(tab));
-  fillUstensils(getUstensils(tab));
-  fillAppareils(getAppareils(tab));
+        // à la fin, "tab" contient les recettes à afficher
+        displayData(tab);
+
+        // après avoir affiché la liste des recettes filtrées, on actualise la liste des ingrédients, ustentiles, et appareils
+        fillIngredients(getIngredients(tab));
+        fillUstensils(getUstensils(tab));
+        fillAppareils(getAppareils(tab));
+    }
 }
+
+
+
+function filterRecipes2()
+{
+	let word = document.getElementById("myInput").value;
+	let tab = [];
+	
+	// filtrage par mot dans le champ de recherche
+	if(word.length > 2)
+	{
+		word = word.toLowerCase();
+		
+		  recipes.forEach((recipe) => {
+
+			if((recipe.name.toLowerCase().indexOf(word) > -1 ) || 1
+            	(recipe.ingredients.find((ingredient) => ingredient.ingredient.toLowerCase() == word)) || 
+				(recipe.description.toLowerCase().indexOf(word) > -1))  
+			{
+				tab.push(recipe);
+			}
+		    });
+        }
+        
+        else
+        {
+            tab = [...recipes];
+        }
+
+    // pour chaque tag d'ingrédient, on filtre le(s recettes qui contiennent cet ingrédient
+    const ingredientTags = document.getElementById("rectangle_blue").children;
+    ingredientTags.forEach((ingredientTag) => {
+        const ingredienteTag = ingredientTag.textContent.toLowerCase();
+        tab = tab.filter((recipe) => {
+        return (recipe.ingredients.find((ingredient) => ingredient.ingredient.toLowerCase() == ingredienteTag) != undefined);
+        });
+    });
+
+       
+
+    // répéter la même chose pour les tags d'appareils et d'ustensiles.
+    const appareilTags = document.getElementById("rectangle_green").children;
+      appareilTags.forEach((appareilTag) => {
+
+        const appareileTag =  appareilTag.textContent.toLowerCase();
+        tab = tab.filter((recipe) => {
+            return (recipe.appliance.find((appliance) => appliance.toLowerCase() == appareileTag) != undefined);
+        });
+    });
+
+    const ustensilTags = document.getElementById("rectangle_red").children;
+    ustensilTags.forEach((ustensilTag) => {
+        const ustensileTag = ustensilTag.textContent.toLowerCase();
+        tab = tab.filter((recipe) => {
+            return (recipe.ustensils.find((ustensil) => ustensil.toLowerCase() == ustensileTag) != undefined);
+        });
+    });
+    
+
+    if(tab.length === 0) 
+    {
+        document.getElementById("recipes-not-found").style.display= "block";
+    }
+    else 
+    {  
+        document.getElementById("recipes-not-found").style.display= "none";
+
+
+        // à la fin, "tab" contient les recettes à afficher
+        displayData(tab);
+
+        // après avoir affiché la liste des recettes filtrées, on actualise la liste des ingrédients, ustentiles, et appareils
+        fillIngredients(getIngredients(tab));
+        fillUstensils(getUstensils(tab));
+        fillAppareils(getAppareils(tab));
+    }
+}
+
+
+function filterRecipes3()
+{
+	let word = document.getElementById("myInputAppareil").value;
+	let tab = [];
+	
+	// filtrage par mot dans le champ de recherche
+	if(word.length > 2)
+	{
+		word = word.toLowerCase();
+		
+		  recipes.forEach((recipe) => {
+
+			if((recipe.name.toLowerCase().indexOf(word) > -1 ) || 1
+            	(recipe.ingredients.find((ingredient) => ingredient.ingredient.toLowerCase() == word)) || 
+				(recipe.description.toLowerCase().indexOf(word) > -1))  
+			{
+				tab.push(recipe);
+			}
+		    });
+        }
+        
+        else
+        {
+            tab = [...recipes];
+        }
+
+    // pour chaque tag d'ingrédient, on filtre le(s recettes qui contiennent cet ingrédient
+    const ingredientTags = document.getElementById("rectangle_blue").children;
+    ingredientTags.forEach((ingredientTag) => {
+        const ingredienteTag = ingredientTag.textContent.toLowerCase();
+        tab = tab.filter((recipe) => {
+        return (recipe.ingredients.find((ingredient) => ingredient.ingredient.toLowerCase() == ingredienteTag) != undefined);
+        });
+    });
+
+       
+
+    // répéter la même chose pour les tags d'appareils et d'ustensiles.
+    const appareilTags = document.getElementById("rectangle_green").children;
+      appareilTags.forEach((appareilTag) => {
+
+        const appareileTag =  appareilTag.textContent.toLowerCase();
+        tab = tab.filter((recipe) => {
+            return (recipe.appliance.find((appliance) => appliance.toLowerCase() == appareileTag) != undefined);
+        });
+    });
+
+    const ustensilTags = document.getElementById("rectangle_red").children;
+
+    ustensilTags.forEach((ustensilTag) => {
+
+        const ustensileTag = ustensilTag.textContent.toLowerCase();
+        tab = tab.filter((recipe) => {
+            return (recipe.ustensils.find((ustensil) => ustensil.toLowerCase() == ustensileTag) != undefined);
+        });
+    });
+    
+
+    if(tab.length === 0) 
+    {
+        document.getElementById("recipes-not-found").style.display= "block";
+    }
+    else 
+    {  
+        document.getElementById("recipes-not-found").style.display= "none";
+
+
+        // à la fin, "tab" contient les recettes à afficher
+        displayData(tab);
+
+        // après avoir affiché la liste des recettes filtrées, on actualise la liste des ingrédients, ustentiles, et appareils
+        fillIngredients(getIngredients(tab));
+        fillUstensils(getUstensils(tab));
+        fillAppareils(getAppareils(tab));
+    }
+}
+
+
+function filterRecipes4()
+{
+	let word = document.getElementById("myInputUstensil").value;
+	let tab = [];
+	
+	// filtrage par mot dans le champ de recherche
+	if(word.length > 2)
+	{
+		word = word.toLowerCase();
+		
+		  recipes.forEach((recipe) => {
+
+			if((recipe.name.toLowerCase().indexOf(word) > -1 ) || 1
+            	(recipe.ingredients.find((ingredient) => ingredient.ingredient.toLowerCase() == word)) || 
+				(recipe.description.toLowerCase().indexOf(word) > -1))  
+			{
+				tab.push(recipe);
+			}
+		    });
+        }
+        
+        else
+        {
+            tab = [...recipes];
+        }
+
+    // pour chaque tag d'ingrédient, on filtre le(s recettes qui contiennent cet ingrédient
+    const ingredientTags = document.getElementById("rectangle_blue").children;
+    ingredientTags.forEach((ingredientTag) => {
+        const ingredienteTag = ingredientTag.textContent.toLowerCase();
+        tab = tab.filter((recipe) => {
+        return (recipe.ingredients.find((ingredient) => ingredient.ingredient.toLowerCase() == ingredienteTag) != undefined);
+        });
+    });
+
+       
+
+    // répéter la même chose pour les tags d'appareils et d'ustensiles.
+    const appareilTags = document.getElementById("rectangle_green").children;
+      appareilTags.forEach((appareilTag) => {
+
+        const appareileTag =  appareilTag.textContent.toLowerCase();
+        tab = tab.filter((recipe) => {
+            return (recipe.appliance.find((appliance) => appliance.toLowerCase() == appareileTag) != undefined);
+        });
+    });
+
+    const ustensilTags = document.getElementById("rectangle_red").children;
+    ustensilTags.forEach((ustensilTag) => {
+        const ustensileTag = ustensilTag.textContent.toLowerCase();
+        tab = tab.filter((recipe) => {
+            return (recipe.ustensils.find((ustensil) => ustensil.toLowerCase() == ustensileTag) != undefined);
+        });
+    });
+    
+    recipes.forEach((recipe) => {
+        if(recipe.ustensils.find((ustensil) => ustensil.toLowerCase() == word))
+        {
+            tab.push(recipe);
+        }
+
+    });
+
+
+
+    if(tab.length === 0) 
+    {
+        document.getElementById("recipes-not-found").style.display= "block";
+    }
+    else 
+    {  
+        document.getElementById("recipes-not-found").style.display= "none";
+
+
+        // à la fin, "tab" contient les recettes à afficher
+        displayData(tab);
+
+        // après avoir affiché la liste des recettes filtrées, on actualise la liste des ingrédients, ustentiles, et appareils
+        fillIngredients(getIngredients(tab));
+        fillUstensils(getUstensils(tab));
+        fillAppareils(getAppareils(tab));
+    }
+}
+
+
 
 // Cette fonction permet de retourner soit le nom de la recette recherchée, soit la liste des ingrédients contenant le mot recherché, soit, 
 // la description de la recette contenant le mot recherché.
@@ -162,7 +419,6 @@ function getRecipesByKeyWordIngredients(word) {
 
        
           ok.push(getRecipesByKeyWordIngredients(argument));
-          console.log(" COURAGE ", ok)
           return ok;
           
       

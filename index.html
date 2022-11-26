@@ -21,7 +21,7 @@
 </header>
 <main>
     <span class="form-inline">
-        <input class="form-control2" id="searchField" type="search" placeholder="Rechercher une recette..." aria-label="Search"  oninput= "filterRecipes();"/><img src="/assets/Vector.png" class="search_icone" height="32.06" width="32.06" alt="icone de recherche">
+        <input class="form-control2" id="searchField" type="search" placeholder="Rechercher une recette..." aria-label="Search"  oninput= "filterRecipes();"><img src="/assets/Vector.png" class="search_icone" alt="icone de recherche">
     </span>
     <div class="labelTag"  id="labelTag" >
         <div class="rectangle_blue" id="rectangle_blue"  style="display:none;"></div>
@@ -35,12 +35,12 @@
   
     <!-- 1ère méthode -->
     <div class="dropdownIngredients" onmousedown="">
-        <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButtonIngredient" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          Ingredients
         </button>
         <div class="dropdown-menu">
                 <div class="inputIngredient">
-                <input type="text" placeholder="Rechercher un ingrédients..." id="myInput"  onchange = "filterFunction2();"><img src="/assets/VectorBlanche.png" class="arrow_icone" height="9.88px" width="16px" alt="icone de flèche">
+                <input type="text" placeholder="Rechercher un ingrédient..." id="myInput"  onchange = "filterFunction2();"><img src="/assets/VectorBlanche.png" class="arrow_icone" alt="icone de flèche">
                 </div>
             <hr><hr>
             <div id="ingredients_dropdown_menu"  data-type="ingredient"></div>
@@ -53,12 +53,12 @@
    
     <!-- 2ème dropdown -->
     <div class="dropdownAppareils"  onmousedown="">
-        <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButtonAppareil" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
        Appareils
         </button>
         <div  class="dropdown-menu">
             <div class="inputAppareil">
-            <input type="text" placeholder="Rechercher un appareil..." id="myInputAppareil" oninput= "filterFunction3();" ><img src="/assets/VectorBlanche.png" class="arrow_icone" height="9.88px" width="16px" alt="icone de flèche">
+            <input type="text" placeholder="Rechercher un appareil..." id="myInputAppareil" oninput= "filterFunction3();" ><img src="/assets/VectorBlanche.png" class="arrow_icone" alt="icone de flèche">
             </div>
             <hr><hr>
             <div id="appareils_dropdown_menu" data-type="appareil"></div>
@@ -70,12 +70,12 @@
         
     <!-- 3ème dropdown -->
     <div class="dropdownUstensils" onmousedown="" >
-        <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButtonUstensil" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
        Ustensiles
         </button>
         <div class="dropdown-menu">
             <div class="inputUstensil">
-            <input type="text" placeholder="Rechercher un ustensile..." id="myInputUstensil" oninput= "filterFunction4();"  ><img src="/assets/VectorBlanche.png" class="arrow_icone" height="9.88px" width="16px" alt="icone de flèche">
+            <input type="text" placeholder="Rechercher un ustensile..." id="myInputUstensil" oninput= "filterFunction4();"  ><img src="/assets/VectorBlanche.png" class="arrow_icone" alt="icone de flèche">
             </div>
             <hr><hr>
             <div id="ustensils_dropdown_menu" data-type="ustensil"></div>
@@ -84,11 +84,12 @@
     </div>
     </div>
      
-    <section class="card-deck" id="card-deck">
-    </section>
+    <div class="card-deck" id="card-deck">
+    </div>
 
     <div class="well" id="recipes-not-found" style="display:none;">
         <p>Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc</p>
+    </div>
     </div>
 </main>
 

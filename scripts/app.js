@@ -1,6 +1,6 @@
 // Partie Ingredients
 function removeDuplicates(colors) {
-    let unique = [];
+    let unique = {};
     colors.forEach(function(i) {
       if(!unique[i]) {
         unique[i] = true;
@@ -24,6 +24,13 @@ function removesDuplicate(string)
    ).join('');
 }
  
+function deleteDuplicates (array) {
+    let cleanDuplicate = [];
+    array.forEach((item) => {
+      cleanDuplicate.indexOf(item) == -1 ? cleanDuplicate.push(item) : "";
+      return cleanDuplicate;
+    });
+  };
 
 function find_unique_characters( string ){
     var unique='';
@@ -364,31 +371,44 @@ function FillTag2(tagFilter) {
 // Partie ustensiles
 
 div = document.getElementById("ustensils_dropdown_menu");
+let ustensilVariable = [];
 function getUstensils(argument) {
     let ustensils = [];
     for (let i = 0; i < argument.length; i++) {
         ustensils.push(argument[i].ustensils);
-    //  console.log(" TESTTTT ", argument[i].ustensils);
+        
         }
-      
-    var unique = ustensils.filter((x, i) => ustensils.indexOf(x) === i);
-    let ustensilsListArray = [...new Set(unique)];
-    return ustensilsListArray;
-     
-    
+    return ustensils;
+       
 }
 
+let ustensilVariable2 = [];
+let ustensilVariable3 = [];
 function fillUstensils(argument2) {
-    document.getElementById("ustensils_dropdown_menu").innerHTML = ""; 
+    // document.getElementById("ustensils_dropdown_menu").innerHTML = ""; 
     for(let i= 0; i< argument2.length; i++) {
-        // console.log(" VEIRIIFIFI  USTENSILS ", argument2[i]);
-            showUstensils(argument2[i]);
-           }
-   }
+       ustensilVariable2.push(argument2[i]);
+    }
+
+    ustensilVariable3 = removeDuplicate(ustensilVariable2);
+    
+    for(let i= 0; i< ustensilVariable3.length; i++) {
+        showUstensils(ustensilVariable3[i]);
+        }
+}
+
+ustensilsArray = [];
+ustensilsArray2  = [];
+function SupprimDuplicate(ustensils) {
+    ustensilsArray.push(ustensils);
+    ustensilsArray2 = deleteDuplicates(ustensilsArray);
+    return ustensilsArray2;
+}
+
 
    
 let txtValue7 = [];
-let unique2;
+let unique2 = [];
 function showUstensils(argument3) {
     div = document.getElementById("ustensils_dropdown_menu");
    
@@ -398,25 +418,18 @@ function showUstensils(argument3) {
         }
 
         unique2=  Array.from(new Set(txtValue7));
-       
-        // let arrayString = txtValue7.toString();
-        // var arr = arrayString.split(',');
-        // unique2 = x = arr.filter(function(value, index, self) { 
-        //     return self.indexOf(value) === index;
-        // }).join(',');
-        // var array = x.split(",");
-        // console.log(" String ", x, " 2 ", array);
-        for(let i = 0; i < unique2.length; i++) {
-            // console.log(" VEIRIIFIFI 2 USTENDIL 33 ", txtValue2[i]);
-            el = document.createElement("div");
-            el.setAttribute("class", "usten");
-            el.textContent = unique2[i];
-            // div.appendChild(el);
-            el.setAttribute("onclick", "addDropdownFilter(event)");
-            div.appendChild(el);
-            }
-
+            
+    for(let i = 0; i < unique2.length; i++) {
+        // console.log(" VEIRIIFIFI 2 USTENDIL 33 ", txtValue2[i]);
+        el = document.createElement("div");
+        el.setAttribute("class", "usten");
+        el.textContent = unique2[i];
+        // div.appendChild(el);
+        el.setAttribute("onclick", "addDropdownFilter(event)");
+        div.appendChild(el);
+        }
 }
+
 
 
 function fillUstensils2(argument2) {
@@ -473,7 +486,6 @@ function CreateTagFilter3(tagFilter) {
                   img.setAttribute("onclick", "suppressTag(event)")
                   elem2.appendChild(img);
     
-   console.log("verification ", elem2);
     document.getElementById('rectangle_red').style.display='flex';
     document.getElementById('rectangle_red').appendChild(elem2);
    

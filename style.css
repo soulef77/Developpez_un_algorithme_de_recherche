@@ -12,6 +12,21 @@ img.logo {
 }
 
 
+.arrow_icone {
+    height: 9.88px;
+    width: 16px; 
+} 
+
+.arrow_icone{
+    height: 9.88px;
+    width: 16px;
+} 
+
+.search_icone {
+    height: 32.06px;
+    width: 32.06px;
+} 
+
 .form-inline .form-control {
     height: 69px;
     width: 1240px;
@@ -197,7 +212,7 @@ img.logo {
 }
 
 
-#dropdownMenuButton {
+#dropdownMenuButtonIngredient, #dropdownMenuButtonAppareil, #dropdownMenuButtonUstensil {
     color: #fff;
     
 }

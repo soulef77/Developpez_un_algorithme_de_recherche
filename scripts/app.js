@@ -1,67 +1,32 @@
 // Partie Ingredients
-function removeDuplicates(colors) {
-    let unique = {};
-    colors.forEach(function(i) {
-      if(!unique[i]) {
-        unique[i] = true;
-      }
-    });
-    return Object.keys(unique);
-  }
-
-  function removeDuplicate(arr) {
-    return arr.filter((item,
-        index) => arr.indexOf(item) === index);
-}
-
-function removesDuplicate(string)
-{
-   return string.split('')
-    .filter(function(item, pos, self)
-    {
-      return self.indexOf(item) == pos;
-    }
-   ).join('');
-}
- 
-function deleteDuplicates (array) {
-    let cleanDuplicate = [];
-    array.forEach((item) => {
-      cleanDuplicate.indexOf(item) == -1 ? cleanDuplicate.push(item) : "";
-      return cleanDuplicate;
-    });
-  };
-
-function find_unique_characters( string ){
-    var unique='';
-    for(var i=0; i<string.length; i++){
-        if(unique.indexOf(string[i])==-1){
-            unique += string[i];
-        }
-    }
-    return unique;
-}
 div = document.getElementById("ingredients_dropdown_menu");
-function getIngredients(argument) {
-    let ingredients = [];
-    for (let i = 0; i < argument.length; i++) {
-        ingredients.push(argument[i].ingredients);
-        // console.log(" TESTTTT ", argument[i].ingredients);
+let ingredients = [];
+function getIngredients(recipes) {
+    ingredients = [];
+    for (let i = 0; i < recipes.length; i++) {
+        for(let j = 0; j < recipes[i].ingredients.length; j++) {
+            if(ingredients.indexOf(recipes[i].ingredients[j].ingredient) < 0) {
+                ingredients.push(recipes[i].ingredients[j].ingredient);
+            }
         }
-    var unique = ingredients.filter((x, i) => ingredients.indexOf(x) === i);
-    let ingredientsListArray = [...new Set(unique)];
-    return ingredientsListArray;
+    }
+    return ingredients;
     
 }
 
-function getIngredients2(argument) {
 let recipesSolution= [];
+function getIngredients2(argument) {
+recipesSolution= [];
 for (let i = 0; i < argument.length; i++) {
-        recipesSolution.push(argument[i]['ingredients']);
-    }
     
-    let ingredientsListArray = [...new Set(recipesSolution)];
-    return ingredientsListArray;
+        // recipesIngredients.push(recipesSolution);
+        if( recipesSolution.indexOf(argument[i]) < 0) {
+            recipesSolution.push(argument[i]);
+            }
+        }
+        
+        return recipesSolution;
+    
 }
   
 function getIngredient3(tab) {
@@ -86,7 +51,7 @@ function fillIngredients(ingredients)
   document.getElementById("ingredients_dropdown_menu").innerHTML = "";    
   for(let i= 0; i< ingredients.length; i++)
   {
-        showIngredients(ingredients[i]);
+        showIngredient(ingredients[i]);
   }
         
 }
@@ -112,36 +77,40 @@ function fillIngredients3(ingredients) {
         
 }
 
-function showIngredients(argument3) {
+function showIngredient(ingredient) {
+    $('#dropdownIngredients').on('shown.bs.dropdown', function () {
+        document.getElementById('name').style.display='none';
+        document.getElementById('dropdownMenuButtonIngredient').style.display= 'none'; 
+        document.getElementById("dropdownAppareils").style.marginLeft = "250%";
+        document.getElementById("dropdownUstensils").style.marginLeft = "250%";
+    });
 
-    // console.log(" VEIRIIFIFI 2 ", argument3);
+    $('#dropdownIngredients').on('hidden.bs.dropdown', function () {
+        document.getElementById('name').style.display='inline-block';
+        document.getElementById('dropdownMenuButtonIngredient').style.display= 'block'; 
+        document.getElementById("dropdownAppareils").style.marginLeft = "0%";
+        document.getElementById("dropdownUstensils").style.marginLeft = "0%";
+    });
 
+    if(ingredient !== text) {
+        // console.log("tag filter ", text , " ingredient ", ingredient);
     div = document.getElementById("ingredients_dropdown_menu");
-    let txtValue5 = [];
-    let unique = [];
-    for(let i= 0; i< argument3.length; i++) {
-       txtValue5.push(argument3[i].ingredient);
-           
+    el = document.createElement("div");
+    el.setAttribute("class", "ingred");
+    el.textContent = ingredient;
+    div.appendChild(el);
+    el.setAttribute("onclick", "addIngredientTag(event)");
     }
-    
-    unique= removeDuplicates(txtValue5);
-    for(let i= 0; i< unique.length; i++) {
-        el = document.createElement("div");
-        el.setAttribute("class", "ingred");
-        el.textContent = unique[i];
-        div.appendChild(el);
-        el.setAttribute("onclick", "addIngredientTag(event)");
-        div.appendChild(el);
-        }
-        txtValue5 = [];
-        unique = [];
 }
+        
+
 
 function addIngredientTag(event)
 {
   const d = document.createElement('div');
   d.id = "labelTag"+ i.toString();
   d.textContent = event.currentTarget.textContent;
+  text = d.textContent;
 
   const img = document.createElement("img");
   img.src ="./assets/Vector2.png";
@@ -232,66 +201,63 @@ function myFunction() {
 // Partie appareils
 
 div = document.getElementById("appareils_dropdown_menu");
-function getAppareils(argument) {
-    let appareils = [];
-  
-    if(argument) {
-    for (let i = 0; i < argument.length; i++) {
-        appareils.push(argument[i].appliance);
-        }
-      }
-
-     let appareilsSet = [...new Set(appareils)];
-     return appareilsSet;
+let appareils = [];
+function getAppareils(recipes) {
+    appareils = [];
     
-}
-
-function getAppareils2(argument) {
-    let appareils = [];
-  
-    if(argument) {
-    for (let i = 0; i < argument.length; i++) {
-        appareils.push(argument[i]);
-        //  console.log(" TESTTTT ", argument[i].appliance);
+    for (let i = 0; i < recipes.length; i++) {
+        if(appareils.indexOf(recipes[i].appliance) < 0) {
+            appareils.push(recipes[i].appliance);
         }
-      }
-
-     let appareilsSet = [...new Set(appareils)];
-     return appareilsSet;
-    
-}
-
-function fillAppareils(argument2) {
-document.getElementById("appareils_dropdown_menu").innerHTML = ""; 
-  for(let i= 0; i< argument2.length; i++) {
-            showAppareils(argument2[i]);
-            }
-        
-}
-
-function showAppareils(argument3) {
-
-    //  console.log(" VEIRIIFIFI 2 ", argument3);
-    div = document.getElementById("appareils_dropdown_menu");
-    let txtValue = [];
-    let unique = [];
-    for(let i= 0; i< argument3.length; i++) {
-       txtValue.push(argument3);
-        //   console.log(" value appareil ", txtValue) 
     }
-
-    unique= [...new Set(txtValue)];
-    for(let i= 0; i< unique.length; i++) {
-
-        el = document.createElement("div");
-        el.setAttribute("class", "appar");
-        el.textContent = unique[i];
-        el.setAttribute("onclick", "addDropdownFilter(event)");
-        div.appendChild(el);
-        }
-        txtValue = [];
-        unique = [];
     
+     return appareils;
+    
+}
+
+let appareils2 = [];
+function getAppareils2(argument) {
+appareils2 = [];
+  
+for (let i = 0; i < argument.length; i++) {
+    if(appareils2.indexOf(argument[i]) < 0) {
+        appareils2.push(argument[i]);
+        //  console.log(" TESTTTT ", argument[i].appliance);
+    }
+}
+    return appareils2;
+    
+}
+
+function fillAppareils(appareils) {
+    document.getElementById("appareils_dropdown_menu").innerHTML = ""; 
+    for(let i= 0; i< appareils.length; i++) {
+        showAppareil(appareils[i]);
+    }
+  
+}
+
+function showAppareil(appareil) {
+    $('#dropdownAppareils').on('shown.bs.dropdown', function () {
+        document.getElementById('name1').style.display='none';
+        document.getElementById('dropdownMenuButtonAppareil').style.display= 'none'; 
+        document.getElementById("dropdownUstensils").style.marginLeft = "250%";
+    });
+
+    $('#dropdownAppareils').on('hidden.bs.dropdown', function () {
+        document.getElementById('name1').style.display='inline-block';
+        document.getElementById('dropdownMenuButtonAppareil').style.display= 'block'; 
+        document.getElementById("dropdownUstensils").style.marginLeft = "0%";
+    });
+
+    div = document.getElementById("appareils_dropdown_menu");
+    if(appareil !== text) {
+    el = document.createElement("div");
+    el.setAttribute("class", "appar");
+    el.textContent = appareil;
+    el.setAttribute("onclick", "addDropdownFilter(event)");
+    div.appendChild(el);
+    }
 }
 
 
@@ -339,6 +305,7 @@ function showAppareils2(argument3) {
 }
 
 function myFunction() {
+    
     document.getElementById("appareils_dropdown_menu").classList.toggle("show");
 }
 
@@ -371,64 +338,65 @@ function FillTag2(tagFilter) {
 // Partie ustensiles
 
 div = document.getElementById("ustensils_dropdown_menu");
-let ustensilVariable = [];
-function getUstensils(argument) {
-    let ustensils = [];
-    for (let i = 0; i < argument.length; i++) {
-        ustensils.push(argument[i].ustensils);
-        
+let ustensils = [];
+function getUstensils(recipes) {
+    ustensils = [];
+    for (let i = 0; i < recipes.length; i++) {
+        for(let j =0; j < recipes[i].ustensils.length; j++) {
+            if(ustensils.indexOf(recipes[i].ustensils[j]) < 0) {
+                ustensils.push(recipes[i].ustensils[j]);
+            }
         }
+    }
     return ustensils;
        
 }
 
+let ustensils2 = [];
+function getUstensils2(recipes) {
+    ustensils2 = [];
+    for (let i = 0; i < recipes.length; i++) {
+        // for(let j =0; j < recipes[i].ustensils2.length; j++) {
+            if(ustensils2.indexOf(recipes[i]) < 0) {
+                ustensils2.push(recipes[i]);
+            }
+        // }
+    }
+    return ustensils2;
+}
+
 let ustensilVariable2 = [];
 let ustensilVariable3 = [];
-function fillUstensils(argument2) {
-    // document.getElementById("ustensils_dropdown_menu").innerHTML = ""; 
-    for(let i= 0; i< argument2.length; i++) {
-       ustensilVariable2.push(argument2[i]);
+function fillUstensils(ustensils) {
+    document.getElementById("ustensils_dropdown_menu").innerHTML =  "";
+    for(let i= 0; i< ustensils.length; i++) {
+        showUstensil(ustensils[i]);
     }
-
-    ustensilVariable3 = removeDuplicate(ustensilVariable2);
-    
-    for(let i= 0; i< ustensilVariable3.length; i++) {
-        showUstensils(ustensilVariable3[i]);
-        }
 }
 
-ustensilsArray = [];
-ustensilsArray2  = [];
-function SupprimDuplicate(ustensils) {
-    ustensilsArray.push(ustensils);
-    ustensilsArray2 = deleteDuplicates(ustensilsArray);
-    return ustensilsArray2;
-}
+// ustensilsArray = [];
+// ustensilsArray2  = [];
+// function SupprimDuplicate(ustensils) {
+//     ustensilsArray.push(ustensils);
+//     ustensilsArray2 = deleteDuplicates(ustensilsArray);
+//     return ustensilsArray2;
+// }
 
 
    
 let txtValue7 = [];
 let unique2 = [];
-function showUstensils(argument3) {
+function showUstensil(ustensil) {
     div = document.getElementById("ustensils_dropdown_menu");
-   
-    for(let i= 0; i< argument3.length; i++) {
-        txtValue7.push(argument3[i]);
-        // console.log(" VEIRIIFIFI 2 USTENDIL ", argument3[i]);
-        }
-
-        unique2=  Array.from(new Set(txtValue7));
-            
-    for(let i = 0; i < unique2.length; i++) {
-        // console.log(" VEIRIIFIFI 2 USTENDIL 33 ", txtValue2[i]);
-        el = document.createElement("div");
-        el.setAttribute("class", "usten");
-        el.textContent = unique2[i];
-        // div.appendChild(el);
-        el.setAttribute("onclick", "addDropdownFilter(event)");
-        div.appendChild(el);
-        }
+    if(ustensil !== text) {
+    el = document.createElement("div");
+    el.setAttribute("class", "usten");
+    el.textContent = ustensil;
+    el.setAttribute("onclick", "addDropdownFilter(event)");
+    div.appendChild(el);
+    }
 }
+
 
 
 
@@ -506,15 +474,16 @@ let recipesInputFiltered = recipesTagFiltered;
 let recipesFiltered = recipesInputFiltered;
 let type;
 let variable3;
+let text;
 
 function addDropdownFilter(event) {
     const target = event.currentTarget;
-    const text = target.textContent;
+    text = target.textContent;
     const selectedFilters = document.querySelector(".filtersSelected");
     type = target.parentNode.dataset.type;
     const listType = type === "ingredient"  ? listOfIngredientsSelected : 
     type === "";
-    // console.log("ok  pkoi pas ", target.parentNode.dataset.type , " 2 ", target," 3 ", text,"  4 ", type, " 5 ", selectedFilters);
+    console.log("ok  pkoi pas ", target.parentNode.dataset.type , " 2 ", target," 3 ", text,"  4 ", type, " 5 ", selectedFilters);
     if(type ==="ingredient") {
         if (!listType.has(text)) {
                 // listType.add(text);
@@ -533,7 +502,6 @@ function addDropdownFilter(event) {
     type === "";
   
     if(type=="appareil") {
-    // console.log("ok  pkoi pas ", listType2, " ", target," ", text," ", type, " ", selectedFilters);
         if (!listType2.has(text)) {
             // listType2.add(text);
             recipesTagUpdate();
@@ -549,8 +517,7 @@ function addDropdownFilter(event) {
     type === "";
   
     if(type=="ustensil") {
-    console.log("ok  pkoi pas ", listType3, " ", target," ", text," ", type, " ", selectedFilters);
-    if (!listType3.has(text)) {
+        if (!listType3.has(text)) {
         // listType3.add(text);
         // selectedFilters.appendChild(createDropdownFilterCard(text, type));
         recipesTagUpdate();

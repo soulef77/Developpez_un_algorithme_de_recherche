@@ -7,10 +7,21 @@ img.logo {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    
     width:268px;
     height:93px;
 }
 
+.name {
+    display: inline-block;
+    margin-left: -20px;
+}
+
+.name1 {
+    display: inline-block;
+    margin-left: -20px;
+
+}
 
 .arrow_icone {
     height: 9.88px;
@@ -26,6 +37,16 @@ img.logo {
     height: 32.06px;
     width: 32.06px;
 } 
+
+.dropdown-toggle::after {
+    margin-left: 55px;
+    margin-right: 0px;
+   
+}
+
+.btn {
+    padding: 0;
+}
 
 .form-inline .form-control {
     height: 69px;
@@ -47,14 +68,11 @@ img.logo {
 .form-control2 {
     height: 69px;
     width: 1240px;
-    left: 0px;
-    top: 0px;
-    border-radius: 5px;
-
+   
     position: absolute;
     left: 10%;
     right: 0%;
-    top: 20%;
+    top: 25%;
     bottom: 0%;
 
     background: #E7E7E7;
@@ -66,11 +84,10 @@ img.logo {
 .search_icone{
     height: 44px;
     width: 44px; 
-
     position: absolute;
     left: 87%;
     right: 0%;
-    top: 22%;
+    top: 28%;
     bottom: 0%;
 }
 
@@ -108,7 +125,7 @@ img.logo {
     display: flex;
     align-content: space-between;
     align-items: center;
-    /* margin-top: 140px; */
+    margin-top: 40px;
     margin-left: 10px;
     gap: 5px;
     padding: 0px 10px;
@@ -156,7 +173,7 @@ img.logo {
     align-content: space-between;
     padding: 10px 20px;
     align-items: center;
-    /* margin-top: 140px; */
+    margin-top: 40px;
     margin-left: 5px;
     gap: 5px;
     padding: 0px 10px;
@@ -201,7 +218,7 @@ img.logo {
     justify-content: space-between;
     color: white;
     padding: 10px 20px;
-    /* margin-top: 140px; */
+    margin-top: 40px;
     margin-left: 7px;
     gap: 5px;
     padding: 0px 10px;
@@ -419,17 +436,16 @@ li {
     flex-direction: row;
     gap: 50px 100px;
     margin: 40px 0px 50px 155px;
-    
 }
 
 .dropdownIngredients {
     width: 170px;
     height: 69px;
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     background: #3282F7;
     border-radius: 5px;
-    padding-left: 1%;
+    padding-left: 2%;
 }
 
 
@@ -441,38 +457,30 @@ li {
     padding-right: 5%;
     padding-bottom: 5%;
     padding-top: 2%;
+
   
 }
-/* 
-.dropdownIngredients .show{
-    background-color: #3282F7;
-    border-radius: 5px;
-    color: white;
-    width: 1000px;
-   
-} */
-
-.inputIngredient {
-    /* float: left; */
-   /* display: flex;
-   flex-direction: column; */
-}
-
 
 #ingredients_dropdown_menu {
     display: grid; 
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 0px;
-    width: 1000px;
+    grid-gap: 7px;
+    width: 550px;
 }
 
 .dropdownIngredients .show {
     border-radius: 5px;
     background-color: #3282F7;
     color: white;
-    width: 1000px;
-}
+    width: 600px;
 
+    position: absolute;
+    transform: translate3d(154px, 265px, 0px) !important;
+    top: 0px;
+    left: 0px;
+    will-change: transform;
+          
+}
 
 #myInput {
     /* display: table-cell; 
@@ -485,11 +493,23 @@ li {
     line-height: 22px;
     text-align: center;
     opacity: 0.8;
-    width: 920px;
+    width: 500px;
     height: 30px;
     margin-bottom: 2%;
     background-color: transparent;
 }
+
+/* #dropdownMenuButtonIngredient[aria-expanded ="true"] > .name {
+     display: none;
+} */
+
+/* #dropdown-menu[aria-expanded ="true"] {
+position: absolute;
+transform: translate3d(154px, 265px, 0px);
+top: 0px;
+left: 0px;
+will-change: transform;
+} */
 
 .arrow_icone {
     justify-content: space-between;
@@ -499,10 +519,11 @@ li {
     width: 170px;
     height: 69px;
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     background: #68D9A4;
     border-radius: 5px;
-    padding-left: 1%;
+    padding-left: 23%;
+    padding-right: 5px;
 }
 
 
@@ -514,6 +535,7 @@ li {
     padding-right: 5%;
     padding-bottom: 5%;
     padding-top: 2%;
+    transform: translate3d(424px, 265px, 0px) !important;
 }
 
 .dropdownAppareils .show{
@@ -537,18 +559,18 @@ li {
     text-align: center;
     color: #FFFFFF;
     opacity: 0.8;
-    width: 920px;
+    width: 500px;
     height: 30px;
     margin-bottom: 2%;
     background-color: transparent;
 }
 
-.appareils_dropdown_menu_class .show {
+/* .appareils_dropdown_menu_class .show {
     display: grid; 
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 0px;
     width: 1000px;
-}
+} */
 
 
 .dropdownUstensils {
@@ -557,7 +579,7 @@ li {
     display: flex;
     background: #ED6454;
     border-radius: 5px;
-    padding-left: 1%;
+    padding-left: 21%;
     
 }
 
@@ -570,6 +592,7 @@ li {
     padding-bottom: 5%;
     padding-top: 2%;
     background-color: #ED6454;
+    transform: translate3d(694px, 264px, 0px) !important;
 }
 
 .dropdownUstensils .show{
@@ -592,7 +615,7 @@ li {
     text-align: center;
     color: #FFFFFF;
     opacity: 0.8;
-    width: 920px;
+    width: 500px;
     height: 30px;
     margin-bottom: 2%;
     background-color: transparent;
@@ -608,7 +631,7 @@ li {
     position: absolute;
     left: 10%;
     right: 0%;
-    top: 50%;
+    top: 70%;
     bottom: 0%;
 }
 
@@ -616,25 +639,25 @@ li {
 #appareils_dropdown_menu {
     display: grid; 
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 0px;
-    width: 1000px;
+    grid-gap: 7px;
+    width: 600px;
 }
 
 .dropdownAppareils .show {
     border-radius: 5px;
     color: white;
-    width: 1000px;
+    width: 600px;
 }
 
 #ustensils_dropdown_menu {
     display: grid; 
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 0px;
-    width: 1000px;
+    grid-gap: 7px;
+    width: 600px;
 }
 
 .dropdownUstensils .show {
     border-radius: 5px;
     color: white;
-    width: 1000px;
+    width: 600px;
 }

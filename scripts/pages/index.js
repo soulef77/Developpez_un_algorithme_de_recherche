@@ -11,6 +11,7 @@ async function getRecipes() {
 }
 
 function filterRecipes() {
+    recipesSection.innerHTML = "";
     let word = document.getElementById("searchField").value;
     let tab = [];
 
@@ -80,6 +81,7 @@ function filterRecipes() {
 
 
 function filterRecipes2() {
+    recipesSection.innerHTML = "";
     let word = document.getElementById("myInput").value;
     let tab = [];
 
@@ -148,6 +150,7 @@ function filterRecipes2() {
 }
 
 function filterRecipes3() {
+    recipesSection.innerHTML = "";
     let word = document.getElementById("myInputAppareil").value;
     let tab = [];
 
@@ -216,6 +219,7 @@ function filterRecipes3() {
 
 
 function filterRecipes4() {
+    recipesSection.innerHTML = "";
     let word = document.getElementById("myInputUstensil").value;
     let tab = [];
 
@@ -291,6 +295,7 @@ function filterRecipes4() {
 
 function filterRecipesByIngredient() {
     recipesSection.innerHTML = "";
+    recipesSection.innerHTML = "";
     let word = document.getElementById("myInput").value;
     let tab = [];
     let tab2 = [];
@@ -325,7 +330,6 @@ function filterRecipesByIngredient() {
         fillAppareils(getAppareils(tab2));
     }
 }
-
 
 function filterRecipesByAppareil() {
     recipesSection.innerHTML = "";
@@ -398,11 +402,8 @@ function filterRecipesByUstensil() {
     }
 }
 
-
-
 // Cette fonction permet de retourner soit le nom de la recette recherchée, soit la liste des ingrédients contenant le mot recherché, soit, 
 // la description de la recette contenant le mot recherché.
-
 
 function getRecipesByKeyWord(word) {
     let tabRecipes = [];
@@ -418,12 +419,10 @@ function getRecipesByKeyWord(word) {
             recipesSolution = recipes.filter((recipes) => recipes.name === word);
             tabRecipes.push(recipesSolution);
 
-
         } else if (recipes[i].ingredients.indexOf(word) > -1) {
 
             recipesSolution = recipes.find((recipes) => recipes.ingredients.includes(wordTest2));
             tabRecipes.push(recipesSolution);
-
 
         } else if (recipes[i].description.indexOf(word) > -1) {
 
@@ -433,7 +432,6 @@ function getRecipesByKeyWord(word) {
     }
     return tabRecipes;
 }
-
 
 // Cette fonction permet de retourner soit le nom de la recette recherchée, soit la liste des ingrédients contenant le mot recherché, soit, 
 // la description de la recette contenant le mot recherché.

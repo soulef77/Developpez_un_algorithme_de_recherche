@@ -11,7 +11,6 @@ function getIngredients(recipes) {
         }
     }
     return ingredients;
-
 }
 
 let recipesSolution = [];
@@ -32,23 +31,20 @@ function getIngredient3(tab) {
     for (let i = 0; i < tab.length; i++) {
         ingredient.push(ingredient.ingredient);
     }
-   return ingredient;
+    return ingredient;
 }
-
 
 function fillIngredients(ingredients) {
     document.getElementById("ingredients_dropdown_menu").innerHTML = "";
     for (let i = 0; i < ingredients.length; i++) {
         showIngredient(ingredients[i]);
     }
-
 }
 
 function fillIngredients2(argument2) {
     for (let i = 0; i < argument2.length; i++) {
         showIngredients2(argument2[i]);
     }
-
 }
 
 function showIngredient(ingredient) {
@@ -134,7 +130,6 @@ function myFunction() {
     document.getElementById("ingredients_dropdown_menu").classList.toggle("show");
 }
 
-
 // Partie appareils
 
 div = document.getElementById("appareils_dropdown_menu");
@@ -147,9 +142,7 @@ function getAppareils(recipes) {
             appareils.push(recipes[i].appliance);
         }
     }
-
     return appareils;
-
 }
 
 let appareils2 = [];
@@ -254,7 +247,6 @@ function CreateTagFilter2(tagFilter) {
     document.getElementById('rectangle_green').appendChild(elem2);
 }
 
-
 // Partie ustensiles
 
 div = document.getElementById("ustensils_dropdown_menu");
@@ -275,10 +267,10 @@ let ustensils2 = [];
 function getUstensils2(recipes) {
     ustensils2 = [];
     for (let i = 0; i < recipes.length; i++) {
-       if (ustensils2.indexOf(recipes[i]) < 0) {
+        if (ustensils2.indexOf(recipes[i]) < 0) {
             ustensils2.push(recipes[i]);
         }
-   }
+    }
     return ustensils2;
 }
 
@@ -310,7 +302,6 @@ function fillUstensils2(argument2) {
         showUstensils2(argument2[i]);
     }
 }
-
 
 function showUstensils2(argument3) {
 
@@ -353,7 +344,6 @@ function CreateTagFilter3(tagFilter) {
 
     document.getElementById('rectangle_red').style.display = 'flex';
     document.getElementById('rectangle_red').appendChild(elem2);
-
 }
 
 let listOfIngredientsSelected = new Set();
@@ -384,7 +374,6 @@ function addDropdownFilter(event) {
             CreateTagFilter(text);
             FillTag(text);
             filterRecipes() && filterRecipes2() && filterRecipes3() && filterRecipes4();
-
         }
     }
 
@@ -416,8 +405,6 @@ function addDropdownFilter(event) {
         }
     }
 }
-
-
 
 function recipesTagUpdate() {
     recipesTagFiltered = recipesTagFilter();

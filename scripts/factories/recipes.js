@@ -43,11 +43,9 @@ function recipeFactory(data) {
         i.src = img;
         i.alt = "icone de durée";
         d.appendChild(i);
-
         d.appendChild(q);
         d.appendChild(o);
         o.appendChild(q);
-
         const r = document.createElement("p");
         r.setAttribute('class', "duree");
         r.innerText = `${time}` + ` min`;
@@ -55,7 +53,6 @@ function recipeFactory(data) {
         o.appendChild(r);
         const s = document.createElement("div");
         s.setAttribute('class', "liste");
-
         const t = document.createElement('ul');
         const w = document.createElement("li");
         w.setAttribute('id', "ingredList")
@@ -75,7 +72,6 @@ function recipeFactory(data) {
         s.appendChild(t);
         d.appendChild(s);
         o.appendChild(s);
-
         const u = document.createElement("p");
         u.setAttribute("class", "card-text");
         u.innerText = `${description}`;

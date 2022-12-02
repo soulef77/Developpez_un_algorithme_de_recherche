@@ -13,87 +13,99 @@
 
 <body>
     <header>
-   
+
         <a href="index.html">
             <img src="/assets/logo.png" alt="Logo du site" class="logo">
         </a>
 
     </header>
-<main>
-    <span class="form-inline">
-        <input class="form-control2" id="searchField" type="search" placeholder="Rechercher une recette, un ingrédient, appareil ou ustensiles..." aria-label="Search"  oninput= "filterRecipes();"><img src="/assets/Vector.png" class="search_icone" alt="icone de recherche">
-    </span>
-    <div class="labelTag"  id="labelTag" >
-        <div class="rectangle_blue" id="rectangle_blue"  style="display:none;"></div>
-        <div class="rectangle_green" id="rectangle_green"  style="display:none;"></div>
-        <div class="rectangle_red" id="rectangle_red"  style="display:none;"></div>
-    </div>
+    <main>
+        <span class="form-inline">
+            <input class="form-control2" id="searchField" type="search"
+                placeholder="Rechercher une recette, un ingrédient, appareil ou ustensiles..." aria-label="Search"
+                oninput="filterRecipes();"><img src="/assets/Vector.png" class="search_icone" alt="icone de recherche">
+        </span>
+        <div class="labelTag" id="labelTag">
+            <div class="rectangle_blue" id="rectangle_blue" style="display:none;"></div>
+            <div class="rectangle_green" id="rectangle_green" style="display:none;"></div>
+            <div class="rectangle_red" id="rectangle_red" style="display:none;"></div>
+        </div>
 
-    
-    <div class="filters">
-        <div class="filteresSelected">
-  
-    <!-- 1ère méthode -->
-    <div class="dropdownIngredients" id="dropdownIngredients">
-        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButtonIngredient" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         <div id="name" class="name">Ingredients</div>
-        </button>
-        
-        <div class="dropdown-menu" id="dropdown-menu"  style= "position: absolute; transform: translate3d(154px, 265px, 0px); top: 0px; left: 0px; will-change: transform;">
-                <div class="inputIngredient" id="inputIngredient">
-                <input type="text" placeholder="Rechercher un ingrédient..." id="myInput"  oninput= "filterRecipesByIngredient();"><img src="/assets/VectorBlanche.png" class="arrow_icone" alt="icone de flèche">
+        <div class="filters">
+            <div class="filteresSelected">
+
+                <!-- 1ère méthode -->
+                <div class="dropdownIngredients" id="dropdownIngredients">
+                    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButtonIngredient"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div id="name" class="name">Ingredients</div>
+                    </button>
+
+                    <div class="dropdown-menu" id="dropdown-menu"
+                        style="position: absolute; transform: translate3d(154px, 265px, 0px); top: 0px; left: 0px; will-change: transform;">
+                        <div class="inputIngredient" id="inputIngredient">
+                            <input placeholder="Rechercher un ingrédient..." class="tag-search-input" id="myInput"
+                                oninput="filterRecipesByIngredient();"><img src="/assets/VectorBlanche.png"
+                                class="arrow_icone" alt="icone de flèche">
+                        </div>
+                        <hr>
+                        <hr>
+                        <div id="ingredients_dropdown_menu" data-type="ingredient"></div>
+                    </div>
                 </div>
-            <hr><hr>
-            <div id="ingredients_dropdown_menu"  data-type="ingredient"></div>
-        </div>
-    </div>
-    
-    
-    
-          
-    <div class="filters">
-   
-    <!-- 2ème dropdown -->
-    <div class="dropdownAppareils" id="dropdownAppareils">
-        <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButtonAppareil" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <div id="name1" class="name1">Appareils</div> 
-        </button>
-        <div  class="dropdown-menu">
-            <div class="inputAppareil" >
-            <input type="text" placeholder="Rechercher un appareil..." id="myInputAppareil" oninput= "filterRecipesByAppareil();" ><img src="/assets/VectorBlanche.png" class="arrow_icone" alt="icone de flèche">
-            </div>
-            <hr><hr>
-            <div id="appareils_dropdown_menu" data-type="appareil"></div>
-        </div>
-        </div>
-    </div>
 
-    <div class="filters">
-        
-    <!-- 3ème dropdown -->
-    <div class="dropdownUstensils" id="dropdownUstensils">
-        <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButtonUstensil" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <div id="name1" class="name1">Ustensiles</div> 
-        </button>
-        <div class="dropdown-menu">
-            <div class="inputUstensil" >
-            <input type="text" placeholder="Rechercher un ustensile..." id="myInputUstensil" oninput= "filterRecipesByUstensil();"  ><img src="/assets/VectorBlanche.png" class="arrow_icone" alt="icone de flèche">
-            </div>
-            <hr><hr>
-            <div id="ustensils_dropdown_menu" data-type="ustensil"></div>
-        </div>
-        </div>
-    </div>
-    </div>
-    </div>
-    <section class="card-deck" id="card-deck">
-    </section>
+                <div class="filters">
 
-    <div class="well" id="recipes-not-found" style="display:none;">
-        <p>Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc</p>
-    </div>
-    
-</main>
+                    <!-- 2ème dropdown -->
+                    <div class="dropdownAppareils" id="dropdownAppareils">
+                        <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButtonAppareil"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div id="name1" class="name1">Appareils</div>
+                        </button>
+                        <div class="dropdown-menu">
+                            <div class="inputAppareil">
+                                <input type="text" placeholder="Rechercher un appareil..." id="myInputAppareil"
+                                    oninput="filterRecipesByAppareil();"><img src="/assets/VectorBlanche.png"
+                                    class="arrow_icone" alt="icone de flèche">
+                            </div>
+                            <hr>
+                            <hr>
+                            <div id="appareils_dropdown_menu" data-type="appareil"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filters">
+
+                    <!-- 3ème dropdown -->
+                    <div class="dropdownUstensils" id="dropdownUstensils">
+                        <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButtonUstensil"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div id="name1" class="name1">Ustensiles</div>
+                        </button>
+                        <div class="dropdown-menu">
+                            <div class="inputUstensil">
+                                <input type="text" placeholder="Rechercher un ustensile..." id="myInputUstensil"
+                                    oninput="filterRecipesByUstensil();"><img src="/assets/VectorBlanche.png"
+                                    class="arrow_icone" alt="icone de flèche">
+                            </div>
+                            <hr>
+                            <hr>
+                            <div id="ustensils_dropdown_menu" data-type="ustensil"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="card-deck" id="card-deck">
+        </section>
+
+        <div class="well" id="recipes-not-found" style="display:none;">
+            <p>Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc
+            </p>
+        </div>
+
+    </main>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -109,7 +121,6 @@
     <script src="scripts/factories/recipes.js"></script>
     <script src="scripts/utils/search.js"></script>
     <script src="scripts/app.js"></script>
-    
-</body>
 
+</body>
 </html>

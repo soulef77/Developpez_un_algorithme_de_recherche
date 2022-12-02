@@ -1,4 +1,3 @@
-
 body {
     background: #fff;
 }
@@ -7,9 +6,9 @@ img.logo {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    
-    width:268px;
-    height:93px;
+
+    width: 268px;
+    height: 93px;
 }
 
 .name {
@@ -25,23 +24,23 @@ img.logo {
 
 .arrow_icone {
     height: 9.88px;
-    width: 16px; 
-} 
+    width: 16px;
+}
 
-.arrow_icone{
+.arrow_icone {
     height: 9.88px;
     width: 16px;
-} 
+}
 
 .search_icone {
     height: 32.06px;
     width: 32.06px;
-} 
+}
 
 .dropdown-toggle::after {
     margin-left: 55px;
     margin-right: 0px;
-   
+
 }
 
 .btn {
@@ -68,7 +67,7 @@ img.logo {
 .form-control2 {
     height: 69px;
     width: 1240px;
-   
+
     position: absolute;
     left: 10%;
     right: 0%;
@@ -76,14 +75,18 @@ img.logo {
     bottom: 0%;
 
     background: #E7E7E7;
+    color: #C7BEBE;
     border-radius: 5px;
 }
 
+.form-control2::placeholder {
+    color: #595151;
+    opacity: 1;
+}
 
-
-.search_icone{
+.search_icone {
     height: 44px;
-    width: 44px; 
+    width: 44px;
     position: absolute;
     left: 87%;
     right: 0%;
@@ -104,7 +107,7 @@ img.logo {
     display: flex;
     align-items: center;
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
     /* align-content: space-between;
     justify-content: space-between;
     background: #3282F7;
@@ -148,7 +151,7 @@ img.logo {
     margin: 35px;
     gap: 25px 20px;
     margin-left: 120px; */
-   
+
 }
 
 
@@ -177,24 +180,6 @@ img.logo {
     margin-left: 5px;
     gap: 5px;
     padding: 0px 10px;
-  }
-
-  
-
-  .rectangle_red {
-    /* width: 107px;
-    height: 37px;
-    max-height:max-content;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    color: white;
-    padding: 10px 20px;
-    align-items: center;
-    margin: 40px;
-    gap: 25px 20px;
-    margin-left: 130px; */
-
 }
 
 .rectangle_red .show {
@@ -222,16 +207,18 @@ img.logo {
     margin-left: 7px;
     gap: 5px;
     padding: 0px 10px;
-  }
+}
 
 .supprim_icone {
     margin-left: 10%;
 }
 
 
-#dropdownMenuButtonIngredient, #dropdownMenuButtonAppareil, #dropdownMenuButtonUstensil {
+#dropdownMenuButtonIngredient,
+#dropdownMenuButtonAppareil,
+#dropdownMenuButtonUstensil {
     color: #fff;
-    
+
 }
 
 .input-group {
@@ -269,6 +256,7 @@ img.logo {
     background: #C7BEBE;
     border-radius: 5px 5px 0px 0px;
 }
+
 .card-body {
     margin: 0;
     padding: 0;
@@ -284,7 +272,7 @@ img.logo {
     right: 0%;
     top: 60%;
     bottom: 0%;
-    
+
     font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
@@ -292,31 +280,31 @@ img.logo {
     line-height: 14px;
     justify-content: left;
     vertical-align: top;
-    
+
     color: #000000;
     text-decoration: none;
-    white-space:pre-wrap;
+    white-space: pre-wrap;
 }
 
 ul {
     list-style-type: none;
-   
-  }
+
+}
 
 li {
     white-space: nowrap;
     font-weight: 100;
-    display: table-cell; 
-   
+    display: table-cell;
+
 }
 
 #ingredList {
-    display: table-cell; 
+    display: table-cell;
     vertical-align: middle;
 }
 
 .card-text {
-      
+
     position: absolute;
     left: 50.26%;
     right: 4.74%;
@@ -324,21 +312,21 @@ li {
     bottom: 20%;
     width: 171px;
     height: 109px;
-    
+
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
     line-height: 120%;
     color: #000000;
-    
-    
+
+
     display: -webkit-box;
-    overflow : hidden;
+    overflow: hidden;
     text-overflow: ellipsis;
     -webkit-line-clamp: 7;
-    -webkit-box-orient: vertical; 
-    height: 100px; 
+    -webkit-box-orient: vertical;
+    height: 100px;
 
 }
 
@@ -347,7 +335,7 @@ li {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     justify-self: stretch;
-    
+
     align-items: center;
     grid-column-gap: 50px;
     grid-row-gap: 30px;
@@ -356,15 +344,9 @@ li {
     min-width: 280px;
     padding: 25px 150px;
     border-radius: 5px;
-    /* position: relative;
-    left: 8.5%;
-    right: 0%;
-    top: 85%;
-    bottom: 0.33%; */
-    /* position: inherit; */
 }
 
- .card {
+.card {
     display: flex;
     flex-direction: column;
     width: 380px;
@@ -389,7 +371,7 @@ li {
     font-size: 18px;
     line-height: 21.6px;
     color: #000000;
-  
+
     width: 250px;
     white-space: nowrap;
     overflow: hidden;
@@ -405,7 +387,7 @@ li {
     right: 0%;
     top: 50%;
     bottom: 8.33%;
-    
+
     color: #000000;
 
 }
@@ -438,19 +420,22 @@ li {
     margin: 40px 0px 50px 155px;
 }
 
+.inputIngredient {
+    color: #fff;
+}
+
 .dropdownIngredients {
     width: 170px;
     height: 69px;
     display: flex;
-    /* justify-content: space-between; */
     background: #3282F7;
     border-radius: 5px;
     padding-left: 2%;
 }
 
 
-.dropdownIngredients .show{
-    display: grid; 
+.dropdownIngredients .show {
+    display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     background-color: #2196F3;
     padding-left: 2%;
@@ -458,14 +443,18 @@ li {
     padding-bottom: 5%;
     padding-top: 2%;
 
-  
+
 }
 
 #ingredients_dropdown_menu {
-    display: grid; 
+    display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 7px;
     width: 550px;
+    height: 450px;
+    overflow-y: scroll;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
 }
 
 .dropdownIngredients .show {
@@ -479,19 +468,18 @@ li {
     top: 0px;
     left: 0px;
     will-change: transform;
-          
+
 }
 
 #myInput {
-    /* display: table-cell; 
-    vertical-align: middle; */
     border: none;
     font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
+    color: #ffff;
     font-size: 18px;
     line-height: 22px;
-    text-align: center;
+    text-align: start;
     opacity: 0.8;
     width: 500px;
     height: 30px;
@@ -499,17 +487,10 @@ li {
     background-color: transparent;
 }
 
-/* #dropdownMenuButtonIngredient[aria-expanded ="true"] > .name {
-     display: none;
-} */
-
-/* #dropdown-menu[aria-expanded ="true"] {
-position: absolute;
-transform: translate3d(154px, 265px, 0px);
-top: 0px;
-left: 0px;
-will-change: transform;
-} */
+input::placeholder {
+    color: #fff;
+    opacity: 0.7;
+  }
 
 .arrow_icone {
     justify-content: space-between;
@@ -527,8 +508,8 @@ will-change: transform;
 }
 
 
-.dropdownAppareils .show{
-    display: grid; 
+.dropdownAppareils .show {
+    display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     background-color: #68D9A4;
     padding-left: 2%;
@@ -538,7 +519,7 @@ will-change: transform;
     transform: translate3d(424px, 265px, 0px) !important;
 }
 
-.dropdownAppareils .show{
+.dropdownAppareils .show {
     background-color: #68D9A4;
     border-radius: 5px;
     color: white;
@@ -547,16 +528,13 @@ will-change: transform;
 
 
 #myInputAppareil {
-    background-color: #68D9A4;
-    width: auto;
-    height: auto;
     border: none;
     font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
     font-size: 18px;
     line-height: 22px;
-    text-align: center;
+    text-align: start;
     color: #FFFFFF;
     opacity: 0.8;
     width: 500px;
@@ -565,14 +543,6 @@ will-change: transform;
     background-color: transparent;
 }
 
-/* .appareils_dropdown_menu_class .show {
-    display: grid; 
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 0px;
-    width: 1000px;
-} */
-
-
 .dropdownUstensils {
     width: 170px;
     height: 69px;
@@ -580,12 +550,12 @@ will-change: transform;
     background: #ED6454;
     border-radius: 5px;
     padding-left: 21%;
-    
+
 }
 
 
-.dropdownUstensils .show{
-    display: grid; 
+.dropdownUstensils .show {
+    display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     padding-left: 2%;
     padding-right: 5%;
@@ -595,7 +565,7 @@ will-change: transform;
     transform: translate3d(694px, 264px, 0px) !important;
 }
 
-.dropdownUstensils .show{
+.dropdownUstensils .show {
     background-color: #ED6454;
     border-radius: 5px;
     color: white;
@@ -603,16 +573,13 @@ will-change: transform;
 
 
 #myInputUstensil {
-    background-color: #68D9A4;
-    width: auto;
-    height: auto;
     border: none;
     font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
     font-size: 18px;
     line-height: 22px;
-    text-align: center;
+    text-align: start;
     color: #FFFFFF;
     opacity: 0.8;
     width: 500px;
@@ -637,10 +604,11 @@ will-change: transform;
 
 
 #appareils_dropdown_menu {
-    display: grid; 
+    display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 7px;
     width: 600px;
+    
 }
 
 .dropdownAppareils .show {
@@ -650,7 +618,7 @@ will-change: transform;
 }
 
 #ustensils_dropdown_menu {
-    display: grid; 
+    display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 7px;
     width: 600px;

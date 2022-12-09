@@ -10,6 +10,10 @@ async function getRecipes() {
     return recipes;
 }
 
+let filteredIngredients = [];
+let filteredAppareils = [];
+let filteredUstensils = [];
+
 function filterRecipes() {
     recipesSection.innerHTML = "";
     let word = document.getElementById("searchField").value;
@@ -73,9 +77,12 @@ function filterRecipes() {
         displayData(tab);
 
         // après avoir affiché la liste des recettes filtrées, on actualise la liste des ingrédients, ustentiles, et appareils
-        fillIngredients(getIngredients(tab));
-        fillUstensils(getUstensils(tab));
-        fillAppareils(getAppareils(tab));
+        filteredIngredients = getIngredients(tab);
+        fillIngredients(filteredIngredients);
+        filteredUstensils = getUstensils(tab);
+        fillUstensils(filteredUstensils);
+        filteredAppareils = getAppareils(tab);
+        fillAppareils(filteredAppareils);
     }
 }
 
@@ -288,98 +295,16 @@ function filterRecipes4() {
 }
 
 
-function filterRecipesByIngredient() {
-    recipesSection.innerHTML = "";
-    let word = document.getElementById("myInput").value;
+function filterIngredients(word) {
     let tab = [];
-    let tab2 = [];
-
-
-    word = word.toLowerCase();
-
-    // for(let i = 0; i < recipes.length; i++) 
-    // {
-    //     if((recipes[i].name.toLowerCase().indexOf(word) > -1 ) || 
-    //         (recipes[i].ingredients.find((ingredient) => ingredient.ingredient.toLowerCase() == word)) || 
-    //         (recipes[i].description.toLowerCase().indexOf(word) > -1))  
-    //     {
-    //         tab.push(recipes[i]);
-    //     }
-    // }
-
-    // pour chaque tag d'ingrédient, on filtre le(s recettes qui contiennent cet ingrédient
-    // const ingredientTags = document.getElementById("rectangle_blue").children;
-    // for(let i =  0; i < ingredientTags.length; i++)
-    // {
-    //     const ingredientTag = ingredientTags[i].textContent.toLowerCase();
-    //     tab = tab.filter((recipe) => {
-    //     return (recipe.ingredients.find((ingredient) => ingredient.ingredient.toLowerCase() == ingredientTag) != undefined);
-    //     });
-    // }
-
-    // // répéter la même chose pour les tags d'appareils et d'ustensiles.
-    // const appareilTags = document.getElementById("rectangle_green").children;
-    // for(let i =  0; i < appareilTags.length; i++)
-    // {
-    //     const appareilTag =  appareilTags[i].textContent.toLowerCase();
-    //     tab = tab.filter((recipe) => {
-    //         return (recipe.appliance.find((appliance) => appliance.toLowerCase() == appareilTag) != undefined);
-    //     });
-    // }
-
-    // const ustensilTags = document.getElementById("rectangle_red").children;
-    // for(let i =  0; i < ustensilTags.length; i++)
-    // {
-    //     const ustensilTag = ustensilTags[i].textContent.toLowerCase();
-    //     tab = tab.filter((recipe) => {
-    //         return (recipe.ustensils.find((ustensil) => ustensil.toLowerCase() == ustensilTag) != undefined);
-    //     });
-    // }
-
-
-    // for(let i = 0; i < recipes.length; i++) 
-    // { 
-    //     const ingredientTag = ingredientTags[i].textContent.toLowerCase();
-    //     tab = tab.filter((recipe) => {
-    //     return (recipe.ingredients.find((ingredient) => ingredient.ingredient.toLowerCase() == ingredientTag) != undefined);
-
-    //     });
-    // }
-
-    for (let i = 0; i < recipes.length; i++) {
-        for (let j = 0; j < recipes[i].ingredients.length; j++) {
-            // console.log(" youpi", recipes[i].ingredients[j].ingredient , "2 ", recipes.ingredient);
-            if (recipes[i].ingredients[j].ingredient.includes(word)) {
-
-                tab.push(recipes[i].ingredients[j].ingredient);
-                if (tab2.indexOf(recipes[i]) < 0) {
-                    tab2.push(recipes[i]);
-                }
-            }
+      
+    for(let i = 0; i < filteredIngredients.length; i++) {
+        if((new RegExp("^" + word,"i")).test(filteredIngredients[i])) {
+            tab.push(filteredIngredients[i]);
         }
-
-        //   if(recipes[i].ingredients.find((recipe) => recipe.ingredient.toLowerCase() == word)) {
-        //                 tab.push(recipes[i]);
-        //                 }
-
     }
-    console.log(" TAB ", tab, " test ", word);
+    fillIngredients(tab);
 
-    if (tab.length === 0) {
-        document.getElementById("recipes-not-found").style.display = "block";
-    }
-    else {
-        document.getElementById("recipes-not-found").style.display = "none";
-
-
-        // à la fin, "tab" contient les recettes à afficher
-        displayData(tab2);
-
-        // après avoir affiché la liste des recettes filtrées, on actualise la liste des ingrédients, ustentiles, et appareils
-        fillIngredients(getIngredients2(tab));
-        fillUstensils(getUstensils(tab2));
-        fillAppareils(getAppareils(tab2));
-    }
 }
 
 

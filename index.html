@@ -41,11 +41,10 @@
                         <div id="name" class="name">Ingredients</div>
                     </button>
 
-                    <div class="dropdown-menu" id="dropdown-menu"
-                        style="position: absolute; transform: translate3d(154px, 265px, 0px); top: 0px; left: 0px; will-change: transform;">
+                    <div class="dropdown-menu" id="dropdown-menu" style="position: absolute; transform: translate3d(165px, 5px, 0px); top: 1650px; left: 0px; will-change: top;">
                         <div class="inputIngredient" id="inputIngredient">
                             <input placeholder="Rechercher un ingrédient..." class="tag-search-input" id="myInput"
-                                oninput="filterRecipesByIngredient();"><img src="/assets/VectorBlanche.png"
+                                oninput="filterIngredients(this.value)"><img src="/assets/VectorBlanche.png"
                                 class="arrow_icone" alt="icone de flèche">
                         </div>
                         <hr>

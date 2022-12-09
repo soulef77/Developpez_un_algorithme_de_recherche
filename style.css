@@ -117,7 +117,6 @@ img.logo {
 
 .rectangle_blue div {
     background: #3282F7;
-    width: 107px;
     height: 37px;
     border-radius: 5px;
     font-size: 14px;
@@ -134,27 +133,6 @@ img.logo {
     padding: 0px 10px;
 }
 
-
-
-.rectangle_green {
-    /* width: 107px;
-    height: 37px;
-    border-radius: 5px;
-    gap: 10px;
-    display: flex;
-    align-items: center;
-    align-content: space-between;
-    justify-content: space-between;
-    color: white;
-    padding: 10px 20px;
-    align-items: center;
-    margin: 35px;
-    gap: 25px 20px;
-    margin-left: 120px; */
-
-}
-
-
 .rectangle_green .show {
     background: #68D9A4;
     /* margin-left: 120px; */
@@ -164,7 +142,6 @@ img.logo {
 
 .rectangle_green div {
     background: #68D9A4;
-    width: 107px;
     height: 37px;
     border-radius: 5px;
     font-size: 14px;
@@ -191,7 +168,6 @@ img.logo {
 
 .rectangle_red div {
     background: #ED6454;
-    width: 107px;
     height: 37px;
     border-radius: 5px;
     font-size: 14px;
@@ -213,6 +189,35 @@ img.logo {
     margin-left: 10%;
 }
 
+#dropdown-menu.dropdown-menu.show {
+    position: absolute;
+    transform: translate3d(0px, -71px, 0px) !important;
+    top: 0px;
+    left: 0px;
+    will-change: top, left;
+    /* padding-bottom: 200px; */
+    top: 265px;
+    left: 154px !important; 
+}
+
+
+
+
+element.style.dropdown-menu.show {
+    position: absolute;
+    transform: translate3d(254px, 265px, 0px) !important;
+    /* top: 265px !important; */
+    will-change: top;
+}
+
+.dropdown-menu.show {
+    /* transform: unset !important; */
+}
+
+div#dropdown-menu {
+    top: 336px !important;
+    left: 154px !important;
+}
 
 #dropdownMenuButtonIngredient,
 #dropdownMenuButtonAppareil,
@@ -431,6 +436,7 @@ li {
     background: #3282F7;
     border-radius: 5px;
     padding-left: 2%;
+  
 }
 
 
@@ -442,8 +448,6 @@ li {
     padding-right: 5%;
     padding-bottom: 5%;
     padding-top: 2%;
-
-
 }
 
 #ingredients_dropdown_menu {
@@ -451,10 +455,8 @@ li {
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 7px;
     width: 550px;
-    height: 450px;
-    overflow-y: scroll;
-    scrollbar-color: rebeccapurple green;
-    scrollbar-width: thin;
+    height: auto;
+    
 }
 
 .dropdownIngredients .show {
@@ -462,13 +464,6 @@ li {
     background-color: #3282F7;
     color: white;
     width: 600px;
-
-    position: absolute;
-    transform: translate3d(154px, 265px, 0px) !important;
-    top: 0px;
-    left: 0px;
-    will-change: transform;
-
 }
 
 #myInput {
@@ -500,7 +495,6 @@ input::placeholder {
     width: 170px;
     height: 69px;
     display: flex;
-    /* justify-content: space-between; */
     background: #68D9A4;
     border-radius: 5px;
     padding-left: 23%;

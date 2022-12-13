@@ -22,7 +22,7 @@
     <main>
         <span class="form-inline">
             <input class="form-control2" id="searchField" type="search"
-                placeholder="Rechercher une recette, un ingrédient, appareil ou ustensiles..." aria-label="Search"
+                placeholder="Rechercher une recette, un ingrédient, appareil ou ustensile..." aria-label="Search"
                 oninput="filterRecipes();"><img src="/assets/Vector.png" class="search_icone" alt="icone de recherche">
         </span>
         <div class="labelTag" id="labelTag">
@@ -31,17 +31,79 @@
             <div class="rectangle_red" id="rectangle_red" style="display:none;"></div>
         </div>
 
-        <div class="filters">
+     
             <div class="filteresSelected">
+              
+                <div class="dropdown" id="dropdown">
+                    <div class="ingredDiv" id="ingredDiv">
+                        <button onclick="myFunction()" class="dropbtn" type="button" id="dropdownMenuButtonIngredient">
+                            <div id="name" class="name">Ingredients</div><img src="/assets/VectorBlanche.png"
+                            class="arrow_icone2" alt="icone de flèche">
+                        </button>
+                    </div>
+                    <div class="dropdown-content" id="dropdown-content">
+                        <div class="inputIngredient" id="inputIngredient">
+                        <input placeholder="Rechercher un ingrédient..." class="tag-search-input" id="myInput"
+                        oninput="filterIngredients(this.value)"><img src="/assets/VectorBlanche.png"
+                        class="arrow_icone" alt="icone de flèche">
+                        </div>
+                    <hr>
+                    <hr>
+                    <div id="ingredients_dropdown_menu" data-type="ingredient"></div>
+                  </div>
+                </div>
 
-                <!-- 1ère méthode -->
+
+                <div class="dropdownAppareil" id="dropdownAppareil">
+                    <div class="appaDiv" id="appaDiv">
+                        <button onclick="myFunction()" class="dropbtnAppareil" id="dropbtnAppareil" type="button" id="dropdownMenuButtonAppareil">
+                            <div id="name" class="name">Appareils</div><img src="/assets/VectorBlanche.png"
+                            class="arrow_icone4" alt="icone de flèche">
+                        </button>
+                    </div>
+                    <div class="dropdown-content-appareil" id="dropdown-content-appareil">
+                        <div class="inputAppareil" id="inputAppareil">
+                        <input placeholder="Rechercher un appareil..." class="tag-search-input" id="myInputAppareil"
+                        oninput="filterRecipesByAppareil();"><img src="/assets/VectorBlanche.png"
+                        class="arrow_icone" alt="icone de flèche">
+                        </div>
+                    <hr>
+                    <hr>
+                    <div id="appareils_dropdown_menu" data-type="appareil"></div>
+                  </div>
+                </div>
+     
+           
+                <div class="dropdownUstensils" id="dropdownUstensils">
+                    <div class="ustenDiv" id="ustenDiv">
+                        <button onclick="myFunction()" class="dropbtnUstensils" type="button" id="dropdownMenuButtonUstensil">
+                            <div id="name1" class="name1">Ustensiles<img src="/assets/VectorBlanche.png"
+                            class="arrow_icone3" alt="icone de flèche">
+                        </button>
+                    </div>
+                    <div class="dropdown-content-ustensil" id="dropdown-content-ustensil">
+                        <div class="inputUstensil" id="inputUstensil">
+                        <input placeholder="Rechercher un ustensile.." class="tag-search-input" id="myInputUstensil"
+                        oninput="filterRecipesByUstensil()"><img src="/assets/VectorBlanche.png"
+                        class="arrow_icone" alt="icone de flèche">
+                        </div>
+                    <hr>
+                    <hr>
+                    <div id="ustensils_dropdown_menu" data-type="ustensil"></div>
+                  </div>
+                </div>
+            </div>
+                
+     
+<!-- 
+                1ère méthode
                 <div class="dropdownIngredients" id="dropdownIngredients">
                     <button class="btn dropdown-toggle" type="button" id="dropdownMenuButtonIngredient"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div id="name" class="name">Ingredients</div>
                     </button>
 
-                    <div class="dropdown-menu" id="dropdown-menu" style="position: absolute; transform: translate3d(165px, 5px, 0px); top: 1650px; left: 0px; will-change: top;">
+                    <div class="dropdown-menu" id="dropdown-menu">
                         <div class="inputIngredient" id="inputIngredient">
                             <input placeholder="Rechercher un ingrédient..." class="tag-search-input" id="myInput"
                                 oninput="filterIngredients(this.value)"><img src="/assets/VectorBlanche.png"
@@ -51,12 +113,16 @@
                         <hr>
                         <div id="ingredients_dropdown_menu" data-type="ingredient"></div>
                     </div>
-                </div>
+                </div> -->
 
-                <div class="filters">
+         
+              
+
+
+                
 
                     <!-- 2ème dropdown -->
-                    <div class="dropdownAppareils" id="dropdownAppareils">
+                    <!-- <div class="dropdownAppareils" id="dropdownAppareils">
                         <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButtonAppareil"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <div id="name1" class="name1">Appareils</div>
@@ -71,13 +137,15 @@
                             <hr>
                             <div id="appareils_dropdown_menu" data-type="appareil"></div>
                         </div>
-                    </div>
-                </div>
+                    </div> -->
+            
+           
 
-                <div class="filters">
+          
+                
 
                     <!-- 3ème dropdown -->
-                    <div class="dropdownUstensils" id="dropdownUstensils">
+                    <!-- <div class="dropdownUstensils" id="dropdownUstensils">
                         <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButtonUstensil"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <div id="name1" class="name1">Ustensiles</div>
@@ -93,9 +161,9 @@
                             <div id="ustensils_dropdown_menu" data-type="ustensil"></div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
+                </div> -->
+          
+   
         <section class="card-deck" id="card-deck">
         </section>
 
@@ -106,6 +174,34 @@
 
     </main>
 
+    <script>
+       function myFunction() {
+            var x = document.getElementById("dropbtn");
+           
+            if (x.style.display === "none") {
+                x.style.display = "block";
+                document.getElementById('ingredDiv').style.display = 'none';
+            } else {
+                x.style.display = "none";
+            }
+
+            var y = document.getElementById("dropbtnAppareil");
+            if (y.style.display === "none") {
+                y.style.display = "block";
+                document.getElementById('appaDiv').style.display = 'none';
+            } else {
+                y.style.display = "none";
+            }
+
+            var z = document.getElementById("dropbtnUstensils");
+            if (z.style.display === "none") {
+                z.style.display = "block";
+                document.getElementById('ustenDiv').style.display = 'none';
+            } else {
+                z.style.display = "none";
+            }
+}
+        </script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"

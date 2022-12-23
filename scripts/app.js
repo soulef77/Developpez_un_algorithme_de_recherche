@@ -122,14 +122,6 @@ function addIngredientTag(event) {
     img.setAttribute("onclick", "suppressTag(event)")
     d.appendChild(img);
 
-    // document.getElementById("dropdown-menu").style.transform = "translate3d(" + 54+ "px, " + 65 + "px, 0)";
-
-    // $('dropdown-menu.show').css({
-    //     transform: 'translate3d(' + 41+ "px, " + 65 + 'px, 0)'
-    //   });
-
-    // document.querySelector(".dropdown-menu").style.top = "165px";
-
     const c = document.getElementById('rectangle_blue');
     if (c.children.length == 0) {
         c.style.display = "flex";
@@ -137,6 +129,8 @@ function addIngredientTag(event) {
     c.appendChild(d);
 
     filterRecipes() && filterRecipes2();
+
+    closeDropDown("dropdown");
 }
 
 var el;
@@ -513,19 +507,6 @@ function addDropdownFilter(event) {
     type = target.parentNode.dataset.type;
     const listType = type === "ingredient" ? listOfIngredientsSelected :
         type === "";
-    console.log("ok  pkoi pas ", target.parentNode.dataset.type, " 2 ", target, " 3 ", text, "  4 ", type, " 5 ", selectedFilters);
-    if (type === "ingredient") {
-        if (!listType.has(text)) {
-            // listType.add(text);
-
-            // selectedFilters.appendChild(createDropdownFilterCard(text, type));
-            recipesTagUpdate();
-            CreateTagFilter(text);
-            FillTag(text);
-            filterRecipes() && filterRecipes2() && filterRecipes3() && filterRecipes4();
-        }
-    }
-
     const listType2 = type === "appareil" ? listOfAppliancesSelected :
         type === "";
 
@@ -536,7 +517,7 @@ function addDropdownFilter(event) {
             CreateTagFilter2(text);
             FillTag2(text);
             filterRecipes() && filterRecipes2() && filterRecipes3() && filterRecipes4();
-
+            closeDropDown("dropdownAppareil");
         }
     }
 
@@ -551,7 +532,7 @@ function addDropdownFilter(event) {
             CreateTagFilter3(text);
             FillTag3(text);
             filterRecipes() && filterRecipes2() && filterRecipes3() && filterRecipes4();
-
+            closeDropDown("dropdownUstensils");
         }
     }
 }

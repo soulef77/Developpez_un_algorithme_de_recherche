@@ -330,7 +330,7 @@ li {
     width: 100%;
     max-width: 1300px;
     min-width: 280px;
-    padding: 25px 150px;
+    padding: 170px 150px;
     border-radius: 5px;
 }
 
@@ -394,6 +394,8 @@ li {
 
 
 .filteresSelected {
+  position: absolute;
+  z-index: 10;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -483,7 +485,6 @@ li {
   /* Dropdown Content (Hidden by Default) */
   .dropdown-content {
     display: flex;
-    position: absolute;
     display: none;
     background-color: #3282F7;
     z-index: 1000;
@@ -492,15 +493,16 @@ li {
 }
  
   /* Show the dropdown menu on hover */
+
+/*
 .dropdown:hover .dropdown-content {
     display: block;
   }
 
 .dropdown:hover .ingredDiv {
     display: none;
-    /* margin-top: 10px; */
   }
-  
+*/  
   /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
     background-color: #3282F7;
@@ -548,7 +550,6 @@ input::placeholder {
   /* Dropdown Content (Hidden by Default) */
   .dropdown-content-appareil {
     display: flex;
-    position: absolute;
     display: none;
     background: #68D9A4;
     z-index: 1000;
@@ -557,6 +558,7 @@ input::placeholder {
 }
  
   /* Show the dropdown menu on hover */
+/*
 .dropdownAppareil:hover .dropdown-content-appareil {
         display: block;
   }
@@ -564,7 +566,8 @@ input::placeholder {
 .dropdownAppareil:hover .appaDiv {
         display: none;
   }
-  
+*/
+
   /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdownAppareil:hover .dropbtnAppareil {
         background: #68D9A4;
@@ -669,7 +672,6 @@ input::placeholder {
   
   /* Dropdown Content (Hidden by Default) */
   .dropdown-content-ustensil {
-    position: absolute;
     display: none;
     background-color: #ED6454;
     z-index: 1000;
@@ -678,6 +680,7 @@ input::placeholder {
 }
  
   /* Show the dropdown menu on hover */
+  /*
   .dropdownUstensils:hover .dropdown-content-ustensil {
     display: block;
   }
@@ -685,6 +688,7 @@ input::placeholder {
    .dropdownUstensils:hover .ustenDiv {
     display: none;
   }
+  */
   
   /* Change the background color of the dropdown button when the dropdown content is shown */
   .dropdownUstensils:hover .dropbtnUstensils {

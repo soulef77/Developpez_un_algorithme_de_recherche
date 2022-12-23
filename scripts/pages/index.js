@@ -732,9 +732,13 @@ async function init() {
     // Récupère les datas des plats
     recipes = await getRecipes();
     displayData(recipes);
-    fillIngredients(getIngredients(recipes));
-    fillUstensils(getUstensils(recipes));
-    fillAppareils(getAppareils(recipes));
+
+    filteredIngredients = getIngredients(recipes);
+    fillIngredients(filteredIngredients);
+    filteredUstensils = getUstensils(recipes);
+    fillUstensils(filteredUstensils);
+    filteredAppareils = getAppareils(recipes);
+    fillAppareils(filteredAppareils);
 }
 
 window.onload = function () {
@@ -746,5 +750,40 @@ window.addEventListener('click', (e) => {
         //alors supprime le tag
         suppressTag(e);
     }
+});
+
+alone = true;
+
+// toggle (open/close) options for a list (ingredients, ustensils, appareils)
+function toggleDropDown(eltId)
+{
+  const elt = document.getElementById(eltId);
+  if(elt == null)
+  {
+    return;
+  }
+  if(elt.children[0].style.display == "none")
+  {
+    closeDropDown(eltId);
+    alone = true;
+  }
+  else 
+  {
+    elt.children[0].style.display = "none";
+    elt.children[1].style.display = "block";
+    alone = false;
+  }
 }
-);
+
+function closeDropDown(eltId)
+{
+  const elt = document.getElementById(eltId);
+  alone = true;
+  if(elt == null)
+  {
+    return;
+  }
+  elt.children[0].style.display = "";
+  elt.children[1].style.display = "none";
+  elt.children[1].children[0].children[0].value = "";
+} 

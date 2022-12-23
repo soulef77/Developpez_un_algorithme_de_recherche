@@ -164,6 +164,5 @@ function searchByWordKeyAndTags2(word, recipesTab) {
 
         }
     }
-    console.log(" TAB ", tab);
     return tab;
 }

@@ -30,19 +30,20 @@
             <div class="rectangle_red" id="rectangle_red" style="display:none;"></div>
         </div>
 
-     
+
         <div class="filteresSelected">
-              
+
             <div class="dropdown" id="dropdown">
                 <div class="ingredDiv dropbtn" id="ingredDiv" onclick="toggleDropDown('dropdown')">
-                    <div  class="name">Ingredients</div>
+                    <div class="name">Ingredients</div>
                     <img src="assets/VectorBlanche.png" class="arrow_icone2" alt="icone de flèche">
                 </div>
                 <div class="dropdown-content" id="dropdown-content">
                     <div class="inputIngredient" id="inputIngredient">
                         <input placeholder="Rechercher un ingrédient..." class="tag-search-input" id="myInput"
                             oninput="filterIngredients(this.value)">
-                        <img src="assets/VectorBlanche.png" class="arrow_icone" alt="icone de flèche" onclick="toggleDropDown('dropdown')">
+                        <img src="assets/VectorBlanche.png" class="arrow_icone" alt="icone de flèche"
+                            onclick="toggleDropDown('dropdown')">
                     </div>
                     <hr>
                     <hr>
@@ -52,21 +53,22 @@
 
             <div class="dropdownAppareil" id="dropdownAppareil">
                 <div class="appaDiv dropbtnAppareil" id="appaDiv" onclick="toggleDropDown('dropdownAppareil')">
-                    <div  class="name">Appareils</div>
+                    <div class="name">Appareils</div>
                     <img src="assets/VectorBlanche.png" class="arrow_icone4" alt="icone de flèche">
                 </div>
                 <div class="dropdown-content-appareil" id="dropdown-content-appareil">
                     <div class="inputAppareil" id="inputAppareil">
                         <input placeholder="Rechercher un appareil..." class="tag-search-input" id="myInputAppareil"
                             oninput="filterRecipesByAppareil();">
-                        <img src="assets/VectorBlanche.png" class="arrow_icone" alt="icone de flèche"  onclick="toggleDropDown('dropdownAppareil')">
+                        <img src="assets/VectorBlanche.png" class="arrow_icone" alt="icone de flèche"
+                            onclick="toggleDropDown('dropdownAppareil')">
                     </div>
                     <hr>
                     <hr>
                     <div id="appareils_dropdown_menu" data-type="appareil"></div>
                 </div>
             </div>
-     
+
             <div class="dropdownUstensils" id="dropdownUstensils">
                 <div class="ustenDiv dropbtnUstensils" id="ustenDiv" onclick="toggleDropDown('dropdownUstensils')">
                     <div id="name1" class="name1">Ustensiles</div>
@@ -76,16 +78,17 @@
                     <div class="inputUstensil" id="inputUstensil">
                         <input placeholder="Rechercher un ustensile.." class="tag-search-input" id="myInputUstensil"
                             oninput="filterRecipesByUstensil()">
-                         <img src="assets/VectorBlanche.png" class="arrow_icone" alt="icone de flèche" onclick="toggleDropDown('dropdownUstensils')">
+                        <img src="assets/VectorBlanche.png" class="arrow_icone" alt="icone de flèche"
+                            onclick="toggleDropDown('dropdownUstensils')">
                     </div>
-                <hr>
-                <hr>
-                <div id="ustensils_dropdown_menu" data-type="ustensil"></div>
+                    <hr>
+                    <hr>
+                    <div id="ustensils_dropdown_menu" data-type="ustensil"></div>
                 </div>
             </div>
         </div>
-   
-   
+
+
         <div class="card-deck" id="card-deck">
         </div>
 
@@ -140,4 +143,5 @@
     <script src="scripts/app.js"></script>
 
 </body>
+
 </html>

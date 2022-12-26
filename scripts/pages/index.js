@@ -35,7 +35,7 @@ function filterRecipes() {
         tab = [...recipes];
     }
 
-    // pour chaque tag d'ingrédient, on filtre le(s recettes qui contiennent cet ingrédient
+    // pour chaque tag d'ingrédient, on filtre les recettes qui contiennent cet ingrédient
     const ingredientTags = document.getElementById("rectangle_blue").children;
     for (let i = 0; i < ingredientTags.length; i++) {
         const ingredientTag = ingredientTags[i].textContent.toLowerCase();
@@ -62,7 +62,6 @@ function filterRecipes() {
         });
     }
 
-
     if (tab.length === 0) {
         document.getElementById("recipes-not-found").style.display = "block";
 
@@ -86,7 +85,6 @@ function filterRecipes() {
 
 // Cette fonction permet de retourner soit le nom de la recette recherchée, soit la liste des ingrédients contenant le mot recherché, soit, 
 // la description de la recette contenant le mot recherché.
-
 
 function filterRecipes2() {
     recipesSection.innerHTML = "";
@@ -201,13 +199,11 @@ function filterRecipes3() {
         });
     }
 
-
     if (tab.length === 0) {
         document.getElementById("recipes-not-found").style.display = "block";
     }
     else {
         document.getElementById("recipes-not-found").style.display = "none";
-
 
         // à la fin, "tab" contient les recettes à afficher
         displayData(tab);
@@ -274,13 +270,11 @@ function filterRecipes4() {
 
     }
 
-
     if (tab.length === 0) {
         document.getElementById("recipes-not-found").style.display = "block";
     }
     else {
         document.getElementById("recipes-not-found").style.display = "none";
-
 
         // à la fin, "tab" contient les recettes à afficher
         displayData(tab);
@@ -302,16 +296,13 @@ function filterIngredients(word) {
         }
     }
     fillIngredients(tab);
-
 }
-
 
 function filterRecipesByAppareil() {
     recipesSection.innerHTML = "";
     let word = document.getElementById("myInputAppareil").value;
     let tab = [];
     let tab2 = [];
-
 
     word = word.toLowerCase();
     for (let i = 0; i < recipes.length; i++) {
@@ -323,13 +314,12 @@ function filterRecipesByAppareil() {
             }
         }
     }
-   
+
     if (tab.length === 0) {
         document.getElementById("recipes-not-found").style.display = "block";
     }
     else {
         document.getElementById("recipes-not-found").style.display = "none";
-
 
         // à la fin, "tab" contient les recettes à afficher
         displayData(tab2);
@@ -361,13 +351,12 @@ function filterRecipesByUstensil() {
             }
         }
     }
-    
+
     if (tab.length === 0) {
         document.getElementById("recipes-not-found").style.display = "block";
     }
     else {
         document.getElementById("recipes-not-found").style.display = "none";
-
 
         // à la fin, "tab" contient les recettes à afficher
         displayData(tab2);
@@ -378,8 +367,6 @@ function filterRecipesByUstensil() {
         fillAppareils(getAppareils(tab2));
     }
 }
-
-
 
 function getRecipesByKeyWord(word) {
     let tabRecipes = [];
@@ -415,139 +402,6 @@ function getRecipesByKeyWord(word) {
 
 }
 
-
-// Cette fonction permet de retourner soit le nom de la recette recherchée, soit la liste des ingrédients contenant le mot recherché, soit, 
-// la description de la recette contenant le mot recherché.
-let recipesSolutionIngredients;
-
-function getRecipesByKeyWordIngredients(word) {
-    let allIngredientsRecipes = [];
-    let variableRecipes = [];
-    for (let i = 0; i < recipes.length; i++) {
-
-        wordTest = recipes[i].name;
-        wordTest2 = JSON.stringify(recipes[i].ingredients);
-    
-        if (wordTest2.indexOf(word) > -1) {
-            recipes[i].ingredients.map(ingredients => {
-                const ingredient = ingredients.ingredient;
-                allIngredientsRecipes.push(ingredient);
-            });
-            ingredientsListArray = [...new Set(allIngredientsRecipes)];
-           return ingredientsListArray;
-        }
-    }
-}
-
-function getRecipesByKeyWordByIngredient(word) {
-
-    for (let i = 0; i < recipes.length; i++) {
-
-        wordTest = recipes[i].name;
-        wordTest2 = JSON.stringify(recipes[i].ingredients);
-        // console.log(" ici ", word,"  OKI ", wordTest," OKI2 ", recipes[i].name);
-
-        if (wordTest2.indexOf(word) > -1) {
-            return wordTest;
-
-        }
-    }
-
-}
-
-let ok = [];
-function listOfRecipesByIngredients(argument) {
-
-
-    ok.push(getRecipesByKeyWordIngredients(argument));
-    return ok;
-
-
-}
-
-
-
-
-// Cette fonction permet de retourner soit le nom de la recette recherchée, soit la liste des ingrédients contenant le mot recherché, soit, 
-// la description de la recette contenant le mot recherché.
-let recipesSolutionAppareils;
-
-function getRecipesByKeyWordAppareils(word) {
-    let allAppareilsRecipes = [];
-    let variableRecipesAppareils = [];
-    for (let i = 0; i < recipes.length; i++) {
-
-        wordTest = recipes[i].name;
-        wordTest2 = JSON.stringify(recipes[i].appliance);
-
-        //  console.log(" ici ", word,"  OKI ", wordTest," OKI2 ",wordTest2);
-        if (wordTest2.indexOf(word) > -1) {
-            Array.from(recipes[i].appliance).map(appliances => {
-                const appliance = appliances.appliance;
-                allAppareilsRecipes.push(appliance);
-                // variableRecipesAppareils.push(getRecipesByKeyWord(appliance));
-                //  console.log("okok ", appliance ," VERIF ", variableRecipesAppareils);
-            });
-            appareilsListArray = [...new Set(allAppareilsRecipes)];
-
-            return appareilsListArray;
-        }
-    }
-}
-
-
-
-// Cette fonction permet de retourner soit le nom de la recette recherchée, soit la liste des ingrédients contenant le mot recherché, soit, 
-// la description de la recette contenant le mot recherché.
-let recipesSolutionAppareils2;
-
-function getRecipesByKeyWordAppareilsTag(word) {
-    let allAppareilsRecipes = [];
-    let tabRecipes = [];
-    for (let i = 0; i < recipes.length; i++) {
-
-        wordTest = recipes[i].name;
-        wordTest2 = JSON.stringify(recipes[i].appliance);
-        wordTest3 = recipes[i].appliance;
-
-        //  console.log(" ici ", word,"  OKI ", wordTest," OKI2 ",wordTest2);
-        if (JSON.stringify(word).indexOf(wordTest2) > -1) {
-            recipesSolutionAppareils2 = recipes.find((recipes) => recipes.appliance.includes(wordTest3));
-            tabRecipes.push(recipesSolutionAppareils2);
-            // console.log(" cool ", recipesSolutionAppareils2);
-
-            appareilsListArray = [...new Set(tabRecipes)];
-
-            return appareilsListArray;
-        }
-    }
-}
-
-
-// Cette fonction permet de retourner soit le nom de la recette recherchée, soit la liste des ingrédients contenant le mot recherché, soit, 
-// la description de la recette contenant le mot recherché.
-let recipesSolutionUstensils;
-
-function getRecipesByKeyWordUstensilsTag(word) {
-    let tabRecipes = [];
-
-    for (let i = 0; i < recipes.length; i++) {
-        wordTest = recipes[i].name;
-        wordTest2 = JSON.stringify(recipes[i].ustensils);
-        wordTest3 = recipes[i].ustensils;
-
-        //  console.log(" ici ", JSON.stringify(word),"  OKI ", wordTest," OKI2 ",wordTest2);
-        if (JSON.stringify(wordTest3).includes(word)) {
-            recipesSolutionUstensils = recipes.find((recipes) => recipes.ustensils.includes(wordTest3));
-            tabRecipes.push(wordTest);
-            // console.log(" cool ",     tabRecipes);
-            appareilsListArray = [...new Set(tabRecipes)];
-
-        }
-    }
-    return appareilsListArray;
-}
-
 let recipesSection = document.querySelector(".card-deck");
 // Cette fonction permet d'afficher une liste de recettes données en paramètre
 function displayData(tabs) {
@@ -558,36 +412,6 @@ function displayData(tabs) {
         recipesSection.appendChild(recipeCardDOM);
     });
 }
-
-// Cette fonction permet de faire appel à la fonction pour définir la page d'accueil des photographes. 
-async function displayData3(tab) {
-    recipesSection.innerHTML = "";
-    const recipeModel = recipeFactory(tab);
-    const recipeCardDOM = recipeModel.getRecipeCardDOM();
-    recipesSection.appendChild(recipeCardDOM);
-    // recipesSection.insertAdjacentHTML('beforeEnd', recipeCardDOM);
-
-}
-
-async function displayData2(recipes) {
-    recipesSection.innerHTML = "";
-    if (recipes && recipes.length > 1) {
-        Array.from(recipes).forEach((recipe) => {
-            const recipeModel = recipeFactory(recipe);
-            const recipeCardDOM = recipeModel.getRecipeCardDOM();
-            recipesSection.appendChild(recipeCardDOM);
-        })
-    } else if (recipes) {
-        Array.from(recipes).forEach((recipe) => {
-
-            const recipeModel = recipeSingleFactory(recipe);
-            const recipeCardDOM = recipeModel.getRecipeCardDOM();
-            recipesSection.insertAdjacentHTML('beforeEnd', recipeCardDOM);
-
-        });
-    }
-}
-
 
 function getRecipesWithoutDoublons(tabRecette) {
     for (let i = 0; i < recipes.length; i++) {
@@ -627,7 +451,6 @@ window.addEventListener('click', (e) => {
     }
 });
 
-alone = true;
 
 // toggle (open/close) options for a list (ingredients, ustensils, appareils)
 function toggleDropDown(eltId) {
@@ -637,18 +460,21 @@ function toggleDropDown(eltId) {
     }
     if (elt.children[0].style.display == "none") {
         closeDropDown(eltId);
-        alone = true;
+
     }
     else {
+        closeDropDown("dropdown");
+        closeDropDown("dropdownAppareil");
+        closeDropDown("dropdownUstensils");
         elt.children[0].style.display = "none";
         elt.children[1].style.display = "block";
-        alone = false;
+
     }
 }
 
 function closeDropDown(eltId) {
     const elt = document.getElementById(eltId);
-    alone = true;
+
     if (elt == null) {
         return;
     }

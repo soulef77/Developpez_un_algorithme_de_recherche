@@ -24,22 +24,7 @@ function recipeFactory(data) {
             ingredientCard += ` ${ingredient.quantity ? ingredient.quantity : ' '} ${unit ? unit : ' '} \r\n`;
         });
     }
-
-    // Fonction de la création des cartes des plats
-    // const getRecipeCardDOM = () => `
-    // //     <div class="card">
-    // //       <div class="card-body">
-    // //         <div class="card-title">${name}</div><img src="/assets/Vector3.png" class="icone_duree" alt="icone de durée">
-    // //         <p class="duree">${time} min</p>
-    // //             <div class="liste">
-    // //                 <ul>
-    // //                     ${ingredientCard}                      
-    // //                 </ul>
-    // //             </div>
-    // //     </div>
-    // //     <p class="card-text">${description}</p>
-    // // </div>
-    // // `;
+    
     const img = "/assets/Vector3.png";
 
     const getRecipeCardDOM = () => {
@@ -74,7 +59,6 @@ function recipeFactory(data) {
 
         const t = document.createElement('ul');
         const w = document.createElement("li");
-        // w.setAttribute('class',"ingredList")
         w.setAttribute('id', "ingredList")
 
         w.innerText = `${ingredientCard2}`;
@@ -84,12 +68,8 @@ function recipeFactory(data) {
         const y = document.createElement("div");
 
         const x = document.createElement("li");
-        // x.setAttribute('id',"ingredList")
         x.innerText = `${ingredientCard}`;
         w.style.fontWeight = "bold";
-        // const m= document.createElement("br");
-        // x.appendChild(m);
-
         o.appendChild(w);
         t.appendChild(w);
         o.appendChild(x);
@@ -99,64 +79,13 @@ function recipeFactory(data) {
         d.appendChild(s);
         o.appendChild(s);
 
-
-
         const u = document.createElement("p");
         u.setAttribute("class", "card-text");
         u.innerText = `${description}`;
         d.appendChild(u);
         o.appendChild(u);
 
-        // console.log(`${description}` ," ", `${ingredientCard}` );
-
         return d;
-
     }
-    return { appliance, description, id, ingredients, ingredient, quantity, unit, name, servings, time, ustensils, getRecipeCardDOM };
-
-}
-
-
-function recipeSingleFactory(data) {
-    const { appliance, description, id, ingredients, ingredient, quantity, unit, name, servings, time, ustensils } = data;
-    let ingredientCard = '';
-    if (ingredients) {
-        ingredients.forEach(ingredient => {
-
-            // Conversion les unités des ingrédients
-            let unit = ingredient.unit;
-            if (ingredient.unit === 'grammes') {
-                unit = 'g';
-            }
-            if (ingredient.unit === 'cuillères à soupe') {
-                unit = 'cuillères';
-            }
-            if (ingredient.unit === 'cuillère à soupe') {
-                unit = 'cuillère';
-            }
-
-            ingredientCard += `<li><strong>${ingredient.ingredient}</strong>`;
-            ingredientCard += `<strong>${ingredient.quantity || unit ? ':' : ''}</strong> `;
-            ingredientCard += ` ${ingredient.quantity ? ingredient.quantity : ''} ${unit ? unit : ''}</li>`;
-        });
-    }
-
-    // Fonction de la création des cartes des plats
-    const getRecipeCardDOM = () => `
-    <div class="card">
-    <img class="card-img-top" src="..." alt="${name}">
-      <div class="card-body">
-          <div class="card-title">${name}</div><img src="/assets/Vector3.png" class="icone_duree" alt="icone de durée">
-          <p class="duree">${time} min</p>
-              <div class="liste">
-                  <ul>
-                     ${ingredientCard}                      
-                  </ul>
-              </div>
-      </div>
-      <p class="card-text">${description}</p>
-  </div>
-  `;
-
     return { appliance, description, id, ingredients, ingredient, quantity, unit, name, servings, time, ustensils, getRecipeCardDOM };
 }

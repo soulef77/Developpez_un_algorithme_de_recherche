@@ -92,7 +92,7 @@ img.logo {
     top: 25%;
     bottom: 0%;
     background: #E7E7E7;
-    color: #C7BEBE;
+    color: black;
     border-radius: 5px;
 }
 
@@ -210,10 +210,7 @@ img.logo {
 #dropdownMenuButtonAppareil,
 #dropdownMenuButtonUstensil {
     color: #fff;
-
 }
-
-
 
 .input-group {
     position: absolute;
@@ -728,7 +725,7 @@ input::placeholder {
     position: absolute;
     left: 10%;
     right: 0%;
-    top: 70%;
+    top: 100%;
     bottom: 0%;
 }
 

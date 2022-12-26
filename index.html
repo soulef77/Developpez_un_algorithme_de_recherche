@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="CSS/style.css">
     <title>Les Petits Plats</title>
 </head>
 
@@ -29,21 +29,19 @@
             <div class="rectangle_green" id="rectangle_green" style="display:none;"></div>
             <div class="rectangle_red" id="rectangle_red" style="display:none;"></div>
         </div>
-
-
+     
         <div class="filteresSelected">
-
+              
             <div class="dropdown" id="dropdown">
                 <div class="ingredDiv dropbtn" id="ingredDiv" onclick="toggleDropDown('dropdown')">
-                    <div class="name">Ingredients</div>
+                    <div  class="name">Ingredients</div>
                     <img src="assets/VectorBlanche.png" class="arrow_icone2" alt="icone de flèche">
                 </div>
                 <div class="dropdown-content" id="dropdown-content">
                     <div class="inputIngredient" id="inputIngredient">
                         <input placeholder="Rechercher un ingrédient..." class="tag-search-input" id="myInput"
                             oninput="filterIngredients(this.value)">
-                        <img src="assets/VectorBlanche.png" class="arrow_icone" alt="icone de flèche"
-                            onclick="toggleDropDown('dropdown')">
+                        <img src="assets/VectorBlanche.png" class="arrow_icone" alt="icone de flèche" onclick="toggleDropDown('dropdown')">
                     </div>
                     <hr>
                     <hr>
@@ -53,22 +51,21 @@
 
             <div class="dropdownAppareil" id="dropdownAppareil">
                 <div class="appaDiv dropbtnAppareil" id="appaDiv" onclick="toggleDropDown('dropdownAppareil')">
-                    <div class="name">Appareils</div>
+                    <div  class="name">Appareils</div>
                     <img src="assets/VectorBlanche.png" class="arrow_icone4" alt="icone de flèche">
                 </div>
                 <div class="dropdown-content-appareil" id="dropdown-content-appareil">
                     <div class="inputAppareil" id="inputAppareil">
                         <input placeholder="Rechercher un appareil..." class="tag-search-input" id="myInputAppareil"
                             oninput="filterRecipesByAppareil();">
-                        <img src="assets/VectorBlanche.png" class="arrow_icone" alt="icone de flèche"
-                            onclick="toggleDropDown('dropdownAppareil')">
+                        <img src="assets/VectorBlanche.png" class="arrow_icone" alt="icone de flèche"  onclick="toggleDropDown('dropdownAppareil')">
                     </div>
                     <hr>
                     <hr>
                     <div id="appareils_dropdown_menu" data-type="appareil"></div>
                 </div>
             </div>
-
+     
             <div class="dropdownUstensils" id="dropdownUstensils">
                 <div class="ustenDiv dropbtnUstensils" id="ustenDiv" onclick="toggleDropDown('dropdownUstensils')">
                     <div id="name1" class="name1">Ustensiles</div>
@@ -78,17 +75,15 @@
                     <div class="inputUstensil" id="inputUstensil">
                         <input placeholder="Rechercher un ustensile.." class="tag-search-input" id="myInputUstensil"
                             oninput="filterRecipesByUstensil()">
-                        <img src="assets/VectorBlanche.png" class="arrow_icone" alt="icone de flèche"
-                            onclick="toggleDropDown('dropdownUstensils')">
+                         <img src="assets/VectorBlanche.png" class="arrow_icone" alt="icone de flèche" onclick="toggleDropDown('dropdownUstensils')">
                     </div>
-                    <hr>
-                    <hr>
-                    <div id="ustensils_dropdown_menu" data-type="ustensil"></div>
+                <hr>
+                <hr>
+                <div id="ustensils_dropdown_menu" data-type="ustensil"></div>
                 </div>
             </div>
         </div>
-
-
+      
         <div class="card-deck" id="card-deck">
         </div>
 
@@ -98,35 +93,7 @@
         </div>
 
     </main>
-
-    <!-- <script>
-       function myFunction() {
-            var x = document.getElementById("dropbtn");
-           
-            if (x.style.display === "none") {
-                x.style.display = "block";
-                document.getElementById('ingredDiv').style.display = 'none';
-            } else {
-                x.style.display = "none";
-            }
-
-            var y = document.getElementById("dropbtnAppareil");
-            if (y.style.display === "none") {
-                y.style.display = "block";
-                document.getElementById('appaDiv').style.display = 'none';
-            } else {
-                y.style.display = "none";
-            }
-
-            var z = document.getElementById("dropbtnUstensils");
-            if (z.style.display === "none") {
-                z.style.display = "block";
-                document.getElementById('ustenDiv').style.display = 'none';
-            } else {
-                z.style.display = "none";
-            }
-}
-        </script>**/ -->
+   
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -143,5 +110,4 @@
     <script src="scripts/app.js"></script>
 
 </body>
-
 </html>

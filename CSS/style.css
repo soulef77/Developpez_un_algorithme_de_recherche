@@ -6,19 +6,19 @@ img.logo {
     display: block;
     margin-left: auto;
     margin-right: auto;
-
     width: 268px;
     height: 93px;
 }
 
 .name {
     display: inline-block;
-    margin-left: -20px;
+    margin-left: 20px;
 }
 
 .name1 {
     display: inline-block;
-    margin-left: -20px;
+    margin-left: 20px;
+    margin-top: -2px;
 
 }
 
@@ -27,9 +27,31 @@ img.logo {
     width: 16px;
 }
 
-.arrow_icone {
+.arrow_icone2 {
     height: 9.88px;
     width: 16px;
+    display: inline-block;
+    margin-left: 25px;
+    margin-top: 7px;
+    transform: rotate(180deg);
+}
+
+.arrow_icone3 {
+    height: 9.88px;
+    width: 16px;
+    display: inline-block;
+    margin-left: 30px;
+    margin-top: 5px;
+    transform: rotate(180deg);
+}
+
+.arrow_icone4 {
+    height: 9.88px;
+    width: 16px;
+    display: inline-block;
+    margin-left: 35px;
+    margin-top: 8px;
+    transform: rotate(180deg);
 }
 
 .search_icone {
@@ -40,7 +62,6 @@ img.logo {
 .dropdown-toggle::after {
     margin-left: 55px;
     margin-right: 0px;
-
 }
 
 .btn {
@@ -53,13 +74,11 @@ img.logo {
     left: 0px;
     top: 0px;
     border-radius: 5px;
-
     position: absolute;
     left: 10%;
     right: 0%;
     top: 30%;
     bottom: 0%;
-
     background: #E7E7E7;
     border-radius: 5px;
 }
@@ -67,18 +86,20 @@ img.logo {
 .form-control2 {
     height: 69px;
     width: 1240px;
-
     position: absolute;
     left: 10%;
     right: 0%;
     top: 25%;
     bottom: 0%;
-
     background: #E7E7E7;
+    color: black;
     border-radius: 5px;
 }
 
-
+.form-control2::placeholder {
+    color: #595151;
+    opacity: 1;
+}
 
 .search_icone {
     height: 44px;
@@ -98,22 +119,15 @@ img.logo {
     margin-left: 145px;
 }
 
-
 .rectangle_blue .show {
     display: flex;
     align-items: center;
     display: flex;
     justify-content: space-between;
-    /* align-content: space-between;
-    justify-content: space-between;
-    background: #3282F7;
-    /* margin-left: 140px; */
-    /* margin-bottom: 100px; */
 }
 
 .rectangle_blue div {
     background: #3282F7;
-    width: 107px;
     height: 37px;
     border-radius: 5px;
     font-size: 14px;
@@ -130,37 +144,14 @@ img.logo {
     padding: 0px 10px;
 }
 
-
-
-.rectangle_green {
-    /* width: 107px;
-    height: 37px;
-    border-radius: 5px;
-    gap: 10px;
-    display: flex;
-    align-items: center;
-    align-content: space-between;
-    justify-content: space-between;
-    color: white;
-    padding: 10px 20px;
-    align-items: center;
-    margin: 35px;
-    gap: 25px 20px;
-    margin-left: 120px; */
-
-}
-
-
 .rectangle_green .show {
     background: #68D9A4;
-    /* margin-left: 120px; */
     display: flex;
     justify-content: space-between;
 }
 
 .rectangle_green div {
     background: #68D9A4;
-    width: 107px;
     height: 37px;
     border-radius: 5px;
     font-size: 14px;
@@ -178,34 +169,14 @@ img.logo {
     padding: 0px 10px;
 }
 
-
-
-.rectangle_red {
-    /* width: 107px;
-    height: 37px;
-    max-height:max-content;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    color: white;
-    padding: 10px 20px;
-    align-items: center;
-    margin: 40px;
-    gap: 25px 20px;
-    margin-left: 130px; */
-
-}
-
 .rectangle_red .show {
     background: #ED6454;
-    /* margin-left: 100px; */
     display: flex;
     justify-content: space-between;
 }
 
 .rectangle_red div {
     background: #ED6454;
-    width: 107px;
     height: 37px;
     border-radius: 5px;
     font-size: 14px;
@@ -227,12 +198,18 @@ img.logo {
     margin-left: 10%;
 }
 
+/* #dropdown-menu-ingredients {
+    /* display: none; */
+/* } */
+
+.show {
+    display: flex;
+}
 
 #dropdownMenuButtonIngredient,
 #dropdownMenuButtonAppareil,
 #dropdownMenuButtonUstensil {
     color: #fff;
-
 }
 
 .input-group {
@@ -260,13 +237,11 @@ img.logo {
 .card-img-top {
     width: 380px;
     height: 178px;
-
     position: absolute;
     left: 0%;
     right: 0%;
     top: 0%;
     bottom: 0%;
-
     background: #C7BEBE;
     border-radius: 5px 5px 0px 0px;
 }
@@ -286,7 +261,6 @@ img.logo {
     right: 0%;
     top: 60%;
     bottom: 0%;
-
     font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
@@ -294,7 +268,6 @@ img.logo {
     line-height: 14px;
     justify-content: left;
     vertical-align: top;
-
     color: #000000;
     text-decoration: none;
     white-space: pre-wrap;
@@ -302,7 +275,6 @@ img.logo {
 
 ul {
     list-style-type: none;
-
 }
 
 li {
@@ -318,7 +290,6 @@ li {
 }
 
 .card-text {
-
     position: absolute;
     left: 50.26%;
     right: 4.74%;
@@ -326,22 +297,18 @@ li {
     bottom: 20%;
     width: 171px;
     height: 109px;
-
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
     line-height: 120%;
     color: #000000;
-
-
     display: -webkit-box;
     overflow: hidden;
     text-overflow: ellipsis;
     -webkit-line-clamp: 7;
     -webkit-box-orient: vertical;
     height: 100px;
-
 }
 
 
@@ -349,21 +316,14 @@ li {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     justify-self: stretch;
-
     align-items: center;
     grid-column-gap: 50px;
     grid-row-gap: 30px;
     width: 100%;
     max-width: 1300px;
     min-width: 280px;
-    padding: 25px 150px;
+    padding: 170px 150px;
     border-radius: 5px;
-    /* position: relative;
-    left: 8.5%;
-    right: 0%;
-    top: 85%;
-    bottom: 0.33%; */
-    /* position: inherit; */
 }
 
 .card {
@@ -377,21 +337,18 @@ li {
     overflow: hidden;
 }
 
-
 .card-title {
     position: absolute;
     left: 5.26%;
     right: 0%;
     top: 50%;
     bottom: 0%;
-
     font-family: 'Lato';
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 21.6px;
     color: #000000;
-
     width: 250px;
     white-space: nowrap;
     overflow: hidden;
@@ -401,27 +358,22 @@ li {
 .icone_duree {
     height: 20px;
     width: 20px;
-
     position: absolute;
     left: 75%;
     right: 0%;
     top: 50%;
     bottom: 8.33%;
-
     color: #000000;
-
 }
 
 .duree {
     width: 56px;
     height: 22px;
-
     position: absolute;
     left: 82%;
     right: 5.26%;
     top: 50%;
     bottom: 26.67%;
-
     font-family: 'Lato';
     font-size: 18px;
     font-weight: 700;
@@ -434,24 +386,31 @@ li {
 
 
 .filteresSelected {
+    position: absolute;
+    z-index: 10;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    align-content: space-around;
     gap: 50px 100px;
     margin: 40px 0px 50px 155px;
 }
 
-.dropdownIngredients {
+.inputIngredient {
+    color: #fff;
+}
+
+.dropbtn {
     width: 170px;
     height: 69px;
     display: flex;
-    /* justify-content: space-between; */
     background: #3282F7;
     border-radius: 5px;
     padding-left: 2%;
 }
 
 
-.dropdownIngredients .show {
+.dropbtn .show {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     background-color: #2196F3;
@@ -459,8 +418,7 @@ li {
     padding-right: 5%;
     padding-bottom: 5%;
     padding-top: 2%;
-
-
+    margin-top: -70px;
 }
 
 #ingredients_dropdown_menu {
@@ -468,6 +426,10 @@ li {
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 7px;
     width: 550px;
+    height: auto;
+    margin-top: -70px;
+    padding: 20px;
+
 }
 
 .dropdownIngredients .show {
@@ -475,61 +437,141 @@ li {
     background-color: #3282F7;
     color: white;
     width: 600px;
-
-    position: absolute;
-    transform: translate3d(154px, 265px, 0px) !important;
-    top: 0px;
-    left: 0px;
-    will-change: transform;
+    margin-top: -70px;
 
 }
 
 #myInput {
-    /* display: table-cell; 
-    vertical-align: middle; */
     border: none;
     font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
+    color: #ffff;
     font-size: 18px;
     line-height: 22px;
-    text-align: center;
+    text-align: start;
     opacity: 0.8;
     width: 500px;
     height: 30px;
-    margin-bottom: 2%;
+    margin-bottom: 5%;
+    margin-top: 20px;
+    padding: 25px;
     background-color: transparent;
 }
 
-/* #dropdownMenuButtonIngredient[aria-expanded ="true"] > .name {
-     display: none;
-} */
+.dropbtn {
+    background-color: #3282F7;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
 
-/* #dropdown-menu[aria-expanded ="true"] {
-position: absolute;
-transform: translate3d(154px, 265px, 0px);
-top: 0px;
-left: 0px;
-will-change: transform;
-} */
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    /* display: inline-block; */
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: flex;
+    display: none;
+    background-color: #3282F7;
+    z-index: 1000;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Show the dropdown menu on hover */
+
+/*
+.dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+.dropdown:hover .ingredDiv {
+    display: none;
+  }
+*/
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #3282F7;
+}
+
+input::placeholder {
+    color: #fff;
+    opacity: 0.7;
+}
 
 .arrow_icone {
     justify-content: space-between;
 }
 
-.dropdownAppareils {
+/* .dropdownAppareil {
     width: 170px;
     height: 69px;
     display: flex;
-    /* justify-content: space-between; */
     background: #68D9A4;
     border-radius: 5px;
-    padding-left: 23%;
-    padding-right: 5px;
+} */
+
+.dropbtnAppareil {
+    background: #68D9A4;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    width: 170px;
+    height: 69px;
+    display: flex;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+
 }
 
+/* The container <div> - needed to position the dropdown content */
+.dropdownAppareil {
+    position: relative;
+    display: inline-block;
+}
 
-.dropdownAppareils .show {
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content-appareil {
+    display: flex;
+    display: none;
+    background: #68D9A4;
+    z-index: 1000;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Show the dropdown menu on hover */
+/*
+.dropdownAppareil:hover .dropdown-content-appareil {
+        display: block;
+  }
+
+.dropdownAppareil:hover .appaDiv {
+        display: none;
+  }
+*/
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdownAppareil:hover .dropbtnAppareil {
+    background: #68D9A4;
+}
+
+.dropdownAppareil:hover div#dropdownUstensils.dropdownUstensils {
+    position: inherit;
+    z-index: 1000;
+    margin-left: 250%;
+}
+
+.dropdownAppareil .show {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     background-color: #68D9A4;
@@ -537,45 +579,60 @@ will-change: transform;
     padding-right: 5%;
     padding-bottom: 5%;
     padding-top: 2%;
-    transform: translate3d(424px, 265px, 0px) !important;
+    margin-top: -70px;
+    z-index: -1;
 }
 
-.dropdownAppareils .show {
+.dropdownAppareil .show {
+    position: absolute;
     background-color: #68D9A4;
     border-radius: 5px;
     color: white;
+    z-index: -1;
 }
 
+#appareils_dropdown_menu {
+    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 7px;
+    width: 550px;
+    height: auto;
+    margin-top: -70px;
+    padding: 20px;
+    background-color: #68D9A4;
 
+}
+
+.dropdownAppareils .show {
+    border-radius: 5px;
+    color: white;
+    width: 600px;
+}
+
+.inpuAppareil {
+    width: auto;
+}
 
 #myInputAppareil {
-    background-color: #68D9A4;
-    width: auto;
-    height: auto;
     border: none;
     font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
+    color: #ffff;
     font-size: 18px;
     line-height: 22px;
-    text-align: center;
-    color: #FFFFFF;
+    text-align: start;
     opacity: 0.8;
     width: 500px;
     height: 30px;
-    margin-bottom: 2%;
+    margin-bottom: 5%;
+    margin-top: 20px;
+    padding: 25px;
     background-color: transparent;
 }
 
-/* .appareils_dropdown_menu_class .show {
-    display: grid; 
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 0px;
-    width: 1000px;
-} */
-
-
-.dropdownUstensils {
+/* .dropdownUstensils {
     width: 170px;
     height: 69px;
     display: flex;
@@ -583,6 +640,42 @@ will-change: transform;
     border-radius: 5px;
     padding-left: 21%;
 
+} */
+
+
+.dropbtnUstensils {
+    background-color: #ED6454;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 170px;
+    height: 69px;
+    display: flex;
+    border: none;
+    border-radius: 5px;
+
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdownUstensils {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content-ustensil {
+    display: none;
+    background-color: #ED6454;
+    z-index: 1000;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdownUstensils:hover .dropbtnUstensils {
+    background-color: #ED6454;
 }
 
 
@@ -594,7 +687,7 @@ will-change: transform;
     padding-bottom: 5%;
     padding-top: 2%;
     background-color: #ED6454;
-    transform: translate3d(694px, 264px, 0px) !important;
+
 }
 
 .dropdownUstensils .show {
@@ -605,21 +698,20 @@ will-change: transform;
 
 
 #myInputUstensil {
-    background-color: #68D9A4;
-    width: auto;
-    height: auto;
     border: none;
     font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
+    color: #ffff;
     font-size: 18px;
     line-height: 22px;
-    text-align: center;
-    color: #FFFFFF;
+    text-align: start;
     opacity: 0.8;
     width: 500px;
     height: 30px;
-    margin-bottom: 2%;
+    margin-bottom: 5%;
+    margin-top: 20px;
+    padding: 25px;
     background-color: transparent;
 }
 
@@ -633,33 +725,24 @@ will-change: transform;
     position: absolute;
     left: 10%;
     right: 0%;
-    top: 70%;
+    top: 100%;
     bottom: 0%;
-}
-
-
-#appareils_dropdown_menu {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 7px;
-    width: 600px;
-}
-
-.dropdownAppareils .show {
-    border-radius: 5px;
-    color: white;
-    width: 600px;
 }
 
 #ustensils_dropdown_menu {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 7px;
-    width: 600px;
+    width: 550px;
+    height: auto;
+    margin-top: -70px;
+    padding: 20px;
+    /* z-index: 999; */
 }
 
 .dropdownUstensils .show {
     border-radius: 5px;
     color: white;
     width: 600px;
+
 }

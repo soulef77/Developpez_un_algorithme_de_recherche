@@ -72,9 +72,12 @@ function filterRecipes() {
         displayData(tab);
 
         // après avoir affiché la liste des recettes filtrées, on actualise la liste des ingrédients, ustentiles, et appareils
-        fillIngredients(getIngredients(tab));
-        fillUstensils(getUstensils(tab));
-        fillAppareils(getAppareils(tab));
+        filteredIngredients = getIngredients(tab);
+        fillIngredients(filteredIngredients);
+        filteredUstensils = getUstensils(tab);
+        fillUstensils(filteredUstensils);
+        filteredAppareils = getAppareils(tab);
+        fillAppareils(filteredAppareils);
     }
 }
 
@@ -433,41 +436,6 @@ function getRecipesByKeyWord(word) {
     return tabRecipes;
 }
 
-// Cette fonction permet de retourner soit le nom de la recette recherchée, soit la liste des ingrédients contenant le mot recherché, soit, 
-// la description de la recette contenant le mot recherché.
-let recipesSolutionIngredients;
-
-function getRecipesByKeyWordIngredients(word) {
-    let allIngredientsRecipes = [];
-    let variableRecipes = [];
-    for (let i = 0; i < recipes.length; i++) {
-
-        wordTest = recipes[i].name;
-        wordTest2 = JSON.stringify(recipes[i].ingredients);
-        if (wordTest2.indexOf(word) > -1) {
-            recipes[i].ingredients.map(ingredients => {
-                const ingredient = ingredients.ingredient;
-                allIngredientsRecipes.push(ingredient);
-            });
-            ingredientsListArray = [...new Set(allIngredientsRecipes)];
-             return ingredientsListArray;
-        }
-    }
-}
-
-function getRecipesByKeyWordByIngredient(word) {
-
-    for (let i = 0; i < recipes.length; i++) {
-        wordTest = recipes[i].name;
-        wordTest2 = JSON.stringify(recipes[i].ingredients);
-        
-        if (wordTest2.indexOf(word) > -1) {
-            return wordTest;
-
-        }
-    }
-
-}
 
 // Cette fonction permet de retourner soit le nom de la recette recherchée, soit la liste des ingrédients contenant le mot recherché, soit, 
 // la description de la recette contenant le mot recherché.
@@ -548,44 +516,7 @@ function displayData(tabs) {
     });
 }
 
-// Cette fonction permet de faire appel à la fonction pour définir la page d'accueil des photographes. 
-async function displayData3(tab) {
-    recipesSection.innerHTML = "";
-    const recipeModel = recipeFactory(tab);
-    const recipeCardDOM = recipeModel.getRecipeCardDOM();
-    recipesSection.appendChild(recipeCardDOM);
-}
 
-async function displayData2(recipes) {
-    recipesSection.innerHTML = "";
-    if (recipes && recipes.length > 1) {
-        Array.from(recipes).forEach((recipe) => {
-            const recipeModel = recipeFactory(recipe);
-            const recipeCardDOM = recipeModel.getRecipeCardDOM();
-            recipesSection.appendChild(recipeCardDOM);
-        })
-    } else if (recipes) {
-        Array.from(recipes).forEach((recipe) => {
-
-            const recipeModel = recipeSingleFactory(recipe);
-            const recipeCardDOM = recipeModel.getRecipeCardDOM();
-            recipesSection.insertAdjacentHTML('beforeEnd', recipeCardDOM);
-
-        });
-    }
-}
-
-function getRecipesWithoutDoublons(tabRecette) {
-    for (let i = 0; i < recipes.length; i++) {
-        for (let j = 0; j < tabRecette.length; j++) {
-            if (tabRecette.indexOf(recipes[i]) > -1) {
-                recipes.splice(i, 1);
-                recipes.push(tabRecette[j]);
-            }
-        }
-    }
-    return recipes;
-}
 
 let recipes = [];
 let word;
@@ -593,9 +524,13 @@ async function init() {
     // Récupère les datas des plats
     recipes = await getRecipes();
     displayData(recipes);
-    fillIngredients(getIngredients(recipes));
-    fillUstensils(getUstensils(recipes));
-    fillAppareils(getAppareils(recipes));
+
+    filteredIngredients = getIngredients(recipes);
+    fillIngredients(filteredIngredients);
+    filteredUstensils = getUstensils(recipes);
+    fillUstensils(filteredUstensils);
+    filteredAppareils = getAppareils(recipes);
+    fillAppareils(filteredAppareils);
 }
 
 window.onload = function () {
@@ -606,6 +541,35 @@ window.addEventListener('click', (e) => {
     if (e.target.className.includes("far fa-times-circle")) {
         //alors supprime le tag
         suppressTag(e);
-        }
     }
-);
+});
+
+alone = true;
+
+// toggle (open/close) options for a list (ingredients, ustensils, appareils)
+function toggleDropDown(eltId) {
+    const elt = document.getElementById(eltId);
+    if (elt == null) {
+        return;
+    }
+    if (elt.children[0].style.display == "none") {
+        closeDropDown(eltId);
+        alone = true;
+    }
+    else {
+        elt.children[0].style.display = "none";
+        elt.children[1].style.display = "block";
+        alone = false;
+    }
+}
+
+function closeDropDown(eltId) {
+    const elt = document.getElementById(eltId);
+    alone = true;
+    if (elt == null) {
+        return;
+    }
+    elt.children[0].style.display = "";
+    elt.children[1].style.display = "none";
+    elt.children[1].children[0].children[0].value = "";
+} 

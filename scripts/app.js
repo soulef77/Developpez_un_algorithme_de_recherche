@@ -19,27 +19,6 @@ function getIngredients(recipes) {
     return ingredients;
 }
 
-// let recipesSolution = [];
-// function getIngredients2(argument) {
-//     recipesSolution = [];
-//     for (let i = 0; i < argument.length; i++) {
-
-//         // recipesIngredients.push(recipesSolution);
-//         if (recipesSolution.indexOf(argument[i]) < 0) {
-//             recipesSolution.push(argument[i]);
-//         }
-//     }
-//     return recipesSolution;
-// }
-
-// function getIngredient3(tab) {
-//     let ingredient = [];
-
-//     for (let i = 0; i < tab.length; i++) {
-//         ingredient.push(ingredient.ingredient);
-//     }
-//     return ingredient;
-// }
 
 function fillIngredients(ingredients) {
     // permet de déplacer vers la droite les dropdowns lorque certains sont ouverts
@@ -73,19 +52,6 @@ function fillIngredients(ingredients) {
     }
 }
 
-// function fillIngredients2(argument2) {
-//     for (let i = 0; i < argument2.length; i++) {
-//         showIngredients2(argument2[i]);
-//     }
-// }
-
-// function fillIngredients3(ingredients) {
-
-//     document.getElementById("ingredients_dropdown_menu").innerHTML = "";
-//     for (let i = 0; i < ingredients.length; i++) {
-//         showIngredient3(ingredients[i]);
-//     }
-// }
 
 function showIngredient(ingredient) {
 
@@ -121,49 +87,6 @@ function addIngredientTag(event) {
     closeDropDown("dropdown");
 }
 
-// var el;
-// let txtValue = [];
-// let txtIngred = [];
-// function showIngredients2(argument3) {
-
-//     if (argument3) {
-//         div = document.getElementById("ingredients_dropdown_menu");
-//         a = div.getElementsByTagName("div");
-
-//         for (let j = 0; j < argument3.length; j++) {
-//             txtValue.push(argument3[j].ingredient);
-//         }
-
-//         txtIngred = [...new Set(txtValue)];
-//         const boxes = document.getElementsByClassName("ingred");
-//         a = div.getElementsByTagName("div");
-
-//         for (let j = 0; j < boxes.length; j++) {
-//             a[j].innerHTML = "";
-//         }
-
-//         for (let i = 0; i < txtIngred.length; i++) {
-//             if (txtIngred[i].includes(a[i].innerText)) {
-                
-//                 el = document.createElement("div");
-//                 el.setAttribute("class", "ingred");
-//                 el.textContent = txtIngred[i];
-//                 div.appendChild(el);
-//                 el.setAttribute("onclick", "addDropdownFilter(event)");
-//                 div.appendChild(el);
-//             }
-//         }
-//     }
-// }
-
-// function showIngredient3(ingredient) {
-//     div = document.getElementById("ingredients_dropdown_menu");
-//     el = document.createElement("div");
-//     el.className = "ingred";
-//     el.textContent = ingredient;
-//     div.appendChild(el);
-//     el.setAttribute("onclick", "addDropdownFilter(event)");
-// }
 
 function myFunction() {
     document.getElementById("ingredients_dropdown_menu").classList.toggle("show");
@@ -249,40 +172,6 @@ function showAppareil(appareil) {
     }
 }
 
-// function fillAppareils2(argument2) {
-//     document.getElementById("appareils_dropdown_menu").innerHTML = "";
-//     for (let i = 0; i < argument2.length; i++) {
-//         showAppareils2(argument2[i]);
-//     }
-// }
-
-// function showAppareils2(argument3) {
-//     if (argument3) {
-//         div = document.getElementById("appareils_dropdown_menu");
-
-//         let txtValue = [];
-//         let unique = [];
-//         for (let i = 0; i < argument3.length; i++) {
-//             txtValue.push(argument3[i].appliance);
-//         }
-
-//         const boxes = document.getElementsByClassName("appar");
-//         a = div.getElementsByTagName("div");
-//         for (let i = 0; i < boxes.length; i++) {
-//             a[i].innerHTML = "";
-//         }
-
-//         unique = [...new Set(txtValue)];
-//         for (let i = 0; i < unique.length; i++) {
-//             el = document.createElement("div");
-//             el.setAttribute("class", "appar");
-//             el.textContent = unique[i];
-//             div.appendChild(el);
-//             el.setAttribute("onclick", "addDropdownFilter(event)");
-//             div.appendChild(el);
-//         }
-//     }
-// }
 
 function myFunction() {
     document.getElementById("appareils_dropdown_menu").classList.toggle("show");
@@ -379,32 +268,6 @@ function showUstensil(ustensil) {
     }
 }
 
-// function fillUstensils2(argument2) {
-//     for (let i = 0; i < argument2.length; i++) {
-//         showUstensils2(argument2[i]);
-//     }
-// }
-
-// function showUstensils2(argument3) {
-//     div = document.getElementById("Ustensils_dropdown_menu");
-//     let txtValue3 = [];
-//     let unique3 = [];
-//     for (let i = 0; i < argument3.length; i++) {
-//         txtValue3.push(argument3[i].ustensils);
-//     }
-
-//     unique3 = [...new Set(txtValue3)];
-//     for (let i = 0; i < unique3.length; i++) {
-
-//         el = document.createElement("div");
-//         el.setAttribute("class", "usten");
-//         el.textContent = unique3[i];
-//         el.setAttribute("onclick", "addDropdownFilter(event)");
-//         div.appendChild(el);
-//     }
-//     txtValue3 = [];
-//     unique3 = [];
-// }
 
 function myFunction() {
     document.getElementById("ustensils_dropdown_menu").classList.toggle("show");
